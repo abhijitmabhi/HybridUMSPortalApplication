@@ -1,0 +1,14 @@
+page-login {
+
+    /** Vertical Alignment **/
+    .valign {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    
+    /** Disabled Content Scrolling **/
+    .scroll-content {
+        overflow-y: hidden !important;
+    }
+}

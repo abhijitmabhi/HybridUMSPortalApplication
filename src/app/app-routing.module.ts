@@ -7,12 +7,11 @@ const routes: Routes = [
   //   redirectTo: './Pages/login/login.module#LoginPageModule',
   //   pathMatch: 'full'
   // },
-  // {
-  //   path: 'home',
-  //   loadChildren: './home/home.module#HomePageModule'
-  // },
+
+  { path: '', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
-  { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule' }
+  { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule' },
+  { path: 'logout', loadChildren: './Pages/login/login.module#LoginPageModule' }
 
 
 ];

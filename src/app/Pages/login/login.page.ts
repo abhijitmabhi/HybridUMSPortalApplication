@@ -25,27 +25,29 @@ export class LoginPage  {
   }
 
 
-  logForm = function()
+   logForm = async function()
   {
 
-    let loading = this.loadingCtrl.create({
-      spinner: 'crescent',
+    let loading = await this.loadingCtrl.create({
+      spinner: 'dots',
       // content: 'Loading Please Wait...',
       dismissOnPageChange: true,
-      enableBackdropDismiss: true
+      enableBackdropDismiss: true,
+      animated: true,
+      translucent: true
     });
 
-    // loading.present();
+    await loading.present();
 
     this.loginProvider.login(this.User).subscribe(res =>{
       this.Cred = res;
       console.log(this.Cred.access_token);
-      // loading.dismiss();
+      loading.dismiss();
       this.LoginModel = res;
       this.router.navigate(['/home']);
       console.log("Success");
     }, err =>{
-      // loading.dismiss();
+      loading.dismiss();
       console.log(err);
     });
   }

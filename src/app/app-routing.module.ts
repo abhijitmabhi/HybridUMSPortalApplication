@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'home', loadChildren: './Pages/home/home.module#HomePageModule' },
-  { path: 'profile', loadChildren: './Pages/profile/profile.module#ProfilePageModule' },
+  { path: 'profile', loadChildren: './Pages/profile/student/profile.module#ProfilePageModule' },
   { path: 'logout', loadChildren: './Pages/login/login.module#LoginPageModule' }
 ];
 

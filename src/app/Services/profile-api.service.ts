@@ -1,9 +1,9 @@
 import { map } from 'rxjs/operators';
-import { ProfileModel } from './../Pages/profile/profileModel';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { ProfileModel } from '../Pages/profile/student/profileModel';
 
 @Injectable({
   providedIn: 'root'

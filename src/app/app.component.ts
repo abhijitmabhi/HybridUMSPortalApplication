@@ -18,6 +18,11 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'profile'
+    },
+    {
       title: 'Logout',
       url: '/logout',
       icon: 'home'

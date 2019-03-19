@@ -1,9 +1,126 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Profile
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+        <ion-img class="profile-logo-align" alt="AIUB LOGO" [src]="'../../../assets/icon/student_photo.jpg'"> </ion-img>
+      <ion-card-subtitle>Student</ion-card-subtitle>
+      <ion-card-title>
+        {{profile.studentName}}
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label>Student ID</ion-label>
+          <ion-label>{{profile.studentId}}</ion-label>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>CGPA</ion-label>
+          <ion-label>{{profile.cgpa}}</ion-label>
+        </ion-item>
 
+        <ion-item>
+          <ion-label>Credit</ion-label>
+          <ion-label>{{profile.credit}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Program</ion-label>
+          <ion-label>{{profile.program}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Department</ion-label>
+          <ion-label>{{profile.department}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Core</ion-label>
+          <ion-label>{{profile.core}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Father Name</ion-label>
+          <ion-label>{{profile.fatherName}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Mother Name</ion-label>
+          <ion-label>{{profile.motherName}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Present Address</ion-label>
+          <ion-label>{{profile.presentAddress}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Permanent Address</ion-label>
+          <ion-label>{{profile.permanentAddress}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Phone</ion-label>
+          <ion-label>{{profile.phone}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-label>{{profile.email}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>DOB</ion-label>
+          <ion-label>{{profile.dob}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Sex</ion-label>
+          <ion-label>{{profile.sex}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nationality</ion-label>
+          <ion-label>{{profile.nationality}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Religion</ion-label>
+          <ion-label>{{profile.religion}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Martital Status</ion-label>
+          <ion-label>{{profile.maritalStatus}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Blood Group</ion-label>
+          <ion-label>{{profile.bloodGroup}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Admission Date</ion-label>
+          <ion-label>{{profile.admissionDate}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Graduation Date</ion-label>
+          <ion-label>{{profile.graduationDate}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

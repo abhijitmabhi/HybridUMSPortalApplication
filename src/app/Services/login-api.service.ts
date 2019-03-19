@@ -16,7 +16,7 @@ export class LoginApiProvider {
 
 
   constructor(public http: HttpClient) {
-    console.log('Hello LoginApiProvider Provider');
+    
   }
 
   login(user) {

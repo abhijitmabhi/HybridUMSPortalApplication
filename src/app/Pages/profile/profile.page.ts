@@ -1,3 +1,5 @@
+import { ProfileModel } from './profileModel';
+import { ProfileApiService } from './../../Services/profile-api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  private profile: ProfileModel;
+
+  constructor(private profileProvider: ProfileApiService) {
+    
+   }
 
   ngOnInit() {
+    this.profile = {
+      studentName: "Abhijit Mondal Abhi",
+      studentId: "13-24025-2",
+      cgpa: "3.00",
+      credit: "148",
+      program: "CSE",
+      department: "Computer Science",
+      core: "BSc",
+      fatherName: "Abcd Efg",
+      motherName: "Hij Klm",
+      presentAddress: "Dhaka",
+      permanentAddress: "Dhaka",
+      phone: "01719000000",
+      email: "abhi@aiub.edu",
+      dob: "10-11-1970",
+      sex: "Male",
+      nationality: "Bangladeshi",
+      religion: "",
+      maritalStatus: "",
+      bloodGroup: "",
+      admissionDate: "",
+      graduationDate: "" 
+    };
   }
+
+
 
 }

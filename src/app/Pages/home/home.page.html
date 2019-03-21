@@ -36,9 +36,28 @@
             <ion-chip outline="true" color="primary">
               <ion-label color="primary">Registration</ion-label>
             </ion-chip>
-        </ion-item-divider>
-    
-     
+        </ion-item-divider>   
     </ion-item-group>
+
+      <ion-card *ngFor="let item of dashboard.Courses">      
+          <ion-card-content>
+				<ion-item>
+					<ion-label>
+						{{item.ID}} -  {{item.Title}}  [{{item.Section}}]
+					</ion-label>
+				</ion-item> 
+				<ion-item>
+					<ion-text>
+						<b>Status :  {{item.Status}}</b>
+					</ion-text>
+				</ion-item> 
+				<ion-item>
+					<ion-label>
+						<b>Result : {{item.Grade}} ({{item.Marks}})</b>
+					</ion-label>
+				</ion-item> 	
+		  </ion-card-content>
+      </ion-card>
+
   </ion-content>
   

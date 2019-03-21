@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
@@ -36,7 +36,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    public alertCtrl: AlertController
   ) {
     this.initializeApp();
 
@@ -53,8 +54,24 @@ export class AppComponent {
       // do something when a notification is opened
       console.log(res);
     });
-
+    
     oneSignal.endInit();
+
+    oneSignal.getIds().then((id)=>{
+      console.log(id);
+      this.presentAlertMultipleButtons(id);
+    });
+
+    
+  }
+  async presentAlertMultipleButtons(id) {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      message: JSON.stringify(id),
+      buttons: ['Cancel']
+    });
+
+    await alert.present();
   }
 
   initializeApp() {

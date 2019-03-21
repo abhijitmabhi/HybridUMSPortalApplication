@@ -41,7 +41,7 @@ export class LoginPage  {
 
     this.loginProvider.login(this.User).subscribe(res =>{
       this.Cred = res;
-      console.log(this.Cred.access_token);
+      //console.log(this.Cred.access_token);
       loading.dismiss();
       this.LoginModel = res;
       this.router.navigate(['/home']);

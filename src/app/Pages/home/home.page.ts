@@ -10,6 +10,8 @@ import { Dashboard, Semester } from './HomeModel';
 export class HomePage  {
   dashboard: Dashboard;
   a:any;
+  RegistrationHideFlag  = true;
+  ScheduleHideFlag = true;
   constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
 
     this.menuCtrl.enable(true);
@@ -63,5 +65,13 @@ export class HomePage  {
 
 
   }
+  onClickSchedule = ()=>
+  {
+    this.ScheduleHideFlag = !this.ScheduleHideFlag;
+  };
 
+  onClickRegistration = ()=>
+  {
+      this.RegistrationHideFlag = !this.RegistrationHideFlag;
+  };
 }

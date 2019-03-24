@@ -13,14 +13,14 @@
   <ion-card>
     <ion-card-header>
         <ion-img class="profile-logo-align" alt="AIUB LOGO" [src]="'../../../assets/icon/student_photo.jpg'"> </ion-img>
-      <ion-card-subtitle>Student</ion-card-subtitle>
-      <ion-card-title>
+      <ion-card-subtitle align="center">Student</ion-card-subtitle>
+      <ion-card-title align="center">
         {{profile.studentName}}
       </ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      <ion-list lines="full">
+      <ion-list lines="none">
         <ion-item>
           <ion-label>Student ID</ion-label>
           <ion-label>{{profile.studentId}}</ion-label>

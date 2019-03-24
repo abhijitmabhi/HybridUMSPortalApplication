@@ -51,6 +51,4 @@ export class LoginPage  {
       console.log(err);
     });
   }
-
-
 }

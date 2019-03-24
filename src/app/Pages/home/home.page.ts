@@ -67,11 +67,21 @@ export class HomePage  {
   }
   onClickSchedule = ()=>
   {
+    const animationsOptions = {
+      animation: 'ios-transition',
+      duration: 1000
+    }
+
     this.ScheduleHideFlag = !this.ScheduleHideFlag;
   };
 
   onClickRegistration = ()=>
   {
+    const animationsOptions = {
+      animation: 'md-transition',
+      duration: 1000
+    }
+
       this.RegistrationHideFlag = !this.RegistrationHideFlag;
   };
 }

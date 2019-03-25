@@ -1,7 +1,7 @@
 import { UserModel, CredModel } from './loginModel';
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, MenuController, LoadingController } from '@ionic/angular';
-import { LoginApiProvider } from 'src/app/Services/login-api.service';
+import { LoginApiProvider } from 'src/app/Services/student/login-api.service';
 import { Router } from '@angular/router';
 
 @Component({

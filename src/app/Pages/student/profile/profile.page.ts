@@ -1,6 +1,7 @@
-import { ProfileModel } from './profileModel';
-import { ProfileApiService } from '../../../Services/profile-api.service';
+
 import { Component, OnInit } from '@angular/core';
+import { ProfileApiService } from 'src/app/Services/student/profile-api.service';
+import { ProfileModel } from './profileModel';
 
 @Component({
   selector: 'app-profile',

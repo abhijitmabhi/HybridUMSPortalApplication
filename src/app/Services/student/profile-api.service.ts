@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { ProfileModel } from '../Pages/profile/student/profileModel';
+import { ProfileModel } from '../../Pages/student/profile/profileModel';
 
 @Injectable({
   providedIn: 'root'

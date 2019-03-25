@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginPage  {
 
-  User: object;
-  Cred: object;
+  User: any;
+  Cred: any;
 
   constructor(private loginProvider: LoginApiProvider, private menuCtrl: MenuController, private loadingCtrl: LoadingController, private router:Router) {
     this.menuCtrl.enable(false);

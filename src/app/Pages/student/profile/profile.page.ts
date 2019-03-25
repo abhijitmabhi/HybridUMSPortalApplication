@@ -10,7 +10,7 @@ import { ProfileModel } from './profileModel';
 })
 export class ProfilePage implements OnInit {
 
-  private profile: ProfileModel;
+  public profile: ProfileModel;
 
   constructor(private profileProvider: ProfileApiService) {
     

@@ -1,4 +1,4 @@
-<ion-content  text-center>
+<!-- <ion-content  text-center>
   <form (ngSubmit)="logForm()" >
       <ion-card>
           <ion-card-header>
@@ -14,7 +14,7 @@
               <br>
               <p> Sign in with your organization ID</p>
             <ion-list>
-                <!-- <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner> -->
+               
                 <ion-item>
                   <ion-label position="floating">Username</ion-label>
                   <ion-input name = "user" type="text" [(ngModel)]="User.username" ></ion-input>
@@ -30,4 +30,26 @@
           </ion-card-content>
         </ion-card>
     </form>
+</ion-content> -->
+
+<ion-content>
+  <div class="container">
+    <img class="loginLogo" alt="AIUB LOGO" src="../../../assets/icon/aiub_logo.png">
+    <form (ngSubmit)="logForm()">
+    <div class="login-box">
+      <h1>Login</h1>
+      <ion-list>
+          <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input name = "user" type="text" [(ngModel)]="User.username" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input name="pass" type="password" [(ngModel)]="User.password" ></ion-input>
+          </ion-item>
+        </ion-list>
+      <button type="submit" class="loginButton">Login</button>
+    </div>
+  </form>
+  </div>
 </ion-content>

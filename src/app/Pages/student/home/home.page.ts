@@ -8,6 +8,9 @@ import { Dashboard, Semester } from './HomeModel';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage  {
+  public isCollapsed = false;
+  activeId = ['static-1', 'static-2'];
+
   dashboard: Dashboard;
   a:any;
   RegistrationHideFlag  = true;
@@ -65,23 +68,5 @@ export class HomePage  {
 
 
   }
-  onClickSchedule = ()=>
-  {
-    const animationsOptions = {
-      animation: 'ios-transition',
-      duration: 1000
-    }
-
-    this.ScheduleHideFlag = !this.ScheduleHideFlag;
-  };
-
-  onClickRegistration = ()=>
-  {
-    const animationsOptions = {
-      animation: 'md-transition',
-      duration: 1000
-    }
-
-      this.RegistrationHideFlag = !this.RegistrationHideFlag;
-  };
+ 
 }

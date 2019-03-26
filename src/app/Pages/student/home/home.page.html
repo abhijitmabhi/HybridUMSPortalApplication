@@ -10,49 +10,67 @@
   </ion-header>
   
   <ion-content>
-    <ion-item-group>
-      <ion-item-divider color="primary" (click)="onClickSchedule()">
-        <ion-label class="titleBar">Class Schedule</ion-label>
-      </ion-item-divider>
-      
-      <ion-item [hidden]="!ScheduleHideFlag">
-        <ion-label>Today</ion-label>
-        <ion-label>No Class On This Day</ion-label>
-      </ion-item>
-      <ion-item [hidden]="!ScheduleHideFlag">
-        <ion-label>Tomorrow</ion-label>
-        <ion-label>No Class On This Day</ion-label>
-      </ion-item>
-      <ion-item [hidden]="!ScheduleHideFlag">
-        <ion-label>22 March 2019</ion-label>
-        <ion-label>No Class On This Day</ion-label>
-      </ion-item>
-    </ion-item-group>
-
-    <ion-item-group>
-        <ion-item-divider color="primary" (click)="onClickRegistration()">
-          <ion-label class="titleBar">Registration</ion-label>
-        </ion-item-divider>   
-    </ion-item-group>
-
-      <ion-card *ngFor="let item of dashboard.Courses" [hidden]="!RegistrationHideFlag">      
-        <ion-card-content>
-          <ion-item lines="none">
-            <ion-label>
-              <b>{{item.ID}} -  {{item.Title}}  [{{item.Section}}]</b>
-            </ion-label>
-          </ion-item> 
-          <ion-item lines="none">
-            <ion-text>
-              Status :  {{item.Status}}
-            </ion-text>
-          </ion-item> 
-          <ion-item lines="none">
-            <ion-label>
-              Result : {{item.Grade}} ({{item.Marks}})
-            </ion-label>
-          </ion-item> 	
-        </ion-card-content>
-      </ion-card>
+    <ngb-accordion  [activeIds]="activeId">
+        <ngb-panel id="static-1" title="Class Schedule">
+           
+          <ng-template ngbPanelContent>
+              <ion-item-group>
+                  <ion-item>
+                    <ion-label>Today</ion-label>
+                    <ion-label>No Class On This Day</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Tomorrow</ion-label>
+                    <ion-label>No Class On This Day</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>22 March 2019</ion-label>
+                    <ion-label>No Class On This Day</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>23 March 2019</ion-label>
+                    <ion-label>No Class On This Day</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>24 March 2019</ion-label>
+                    <ion-label>No Class On This Day</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>25 March 2019</ion-label>
+                    <ion-label>No Class On This Day</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>26 March 2019</ion-label>
+                    <ion-label>No Class On This Day</ion-label>
+                  </ion-item>
+                </ion-item-group>
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-2" title="Registration">
+          <ng-template ngbPanelContent>
+              <ion-card *ngFor="let item of dashboard.Courses" >      
+                  <ion-card-content>
+                    <ion-item lines="none">
+                      <ion-label>
+                        <b>{{item.ID}} -  {{item.Title}}  [{{item.Section}}]</b>
+                      </ion-label>
+                    </ion-item> 
+                    <ion-item lines="none">
+                      <ion-text>
+                        Status :  {{item.Status}}
+                      </ion-text>
+                    </ion-item> 
+                    <ion-item lines="none">
+                      <ion-label>
+                        Result : {{item.Grade}} ({{item.Marks}})
+                      </ion-label>
+                    </ion-item> 	
+                  </ion-card-content>
+                </ion-card>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
   </ion-content>
+
+  
   

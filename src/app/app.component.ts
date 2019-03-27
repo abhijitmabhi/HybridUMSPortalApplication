@@ -22,6 +22,11 @@ export class AppComponent {
       icon: 'person'
     },
     {
+      title: 'Courses & Results',
+      url: '/courses-results',
+      icon: 'document'
+    },
+    {
       title: 'Logout',
       url: '/logout',
       icon: 'log-out'

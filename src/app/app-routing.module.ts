@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'home', loadChildren: './Pages/student/home/home.module#HomePageModule' },
   { path: 'profile', loadChildren: './Pages/student/profile/profile.module#ProfilePageModule' },
-  { path: 'logout', loadChildren: './Pages/login/login.module#LoginPageModule' }
+  { path: 'logout', loadChildren: './Pages/login/login.module#LoginPageModule' },  { path: 'courses-results', loadChildren: './Pages/student/courses-results/courses-results.module#CoursesResultsPageModule' }
+
 ];
 
 @NgModule({

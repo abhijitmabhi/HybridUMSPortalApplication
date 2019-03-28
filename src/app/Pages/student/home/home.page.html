@@ -46,29 +46,35 @@
                   </ion-item>
               </ion-item-group>
           </ng-template>
-
         </ngb-panel>
+
         <ngb-panel id="static-2" title="Registration">
           <ng-template ngbPanelContent>
-              <ion-card *ngFor="let item of dashboard.Courses" >      
-                  <ion-card-content>
-                    <ion-item lines="none">
-                      <ion-label>
-                        <b>{{item.ID}} -  {{item.Title}}  [{{item.Section}}]</b>
-                      </ion-label>
-                    </ion-item> 
-                    <ion-item lines="none">
-                      <ion-text>
-                        Status :  {{item.Status}}
-                      </ion-text>
-                    </ion-item> 
-                    <ion-item lines="none">
-                      <ion-label>
-                        Result : {{item.Grade}} ({{item.Marks}})
-                      </ion-label>
-                    </ion-item> 	
-                  </ion-card-content>
-                </ion-card>
+            <ion-grid>
+              <ion-row>
+                <ion-col *ngFor="let item of dashboard.Courses" size-sm="12" size-md="6">
+                  <ion-card>      
+                    <ion-card-content>
+                      <ion-item lines="none">
+                        <ion-label>
+                          <b>{{item.ID}} -  {{item.Title}}  [{{item.Section}}]</b>
+                        </ion-label>
+                      </ion-item> 
+                      <ion-item lines="none">
+                        <ion-text>
+                          Status :  {{item.Status}}
+                        </ion-text>
+                      </ion-item> 
+                      <ion-item lines="none">
+                        <ion-label>
+                          Result : {{item.Grade}} ({{item.Marks}})
+                        </ion-label>
+                      </ion-item> 	
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>

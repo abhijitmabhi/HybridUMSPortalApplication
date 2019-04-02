@@ -22,14 +22,22 @@ export class LoginApiProvider {
   login(user) {
     const dt = new HttpParams()
 
+      // .set('grant_type','password')
+      // .set('username', '14-25773-1')
+      // .set('password','58446673');
+
       .set('grant_type','password')
       .set('username', '14-25773-1')
-      .set('password','58446673');
+      .set('password','243866');
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
-    return this.http.post('https://api.aiub.edu/ums-auth-api/Token', dt, { headers }).pipe(map(res =>{
-     return res;
-    }));
+    // return this.http.post('https://api.aiub.edu/ums-auth-api/Token', dt, { headers }).pipe(map(res =>{
+    //  return res;
+    // }));
+
+    return this.http.post('http://172.16.22.101:2694/Token', dt, { headers }).pipe(map(res =>{
+      return res;
+     }));
   }
 }

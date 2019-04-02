@@ -1,7 +1,7 @@
 import { UserModel, CredModel } from './loginModel';
-import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, MenuController, LoadingController, AlertController } from '@ionic/angular';
-import { LoginApiProvider } from 'src/app/Services/student/login-api.service';
+import { Component } from '@angular/core';
+import { MenuController, LoadingController, AlertController } from '@ionic/angular';
+import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Router } from '@angular/router';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 
@@ -26,11 +26,9 @@ export class LoginPage  {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
-
-   logForm = async function()
+  logForm = async function()
   {
 
     let loading = await this.loadingCtrl.create({

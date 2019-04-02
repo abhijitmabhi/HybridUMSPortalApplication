@@ -1,13 +1,13 @@
 <ion-header>
-    <ion-toolbar color="aiubthemecolor">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>
-        Courses and Results
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar color="aiubthemecolor">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Courses and Results
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <ion-item-group>
@@ -46,16 +46,16 @@
       </ion-item-divider>
 
       <ion-item-group>
-        <ion-item-divider color=primary (click)="onMidTerm()">
-            <ion-icon style="width: 5%;" ios="ios-add" md="md-add" *ngIf="!midHideFlag"></ion-icon>
-            <ion-icon style="width: 5%;" ios="ios-remove" md="md-remove" *ngIf="midHideFlag"></ion-icon>
-            <ion-label style="width: 75%;">Midterm for 2018-2019, Spring<br/>
-              <ion-text>
-                <i>(Total:100; Pass:50; Contributes:40%)</i><br/>
-              </ion-text>
-            </ion-label>
-            <ion-label style="width: 20%; text-align: right;">A+(100)</ion-label>
-          </ion-item-divider>
+        <ion-item-divider color=secondary (click)="onMidTerm()">
+          <ion-icon style="width: 5%;" ios="ios-add" md="md-add" *ngIf="!midHideFlag"></ion-icon>
+          <ion-icon style="width: 5%;" ios="ios-remove" md="md-remove" *ngIf="midHideFlag"></ion-icon>
+          <ion-label style="width: 75%;">Midterm for 2018-2019, Spring<br/>
+            <ion-text>
+              <i>(Total:100; Pass:50; Contributes:40%)</i><br/>
+            </ion-text>
+          </ion-label>
+          <ion-label style="width: 20%; text-align: right;">A+(100)</ion-label>
+        </ion-item-divider>
         <ion-item [hidden]="!midHideFlag">
           <ion-label>Attendances</ion-label>
           <ion-label class="ion-text-right">10</ion-label>
@@ -75,7 +75,7 @@
       </ion-item-group>
 
       <ion-item-group>
-        <ion-item-divider color=primary (click)="onFinalTerm()">
+        <ion-item-divider color=secondary (click)="onFinalTerm()">
           <ion-icon style="width: 5%;" ios="ios-add" md="md-add" *ngIf="!finalHideFlag"></ion-icon>
           <ion-icon style="width: 5%;" ios="ios-remove" md="md-remove" *ngIf="finalHideFlag"></ion-icon>
           <ion-label style="width: 75%;">Finalterm for 2018-2019, Spring<br/>

@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
-import { NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap'
+import { NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {

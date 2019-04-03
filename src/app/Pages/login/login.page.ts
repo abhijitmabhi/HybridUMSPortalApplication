@@ -36,7 +36,6 @@ export class LoginPage  {
 
     let loading = await this.loadingCtrl.create({
       spinner: 'dots',
-      // content: 'Loading Please Wait...',
       dismissOnPageChange: true,
       enableBackdropDismiss: true,
       animated: true,

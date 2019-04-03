@@ -25,7 +25,10 @@ export class LoginPage  {
    
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter(){
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/home']);
+    }
   }
 
   logForm = async function()
@@ -45,6 +48,7 @@ export class LoginPage  {
     this.loginProvider.login(this.User).subscribe(res =>{
       this.Cred = res;
       //console.log(this.Cred.access_token);
+      localStorage.setItem('token', this.Cred.access_token);
       loading.dismiss();
       this.LoginModel = res;
       this.oneSignalSubscription();

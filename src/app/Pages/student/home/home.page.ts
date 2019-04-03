@@ -1,6 +1,8 @@
+import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { Dashboard, Semester } from './HomeModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,7 @@ export class HomePage  {
   a:any;
   RegistrationHideFlag  = true;
   ScheduleHideFlag = true;
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController, private loginService: LoginApiProvider, private router: Router) {
 
     this.menuCtrl.enable(true);
 
@@ -65,8 +67,10 @@ export class HomePage  {
     
 
     console.log(this.dashboard);
-
-
   }
- 
+
+  getProfile(){
+    this.loginService.userProfile();
+   
+  }
 }

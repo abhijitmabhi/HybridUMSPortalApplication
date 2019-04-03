@@ -30,14 +30,20 @@ export class LoginApiProvider {
       .set('username', '14-25773-1')
       .set('password','243866');
 
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
     // return this.http.post('https://api.aiub.edu/ums-auth-api/Token', dt, { headers }).pipe(map(res =>{
     //  return res;
     // }));
 
-    return this.http.post('http://172.16.22.101:2694/Token', dt, { headers }).pipe(map(res =>{
+    return this.http.post('http://172.16.22.101:2694/Token', dt).pipe(map(res =>{
       return res;
      }));
+  }
+
+  userProfile(){
+    this.http.get("http://172.16.22.101:4962/api/Home/GetStudentProfile").subscribe(res => {
+      console.log(res);
+    })
   }
 }

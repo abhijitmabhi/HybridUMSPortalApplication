@@ -1,3 +1,4 @@
+import { LogoutPage } from './Pages/logout/logout.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -13,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './Services/intercept/interceptor.service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,13 +26,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
   ],
   providers: [
     StatusBar,
     SplashScreen,
     OneSignal,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

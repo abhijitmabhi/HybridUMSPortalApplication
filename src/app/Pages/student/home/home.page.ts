@@ -1,8 +1,8 @@
-import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { Dashboard, Semester } from './HomeModel';
 import { Router } from '@angular/router';
+import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 
 @Component({
   selector: 'app-home',
@@ -65,12 +65,5 @@ export class HomePage  {
             ]
         };
     
-
-    console.log(this.dashboard);
-  }
-
-  getProfile(){
-    this.loginService.userProfile();
-   
   }
 }

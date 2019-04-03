@@ -22,6 +22,8 @@ export class LoginPage  {
     this.menuCtrl.enable(false);
     this.User = UserModel;
     this.Cred = CredModel;
+
+    this.User.password = '243866';
    
   }
 
@@ -33,7 +35,6 @@ export class LoginPage  {
 
   logForm = async function()
   {
-
     let loading = await this.loadingCtrl.create({
       spinner: 'dots',
       dismissOnPageChange: true,

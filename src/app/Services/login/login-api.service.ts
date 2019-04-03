@@ -27,8 +27,8 @@ export class LoginApiProvider {
       // .set('password','58446673');
 
       .set('grant_type','password')
-      .set('username', '14-25773-1')
-      .set('password','243866');
+      .set('username', user.username)
+      .set('password', user.password);
 
     // const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 

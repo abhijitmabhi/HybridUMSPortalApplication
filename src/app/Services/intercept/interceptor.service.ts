@@ -11,13 +11,8 @@ export class InterceptorService implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-      // localStorage.setItem('token', null);
-      console.log(JSON.stringify(localStorage));
       let token = localStorage.getItem('token');
-      // localStorage.clear();
-      console.log(JSON.stringify(localStorage));
-      // token = null;
-        // console.log(token);
+      // console.log(JSON.stringify(localStorage));
         if (token) {
           request = request.clone({
             setHeaders: {
@@ -25,7 +20,7 @@ export class InterceptorService implements HttpInterceptor {
               'content-type': 'application/x-www-form-urlencoded'
             }
           });
-          console.log("State: 01" + JSON.stringify(request));
+          // console.log("State: 01" + JSON.stringify(request));
         }
 
         
@@ -37,7 +32,7 @@ export class InterceptorService implements HttpInterceptor {
             }
           });
 
-          console.log("State: 02" + JSON.stringify(request));
+          // console.log("State: 02" + JSON.stringify(request));
         }
 
         
@@ -51,7 +46,7 @@ export class InterceptorService implements HttpInterceptor {
         return next.handle(request).pipe(
           map((event: HttpEvent<any>) => {
             if (event instanceof HttpResponse) {
-              console.log('event--->>>', event);
+              // console.log('event--->>>', event);
             }
             return event;
           }),

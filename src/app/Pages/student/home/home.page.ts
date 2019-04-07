@@ -1,6 +1,7 @@
+import { HomeApiService } from 'src/app/Services/student/home-api.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
-import { Dashboard, Semester } from './HomeModel';
+import { Dashboard, Semester, Schedule } from './HomeModel';
 import { Router } from '@angular/router';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 
@@ -17,7 +18,15 @@ export class HomePage  {
   a:any;
   RegistrationHideFlag  = true;
   ScheduleHideFlag = true;
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController, private loginService: LoginApiProvider, private router: Router) {
+
+  public schedule: Schedule[];
+
+  constructor(
+    public navCtrl: NavController, 
+    public menuCtrl: MenuController, 
+    private loginService: LoginApiProvider, 
+    private router: Router,
+    private homeApiService: HomeApiService) {
 
     this.menuCtrl.enable(true);
 
@@ -66,4 +75,12 @@ export class HomePage  {
         };
     
   }
+
+  ionViewDidEnter(){
+    this.homeApiService.schedule().subscribe(res => {
+      this.schedule = res.Data;
+      console.log(this.schedule);
+    });
+  }
+
 }

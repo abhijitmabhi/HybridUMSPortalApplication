@@ -18,3 +18,16 @@ export class Course {
     Marks:any;
     SemesterID:any;
 }
+
+export class Classes {
+    ID: any;
+    SectionID: any;
+    SectionDescription: any;
+    Room: any;
+    Time: any;
+}
+
+export class Schedule {
+    ClassRoutineDate: any;
+    Classes: Classes;
+}

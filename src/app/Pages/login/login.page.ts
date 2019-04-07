@@ -23,6 +23,7 @@ export class LoginPage  {
     this.User = UserModel;
     this.Cred = CredModel;
 
+    this.User.username = '16-31332-1';
     this.User.password = '243866';
    
   }

@@ -10,53 +10,64 @@
 </ion-header>
   
   <ion-content>
-
-  <ngb-accordion [activeIds]="activeId">
-      <ngb-panel id="static-1" title="Class Schedule">
-        <ng-template ngbPanelContent>
-          <table class="table table-sm table-responsive">
-            <tbody>
-              <div *ngFor="let classSchedule of schedule">
-              <tr *ngFor="let classInfo of classSchedule.Classes; index as i">
-                <td rowspan="classSchedule.Classes.length"><span *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span></td>
-                <td><b>{{classInfo.SectionDescription }}</b> <p [hidden]="classInfo.SectionID == 0 ">{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p></td>
-              </tr>
-              </div>
-            </tbody>
-          </table>
-          </ng-template>
-      </ngb-panel>
-
-      <ngb-panel id="static-2" title="Registration">
-        <ng-template ngbPanelContent>
-          <ion-grid>
-            <ion-row>
-              <ion-col *ngFor="let item of dashboard.Courses" size-sm="12" size-md="6">
-                <ion-card>      
-                  <ion-card-content>
-                    <ion-item lines="none">
-                      <ion-label>
-                        <b>{{item.ID}} -  {{item.Title}}  [{{item.Section}}]</b>
-                      </ion-label>
-                    </ion-item> 
-                    <ion-item lines="none">
-                      <ion-text>
-                        Status :  {{item.Status}}
-                      </ion-text>
-                    </ion-item> 
-                    <ion-item lines="none">
-                      <ion-label>
-                        Result : {{item.Grade}} ({{item.Marks}})
-                      </ion-label>
-                    </ion-item> 	
-                  </ion-card-content>
-                </ion-card>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
+      <mat-accordion>
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+               Class Schedule
+              </mat-panel-title>
+              <mat-panel-description>
+                
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <table class="table table-sm table-responsive">
+                <tbody>
+                  <div *ngFor="let classSchedule of schedule">
+                  <tr *ngFor="let classInfo of classSchedule.Classes; index as i">
+                    <td rowspan="classSchedule.Classes.length"><span *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span></td>
+                    <td><b>{{classInfo.SectionDescription }}</b> <p [hidden]="classInfo.SectionID == 0 ">{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p></td>
+                  </tr>
+                  </div>
+                </tbody>
+              </table>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Registration
+              </mat-panel-title>
+              <mat-panel-description>
+                
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ion-grid>
+                <ion-row>
+                  <ion-col *ngFor="let item of dashboard.Courses" size-sm="12" size-md="6">
+                    <ion-card>      
+                      <ion-card-content>
+                        <ion-item lines="none">
+                          <ion-label>
+                            <b>{{item.ID}} -  {{item.Title}}  [{{item.Section}}]</b>
+                          </ion-label>
+                        </ion-item> 
+                        <ion-item lines="none">
+                          <ion-text>
+                            Status :  {{item.Status}}
+                          </ion-text>
+                        </ion-item> 
+                        <ion-item lines="none">
+                          <ion-label>
+                            Result : {{item.Grade}} ({{item.Marks}})
+                          </ion-label>
+                        </ion-item> 	
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+          </mat-expansion-panel>
+        </mat-accordion>
 </ion-content>
 
   

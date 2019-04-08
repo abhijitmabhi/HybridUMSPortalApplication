@@ -6,3 +6,12 @@
     color: primary;
     background-color: primary-contrast;
 }
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }

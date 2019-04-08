@@ -11,7 +11,7 @@ import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage  {
-
+  panelOpenState = false;
   public isCollapsed = false;
   activeId = ['static-1', 'static-2'];
 

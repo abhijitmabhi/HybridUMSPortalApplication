@@ -73,14 +73,20 @@ export class HomePage  {
               },
             ]
         };
-    
+
+        this.homeApiService.schedule().subscribe(res => {
+          this.schedule = res.Data;
+          this.schedule.forEach(element => {
+              if(element.Classes.length === 0){
+                  element.Classes.push({ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: ""});
+              }
+          });
+          console.log(this.schedule);
+        });
   }
 
   ionViewDidEnter(){
-    this.homeApiService.schedule().subscribe(res => {
-      this.schedule = res.Data;
-      console.log(this.schedule);
-    });
+   
   }
 
 }

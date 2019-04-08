@@ -17,6 +17,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './Services/intercept/interceptor.service';
 
+// angular material
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,6 +29,7 @@ import { InterceptorService } from './Services/intercept/interceptor.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     NgbModule.forRoot(),
   ],
   providers: [

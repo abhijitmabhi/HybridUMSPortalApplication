@@ -18,7 +18,7 @@
               <div *ngFor="let classSchedule of schedule">
               <tr *ngFor="let classInfo of classSchedule.Classes; index as i">
                 <td rowspan="classSchedule.Classes.length"><span *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span></td>
-                <td><b>{{classInfo.SectionDescription}}</b> <p>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p></td>
+                <td><b>{{classInfo.SectionDescription }}</b> <p [hidden]="classInfo.SectionID == 0 ">{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p></td>
               </tr>
               </div>
             </tbody>

@@ -29,5 +29,5 @@ export class Classes {
 
 export class Schedule {
     ClassRoutineDate: any;
-    Classes: Classes;
+    Classes: Classes[];
 }

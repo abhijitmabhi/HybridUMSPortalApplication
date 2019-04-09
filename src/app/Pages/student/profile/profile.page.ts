@@ -1,7 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ProfileApiService } from 'src/app/Services/student/profile-api.service';
 import { ProfileModel } from './profileModel';
+import { LoadingService } from 'src/app/core/loader/loading.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,21 +10,23 @@ import { ProfileModel } from './profileModel';
 })
 export class ProfilePage implements OnInit {
 
-  public profile: ProfileModel;
+  private profile: ProfileModel;
 
   constructor(
-    private profileApiService: ProfileApiService) {
+    private profileApiService: ProfileApiService,
+    private loadingService: LoadingService) {
    }
 
   ngOnInit() {
+    this.getProfile();
   }
 
-  ionViewDidEnter(){
+  getProfile(){
+    this.loadingService.loadingStart();
     this.profileApiService.getStudentProfile().subscribe(res => {
+      this.loadingService.loadingDismiss();
       this.profile = res.Data;
-      console.log(this.profile);
       return res;
     });
   }
-
 }

@@ -41,7 +41,7 @@ export class InterceptorService implements HttpInterceptor {
           headers: request.headers.set('Accept', 'application/json')
         });
 
-        console.log("State: 03" + request);
+        // console.log("State: 03" + request);
       
         return next.handle(request).pipe(
           map((event: HttpEvent<any>) => {

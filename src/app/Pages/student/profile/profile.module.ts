@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ProfilePage } from './profile.page';
-import { MatListModule } from '@angular/material/list';
-import { MatDividerModule } from '@angular/material/divider';
+
 
 const routes: Routes = [
   {
@@ -19,8 +18,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    MatListModule,
-    MatDividerModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ProfilePage]

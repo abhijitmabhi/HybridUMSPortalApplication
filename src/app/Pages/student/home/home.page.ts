@@ -1,3 +1,4 @@
+import { LoadingService } from 'src/app/core/loader/loading.service';
 import { HomeApiService } from 'src/app/Services/student/home-api.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
@@ -10,7 +11,8 @@ import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage  {
+export class HomePage implements OnInit  {
+  
   panelOpenState = false;
   public isCollapsed = false;
   activeId = ['static-1', 'static-2'];
@@ -27,7 +29,8 @@ export class HomePage  {
     public menuCtrl: MenuController, 
     private loginService: LoginApiProvider, 
     private router: Router,
-    private homeApiService: HomeApiService) {
+    private homeApiService: HomeApiService,
+    private loadingService: LoadingService) {
 
     this.menuCtrl.enable(true);
 
@@ -75,19 +78,24 @@ export class HomePage  {
             ]
         };
 
-        this.homeApiService.schedule().subscribe(res => {
-          this.schedule = res.Data;
-          this.schedule.forEach(element => {
-              if(element.Classes.length === 0){
-                  element.Classes.push({ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: ""});
-              }
-          });
-          console.log(this.schedule);
-        });
+       
   }
 
-  ionViewDidEnter(){
-   
+  ngOnInit() {
+    this.getSchedule();
   }
 
+  getSchedule(){
+    this.loadingService.loadingStart();
+    this.homeApiService.schedule().subscribe(res => {
+      this.loadingService.loadingDismiss();
+      this.schedule = res.Data;
+      this.schedule.forEach(element => {
+          if(element.Classes.length === 0){
+              element.Classes.push({ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: ""});
+          }
+      });
+      console.log(this.schedule);
+    });
+  }
 }

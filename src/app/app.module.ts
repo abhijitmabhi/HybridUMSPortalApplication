@@ -15,10 +15,10 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InterceptorService } from './Services/intercept/interceptor.service';
 
 // angular material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { InterceptorService } from './core/interceptor/intercept.service';
 
 @NgModule({
   declarations: [AppComponent],

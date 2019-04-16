@@ -8,17 +8,24 @@ export class LoadingService {
 
   constructor(private loadingCtrl: LoadingController) { }
 
-  loading: any;
+  isLoading: boolean = false;
 
   async loadingStart(){
-    this.loading = await this.loadingCtrl.create({
+    this.isLoading = true;
+    return await this.loadingCtrl.create({
         spinner: "crescent",
         translucent: true,
+        }).then( a => {
+          a.present().then(() => {
+            if(!this.isLoading){
+              a.dismiss();
+            }
+          })
         });
-    await this.loading.present();
   }
 
-  loadingDismiss(){
-      this.loading.dismiss();
+  async loadingDismiss(){
+    this.isLoading = false;
+    return await this.loadingCtrl.dismiss();
   }
 }

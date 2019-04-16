@@ -45,7 +45,6 @@ export class LoginPage  {
     });
 
     await loading.present();
-
     this.loginProvider.login(this.User).subscribe(res =>{
       this.Cred = res;
       //console.log(this.Cred.access_token);

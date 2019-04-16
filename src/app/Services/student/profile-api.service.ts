@@ -1,20 +1,21 @@
-import { map, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { ProfileModel } from '../../Pages/student/profile/profileModel';
+import { IResult } from 'src/app/Core/result/result';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProfileApiService {
-  
-  constructor(public http: HttpClient) {}
 
-  public getStudentProfile(): Observable<any>
-  {
-    return this.http.get<any>("http://172.16.22.101:4962/api/Home/GetStudentProfile");
+  constructor(public httpClient: HttpClient) { }
+
+  private baseUrl = environment.baseUrl;
+
+  public getStudentProfile(): Observable<IResult> {
+    return this.httpClient.get<IResult>(this.baseUrl + "/Home/GetStudentProfile");
   }
 }

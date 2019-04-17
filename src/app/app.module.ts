@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // angular material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './core/interceptor/intercept.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { InterceptorService } from './core/interceptor/intercept.service';
     StatusBar,
     SplashScreen,
     OneSignal,
+    DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,

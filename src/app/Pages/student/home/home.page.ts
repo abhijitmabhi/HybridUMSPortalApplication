@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { HomeApiService } from 'src/app/Services/student/home-api.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +23,7 @@ export class HomePage implements OnInit {
   RegistrationHideFlag = true;
   ScheduleHideFlag = true;
 
-  public schedule: Schedule[];
+  public schedule: object;
 
   constructor(
     public navCtrl: NavController,
@@ -30,7 +31,8 @@ export class HomePage implements OnInit {
     private loginService: LoginApiProvider,
     private router: Router,
     private homeApiService: HomeApiService,
-    private loadingService: LoadingService) {
+    private loadingService: LoadingService,
+    private datePipe: DatePipe) {
 
     this.menuCtrl.enable(true);
 
@@ -85,11 +87,16 @@ export class HomePage implements OnInit {
     this.getSchedule();
   }
 
+  private currentDateTime = new Date();
+  private fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
+  private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+5),'yyyy-MM-dd HH:mm:ss.SSS');
+
+
   getSchedule() {
     this.loadingService.loadingStart();
-    this.homeApiService.schedule().subscribe(res => {
+    this.homeApiService.schedule(this.fromDateTime, this.tillDateTime).subscribe(res => {
       this.loadingService.loadingDismiss();
-      this.schedule = res.Data;
+      this.schedule = res.Data
       this.schedule.forEach(element => {
         if (element.Classes.length === 0) {
           element.Classes.push({ ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: "" });

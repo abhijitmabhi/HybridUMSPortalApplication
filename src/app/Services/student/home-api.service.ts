@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IResult } from 'src/app/Core/result/result';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class HomeApiService {
 
   private baseUrl = environment.baseUrl;
 
-  public schedule(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + "/Home/Schedule?fromDateTime=2019-04-03 10:11:31.410&tillDateTime=2019-04-10 10:11:31.410");
+  public schedule(fromDateTime: string, tillDateTime: string): Observable<IResult> {
+    return this.httpClient.get<IResult>(this.baseUrl + "/Home/Schedule?fromDateTime=" + fromDateTime + "&tillDateTime=" + tillDateTime);
   }
 }

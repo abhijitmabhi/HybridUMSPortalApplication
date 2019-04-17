@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
   RegistrationHideFlag = true;
   ScheduleHideFlag = true;
 
-  public schedule: object;
+  public schedule: any;
 
   constructor(
     public navCtrl: NavController,

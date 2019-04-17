@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { IResult } from 'src/app/Core/result/result';
 
 /*
   Generated class for the LoginApiProvider provider.
@@ -41,9 +43,7 @@ export class LoginApiProvider {
      }));
   }
 
-  userProfile(){
-    this.http.get("http://172.16.22.101:4962/api/Home/GetStudentProfile").subscribe(res => {
-      console.log(res);
-    })
+  usergetCurrentUserInfo(): Observable<IResult>{
+    return this.http.get<IResult>("http://172.16.22.101:4962/api/Common/GetCurrentUserInfo");
   }
 }

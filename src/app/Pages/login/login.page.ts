@@ -1,6 +1,7 @@
+import { LoadingService } from 'src/app/core/loader/loading.service';
 import { UserModel, CredModel } from './loginModel';
 import { Component } from '@angular/core';
-import { MenuController, LoadingController, AlertController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Router } from '@angular/router';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
@@ -14,11 +15,12 @@ export class LoginPage  {
 
   User: any;
   Cred: any;
+  userType: any;
 
   signal_app_id: string = "a5a0688d-fba4-4bb5-8cf2-e50143e6b4f8";
   firebase_id:string = "677592847633";
 
-  constructor(private loginProvider: LoginApiProvider, private menuCtrl: MenuController, private loadingCtrl: LoadingController, private router:Router,  private oneSignal: OneSignal,  public alertCtrl: AlertController) {
+  constructor(private loginProvider: LoginApiProvider, private menuCtrl: MenuController, private router:Router,  private oneSignal: OneSignal,  public alertCtrl: AlertController, private loadingService: LoadingService,) {
     this.menuCtrl.enable(false);
     this.User = UserModel;
     this.Cred = CredModel;
@@ -34,31 +36,32 @@ export class LoginPage  {
     }
   }
 
-  logForm = async function()
+  logForm ()
   {
-    let loading = await this.loadingCtrl.create({
-      spinner: 'dots',
-      dismissOnPageChange: true,
-      enableBackdropDismiss: true,
-      animated: true,
-      translucent: true
-    });
-
-    await loading.present();
+    this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res =>{
       this.Cred = res;
-      //console.log(this.Cred.access_token);
+      // console.log(this.Cred.access_token);
       localStorage.setItem('token', this.Cred.access_token);
-      loading.dismiss();
-      this.LoginModel = res;
+      // this.LoginModel = res;
       this.oneSignalSubscription();
-      this.router.navigate(['/home']);
-      console.log("Success");
+      this.getUserType();
+      // console.log("Success");
     }, err =>{
-      loading.dismiss();
+      this.loadingService.loadingDismiss();
       console.log(err);
     });
     
+  }
+
+  getUserType() {
+    this.loginProvider.usergetCurrentUserInfo().subscribe(res => {
+      this.loadingService.loadingDismiss();
+      this.userType = res.Data;
+      console.log(this.userType.UserStatus);
+      this.router.navigate(['/home']);
+      console.log("After Login");
+    })
   }
 
   oneSignalSubscription(){

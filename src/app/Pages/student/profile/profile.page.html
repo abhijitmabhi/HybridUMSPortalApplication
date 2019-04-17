@@ -10,96 +10,147 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-        <ion-img class="profile-logo-align" alt="AIUB LOGO" [src]="'../../../assets/icon/student_photo.jpg'"> </ion-img>
-      <ion-card-subtitle align="center">{{profile?.FullName}}</ion-card-subtitle>
-      <ion-card-title align="center">
-      </ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <table class="table table-striped ">
-          <tbody>
-            <tr>
-              <td>Student ID</td>
-              <td>{{profile?.StudentID}}</td>
-            </tr>
-            <tr>
-              <td>CGPA</td>
-              <td>{{profile?.CGPA}}</td>
-            </tr>
-            <tr>
-              <td>Credit</td>
-              <td>{{profile?.Credit}}</td>
-            </tr>
-            <tr>
-              <td>Program</td>
-              <td>{{profile?.Program}}</td>
-            </tr>
-            <tr>
-              <td>Department</td>
-              <td>{{profile?.Department}}</td>
-            </tr>
-            <tr>
-              <td>Core</td>
-              <td>{{profile?.Core}}</td>
-            </tr>
-            <tr>
-              <td>Father Name</td>
-              <td>{{profile?.FatherName}}</td>
-            </tr>
-            <tr>
-              <td>Mother Name</td>
-              <td>{{profile?.MotherName}}</td>
-            </tr>
-            <tr>
-              <td>Present Address</td>
-              <td>{{profile?.PresentAddress}}</td>
-            </tr>
-            <tr>
-              <td>Permanent Address</td>
-              <td>{{profile?.PermanentAddress}}</td>
-            </tr>
-            <tr>
-              <td>Phone</td>
-              <td>{{profile?.Phone}}</td>
-            </tr>
-            <tr>
-              <td>DOB</td>
-              <td>{{profile?.DOB}}</td>
-            </tr>
-            <tr>
-              <td>Sex</td>
-              <td>{{profile?.Sex}}</td>
-            </tr>
-            <tr>
-              <td>Nationality</td>
-              <td>{{profile?.Nationality}}</td>
-            </tr>
-            <tr>
-              <td>Religion</td>
-              <td>{{profile?.Religion}}</td>
-            </tr>
-            <tr>
-              <td>Martital Status</td>
-              <td>{{profile?.MaritalStatus}}</td>
-            </tr>
-            <tr>
-              <td>Blood Group</td>
-              <td>{{profile?.BloodGroup}}</td>
-            </tr>
-            <tr>
-              <td>Admission Date</td>
-              <td>{{profile?.AdmissionDate}}</td>
-            </tr>
-            <tr>
-              <td>Graduation Date</td>
-              <td>{{profile?.GraduationDate}}</td>
-            </tr>
-          </tbody>
 
-        </table>
-    </ion-card-content>
-  </ion-card>
+
+  <!-- <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar src="../../../assets/icon/student_photo.jpg" alt="Student Image">
+      <mat-card-title>{{profile?.FullName}}</mat-card-title>
+      <mat-card-subtitle>Student</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card> -->
+  <div [hidden]="profile">
+    <ngx-content-loading [width]="222">
+      <svg:g ngx-facebook-preset></svg:g>
+    </ngx-content-loading>
+
+    <ngx-content-loading [width]="222">
+      <svg:g ngx-instagram-preset></svg:g>
+    </ngx-content-loading>
+
+    <ngx-content-loading [width]="280">
+      <svg:g ngx-code-preset></svg:g>
+    </ngx-content-loading>
+
+    <ngx-content-loading [width]="202">
+      <svg:g ngx-list-preset></svg:g>
+    </ngx-content-loading>
+
+    <ngx-content-loading [width]="222">
+      <svg:g ngx-bullet-list-preset></svg:g>
+    </ngx-content-loading>
+  </div>
+
+  <div>
+    <mat-card align="center" style="padding-top: 30px !important;">
+      <img class="profile-logo-align" mat-card-image src="../../../assets/icon/student_photo.jpg" alt="Student Image">
+      <mat-card-title>{{profile?.FullName}}</mat-card-title>
+      <mat-card-subtitle>Student</mat-card-subtitle>
+    </mat-card>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Student ID</td>
+          <td>{{profile?.StudentID}}</td>
+        </tr>
+        <tr>
+          <td>Full Name</td>
+          <td>{{profile?.FullName}}</td>
+        </tr>
+        <tr>
+          <td>CGPA</td>
+          <td>{{profile?.CGPA}}</td>
+        </tr>
+        <tr>
+          <td>Credit</td>
+          <td>{{profile?.Credit}}</td>
+        </tr>
+        <tr>
+          <td>Program</td>
+          <td>{{profile?.Program}}</td>
+        </tr>
+        <tr>
+          <td>Department</td>
+          <td>{{profile?.Department}}</td>
+        </tr>
+        <tr>
+          <td>Core</td>
+          <td>{{profile?.Core}}</td>
+        </tr>
+        <tr>
+          <td>Major</td>
+          <td>{{profile?.Major}}</td>
+        </tr>
+        <tr>
+          <td>Second Major</td>
+          <td>{{profile?.SecondMajor}}</td>
+        </tr>
+        <tr>
+          <td>Minor</td>
+          <td>{{profile?.Minor}}</td>
+        </tr>
+        <tr>
+          <td>Elective</td>
+          <td>{{profile?.Elective}}</td>
+        </tr>
+        <tr>
+          <td>Father Name</td>
+          <td>{{profile?.FatherName}}</td>
+        </tr>
+        <tr>
+          <td>Mother Name</td>
+          <td>{{profile?.MotherName}}</td>
+        </tr>
+        <tr>
+          <td>Present Address</td>
+          <td>{{profile?.PresentAddress}}</td>
+        </tr>
+        <tr>
+          <td>Permanent Address</td>
+          <td>{{profile?.PermanentAddress}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{profile?.Phone}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{profile?.Email}}</td>
+        </tr>
+        <tr>
+          <td>DOB</td>
+          <td>{{profile?.DOB}}</td>
+        </tr>
+        <tr>
+          <td>Sex</td>
+          <td>{{profile?.Sex}}</td>
+        </tr>
+        <tr>
+          <td>Marital Status</td>
+          <td>{{profile?.MaritalStatus}}</td>
+        </tr>
+        <tr>
+          <td>Nationality</td>
+          <td>{{profile?.Nationality}}</td>
+        </tr>
+        <tr>
+          <td>Religion</td>
+          <td>{{profile?.Religion}}</td>
+        </tr>
+        <tr>
+          <td>Blood Group</td>
+          <td>{{profile?.BloodGroup}}</td>
+        </tr>
+        <tr>
+          <td>Admission Date</td>
+          <td>{{profile?.AdmissionDate}}</td>
+        </tr>
+        <tr>
+          <td>Graduation Date</td>
+          <td>{{profile?.GraduationDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </ion-content>

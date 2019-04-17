@@ -9,6 +9,7 @@ import { HomePage } from './home.page';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { NgxContentLoadingModule } from 'ngx-content-loading';
 
 const routes: Routes = [
   {
@@ -22,10 +23,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
     MatFormFieldModule,
     MatExpansionModule,
-    MatInputModule
+    NgxContentLoadingModule,
+    MatInputModule,
+    RouterModule.forChild(routes),
   ],
   declarations: [HomePage]
 })

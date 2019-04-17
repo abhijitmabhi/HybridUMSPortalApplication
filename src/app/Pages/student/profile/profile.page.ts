@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileApiService } from 'src/app/Services/student/profile-api.service';
-// import { ProfileModel } from './profileModel';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 
 @Component({
@@ -15,19 +14,18 @@ export class ProfilePage implements OnInit {
   constructor(
     private profileApiService: ProfileApiService,
     private loadingService: LoadingService) {
-   }
+  }
 
   ngOnInit() {
     this.getProfile();
   }
 
-  getProfile(){
+  getProfile() {
     this.loadingService.loadingStart();
     this.profileApiService.getStudentProfile().subscribe(res => {
-    this.loadingService.loadingDismiss();
-    console.log(res);
-    this.profile = res.Data;
-    return res;
+      this.loadingService.loadingDismiss();
+      this.profile = res.Data;
     });
   }
 }
+

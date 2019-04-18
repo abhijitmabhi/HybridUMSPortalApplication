@@ -28,3 +28,11 @@ background: lightblue;
   font-weight: bold;
   color: royalblue;
 }
+
+.example-button-row button,
+.example-button-row a {
+  align-self: center;
+  margin-right: 2%;
+  margin-left: 2%;
+  width: 29.33%;
+}

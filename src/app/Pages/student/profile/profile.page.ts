@@ -10,6 +10,7 @@ import { LoadingService } from 'src/app/core/loader/loading.service';
 export class ProfilePage implements OnInit {
 
   public profile: object;
+  public errorMsg: any;
 
   constructor(
     private profileApiService: ProfileApiService,
@@ -25,6 +26,10 @@ export class ProfilePage implements OnInit {
     this.profileApiService.getStudentProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.profile = res.Data;
+    },
+    error => {
+      this.loadingService.loadingDismiss();
+      this.errorMsg = error;
     });
   }
 }

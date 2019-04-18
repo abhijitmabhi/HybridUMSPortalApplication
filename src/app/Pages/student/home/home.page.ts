@@ -38,44 +38,53 @@ export class HomePage implements OnInit {
 
     this.dashboard =
       {
-        UserID: '14-25773-1',
+        UserID: '16-31332-1',
         Semesters: [
           {
             ID: 1,
-            Title: "2013-2014, Spring"
+            Title: "2015-2016, Spring"
           },
           {
             ID: 2,
-            Title: "2013-2014, Summer"
+            Title: "2017-2018, Summer"
           }
         ],
         Courses: [
           {
-            ID: '01488',
+            ID: '00359',
             Grade: 'A-',
             Marks: 86.00,
-            Section: 'B3',
+            Section: 'G',
             Status: 'Valid',
-            Title: 'English Reading Skills & Public Speaking',
-            SemesterID: '1'
+            Title: 'MATHEMATICAL METHODS OF ENGINEERING',
+            SemesterID: '10'
           },
           {
-            ID: '01490',
-            Grade: 'A-',
-            Marks: 86.00,
-            Section: 'B3',
+            ID: '00017',
+            Grade: 'A+',
+            Marks: 99.00,
+            Section: 'B',
             Status: 'Valid',
-            Title: 'Physics 1',
-            SemesterID: '1'
+            Title: 'ADVANCED TOPICS IN PROGRAMMING III',
+            SemesterID: '10'
           },
           {
-            ID: '00069',
-            Grade: 'A-',
-            Marks: 86.00,
-            Section: 'B3',
+            ID: '00310',
+            Grade: 'A+',
+            Marks: 96.00,
+            Section: 'B',
             Status: 'Valid',
-            Title: 'Programmign Language 1',
-            SemesterID: '2'
+            Title: 'SOFTWARE REQUIREMENT ENGINEERING',
+            SemesterID: '10'
+          },
+          {
+            ID: '01972',
+            Grade: 'A+',
+            Marks: 94.00,
+            Section: 'G4',
+            Status: 'Valid',
+            Title: 'SOFTWARE PROJECT II',
+            SemesterID: '10'
           },
         ]
       };

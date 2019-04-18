@@ -10,6 +10,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
 
 const routes: Routes = [
   {
@@ -27,6 +31,10 @@ const routes: Routes = [
     MatExpansionModule,
     NgxContentLoadingModule,
     MatInputModule,
+    MatCardModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatListModule,
     RouterModule.forChild(routes),
   ],
   declarations: [HomePage]

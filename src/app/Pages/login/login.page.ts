@@ -4,54 +4,57 @@ import { Component } from '@angular/core';
 import { MenuController, AlertController } from '@ionic/angular';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Router } from '@angular/router';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { PushNotificationService } from 'src/app/Core/oneSignal/push-notification.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage  {
+export class LoginPage {
 
   User: any;
   Cred: any;
   userType: any;
 
-  signal_app_id: string = "a5a0688d-fba4-4bb5-8cf2-e50143e6b4f8";
-  firebase_id:string = "677592847633";
 
-  constructor(private loginProvider: LoginApiProvider, private menuCtrl: MenuController, private router:Router,  private oneSignal: OneSignal,  public alertCtrl: AlertController, private loadingService: LoadingService,) {
+
+  constructor(
+    private loginProvider: LoginApiProvider,
+    private menuCtrl: MenuController,
+    private router: Router,
+    public alertCtrl: AlertController,
+    private loadingService: LoadingService,
+    private pushNotification: PushNotificationService
+  ) {
     this.menuCtrl.enable(false);
     this.User = UserModel;
     this.Cred = CredModel;
 
     this.User.username = '16-31332-1';
     this.User.password = '243866';
-   
+
   }
 
-  ionViewDidEnter(){
-    if(localStorage.getItem('token')){
+  ionViewDidEnter() {
+    if (localStorage.getItem('token')) {
       this.router.navigate(['/home']);
     }
   }
 
-  logForm ()
-  {
+  logForm() {
     this.loadingService.loadingStart();
-    this.loginProvider.login(this.User).subscribe(res =>{
+    this.loginProvider.login(this.User).subscribe(res => {
       this.Cred = res;
-      // console.log(this.Cred.access_token);
       localStorage.setItem('token', this.Cred.access_token);
-      // this.LoginModel = res;
-      this.oneSignalSubscription();
+      this.pushNotification.oneSignalSubscription();
       this.getUserType();
-      // console.log("Success");
-    }, err =>{
+      // Save app id into Database for push notification
+    }, err => {
       this.loadingService.loadingDismiss();
       console.log(err);
     });
-    
   }
 
   getUserType() {
@@ -59,33 +62,13 @@ export class LoginPage  {
       this.loadingService.loadingDismiss();
       this.userType = res.Data;
       console.log(this.userType.UserStatus);
-      this.router.navigate(['/home']);
+      if(this.userType.UserStatus === 1)
+          this.router.navigate(['/home']);
       console.log("After Login");
     })
   }
 
-  oneSignalSubscription(){
-    this.oneSignal.startInit(this.signal_app_id, this.firebase_id);
 
-    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-
-    this.oneSignal.handleNotificationReceived().subscribe((res) => {
-    // do something when notification is received
-    console.log(res);
-    });
-
-    this.oneSignal.handleNotificationOpened().subscribe((res) => {
-      // do something when a notification is opened
-      console.log(res);
-    });
-    
-    this.oneSignal.endInit();
-
-    this.oneSignal.getIds().then((id)=>{
-      console.log(id);
-      this.presentAlertMultipleButtons(id);
-    });
-  }
 
   async presentAlertMultipleButtons(id) {
     const alert = await this.alertCtrl.create({

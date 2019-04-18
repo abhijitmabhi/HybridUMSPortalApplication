@@ -18,7 +18,7 @@ export class ProfileApiService {
   private baseUrl = environment.baseUrl;
 
   public getStudentProfile(): Observable<IResult> {
-    return this.httpClient.get<IResult>(this.baseUrl + "/Home/GetStudentProfil")
+    return this.httpClient.get<IResult>(this.baseUrl + "/Home/GetStudentProfile")
                           .pipe(catchError(this.errorHandler));
   }
 

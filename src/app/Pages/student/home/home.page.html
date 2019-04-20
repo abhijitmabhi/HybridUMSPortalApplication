@@ -78,20 +78,19 @@
         <mat-panel-description>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div >
-        <mat-form-field style="width: 100%;">
-          <mat-label>Select Semester</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let semester of semesters" [value]="semester.value">
-              {{semester.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Select Semester</mat-label>
+        <mat-select class="align-right">
+          <mat-option *ngFor="let semester of semesters" [value]="semester.value">
+            {{semester.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <mat-card *ngFor="let item of dashboard.Courses" style="margin-bottom:20px">
         <mat-card-content>
-          <mat-card-title class = "card_title">{{item.ID}} -  {{item.Title}}  [{{item.Section}}]</mat-card-title>
+          <mat-card-title class="card_title">{{item.ID}} - {{item.Title}} [{{item.Section}}]</mat-card-title>
           <mat-card-subtitle>Status : {{item.Status}}</mat-card-subtitle>
           <mat-card-subtitle>Result : {{item.Grade}} ({{item.Marks}})</mat-card-subtitle>
           <mat-divider></mat-divider>

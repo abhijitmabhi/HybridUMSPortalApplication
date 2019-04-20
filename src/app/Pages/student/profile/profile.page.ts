@@ -27,9 +27,9 @@ export class ProfilePage implements OnInit {
       this.loadingService.loadingDismiss();
       this.profile = res.Data;
     },
-    error => {
-      this.loadingService.loadingDismiss();
-      this.errorMsg = error;
+      error => {
+        this.loadingService.loadingDismiss();
+        this.errorMsg = error.statusText;
     });
   }
 }

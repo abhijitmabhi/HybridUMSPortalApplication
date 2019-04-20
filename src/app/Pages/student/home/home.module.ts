@@ -14,6 +14,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
+    MatChipsModule,
     RouterModule.forChild(routes),
   ],
   declarations: [HomePage]

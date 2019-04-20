@@ -41,7 +41,7 @@
 
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <table class="table table-sm">
+      <!-- <table class="table table-sm">
         <tbody>
           <div *ngFor="let classSchedule of schedule">
             <tr *ngFor="let classInfo of classSchedule.Classes; index as i">
@@ -53,7 +53,22 @@
             </tr>
           </div>
         </tbody>
-      </table>
+      </table> -->
+
+
+      <mat-list>
+        <div *ngFor="let classSchedule of schedule">
+          <mat-list-item *ngFor="let classInfo of classSchedule.Classes; index as i">
+            <h4 matLine class="schedule_head">
+              <span *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
+            </h4>
+            <p matLine>{{classInfo.SectionDescription }}</p>
+            <p [hidden]="classInfo.SectionID == 0" matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-list>
+
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
@@ -61,34 +76,31 @@
           Registration
         </mat-panel-title>
         <mat-panel-description>
-
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <ion-grid>
-        <ion-row>
-          <ion-col *ngFor="let item of dashboard.Courses" size-sm="12" size-md="6">
-            <ion-card>
-              <ion-card-content>
-                <ion-item lines="none">
-                  <ion-label>
-                    <b>{{item.ID}} - {{item.Title}} [{{item.Section}}]</b>
-                  </ion-label>
-                </ion-item>
-                <ion-item lines="none">
-                  <ion-text>
-                    Status : {{item.Status}}
-                  </ion-text>
-                </ion-item>
-                <ion-item lines="none">
-                  <ion-label>
-                    Result : {{item.Grade}} ({{item.Marks}})
-                  </ion-label>
-                </ion-item>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Select Semester</mat-label>
+        <mat-select class="align-right">
+          <mat-option *ngFor="let semester of semesters" [value]="semester.value">
+            {{semester.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-card *ngFor="let item of dashboard.Courses" style="margin-bottom:20px">
+        <mat-card-content>
+          <mat-card-title class="card_title">{{item.ID}} - {{item.Title}} [{{item.Section}}]</mat-card-title>
+          <mat-card-subtitle>Status : {{item.Status}}</mat-card-subtitle>
+          <mat-card-subtitle>Result : {{item.Grade}} ({{item.Marks}})</mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <div class="example-button-row">
+            <button mat-button color="primary">TSF</button>
+            <button mat-button color="primary">Notes</button>
+            <button mat-button color="primary">Notice</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </mat-expansion-panel>
   </mat-accordion>
 </ion-content>

@@ -6,12 +6,20 @@ import { MenuController, NavController } from '@ionic/angular';
 import { Dashboard, Semester, Schedule } from './HomeModel';
 import { Router } from '@angular/router';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material';
+
+export interface SelectSemester {
+  value: any;
+  viewValue: any;
+}
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
+
 export class HomePage implements OnInit {
 
   panelOpenState = false;
@@ -25,6 +33,14 @@ export class HomePage implements OnInit {
 
   public schedule: any;
 
+  semesters: SelectSemester[] = [
+    {value: '2017-18, Spring', viewValue: '2017-18, Spring'},
+    {value: '2017-18, Summer', viewValue: '2017-18, Summer'},
+    {value: '2018-19, Fall', viewValue: '2018-19, Fall'},
+    {value: '2017-18, Spring', viewValue: '2018-19, Spring'},
+    {value: '2017-18, Summer', viewValue: '2018-19, Summer'}
+  ];
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -32,55 +48,73 @@ export class HomePage implements OnInit {
     private router: Router,
     private homeApiService: HomeApiService,
     private loadingService: LoadingService,
-    private datePipe: DatePipe) {
+    private datePipe: DatePipe,
+    iconRegistry: MatIconRegistry, 
+    sanitizer: DomSanitizer) {
 
     this.menuCtrl.enable(true);
 
     this.dashboard =
       {
-        UserID: '14-25773-1',
+        UserID: '16-31332-1',
         Semesters: [
           {
             ID: 1,
-            Title: "2013-2014, Spring"
+            Title: "2015-2016, Spring"
           },
           {
             ID: 2,
-            Title: "2013-2014, Summer"
+            Title: "2017-2018, Summer"
           }
         ],
         Courses: [
           {
-            ID: '01488',
+            ID: '00359',
             Grade: 'A-',
             Marks: 86.00,
-            Section: 'B3',
+            Section: 'G',
             Status: 'Valid',
-            Title: 'English Reading Skills & Public Speaking',
-            SemesterID: '1'
+            Title: 'MATHEMATICAL METHODS OF ENGINEERING',
+            SemesterID: '10'
           },
           {
-            ID: '01490',
-            Grade: 'A-',
-            Marks: 86.00,
-            Section: 'B3',
+            ID: '00017',
+            Grade: 'A+',
+            Marks: 99.00,
+            Section: 'B',
             Status: 'Valid',
-            Title: 'Physics 1',
-            SemesterID: '1'
+            Title: 'ADVANCED TOPICS IN PROGRAMMING III',
+            SemesterID: '10'
           },
           {
-            ID: '00069',
-            Grade: 'A-',
-            Marks: 86.00,
-            Section: 'B3',
+            ID: '00310',
+            Grade: 'A+',
+            Marks: 96.00,
+            Section: 'B',
             Status: 'Valid',
-            Title: 'Programmign Language 1',
-            SemesterID: '2'
+            Title: 'SOFTWARE REQUIREMENT ENGINEERING',
+            SemesterID: '10'
+          },
+          {
+            ID: '01972',
+            Grade: 'A+',
+            Marks: 94.00,
+            Section: 'G4',
+            Status: 'Valid',
+            Title: 'SOFTWARE PROJECT II',
+            SemesterID: '10'
           },
         ]
       };
-
-
+      iconRegistry.addSvgIcon(
+        'tsf',
+        sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/tsf.svg'));
+      iconRegistry.addSvgIcon(
+        'notes',
+        sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notes.svg'));
+      iconRegistry.addSvgIcon(
+        'notice',
+        sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notice.svg'));
   }
 
   ngOnInit() {

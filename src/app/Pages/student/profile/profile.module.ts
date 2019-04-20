@@ -8,6 +8,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
     MatCardModule,
     NgxContentLoadingModule,
     MatGridListModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatDialogModule
   ],
   declarations: [ProfilePage]
 })

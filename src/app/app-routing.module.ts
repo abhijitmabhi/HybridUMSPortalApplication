@@ -5,11 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: './Pages/login/login.module#LoginPageModule',
+    redirectTo: './Pages/splash-screen/splash-screen.module#SplashScreenPageModule',
     pathMatch: 'full'
   },
 
-  { path: '', loadChildren: './Pages/login/login.module#LoginPageModule' },
+  // { path: '', loadChildren: './Pages/login/login.module#LoginPageModule' },
+  { path: '', loadChildren: './Pages/splash-screen/splash-screen.module#SplashScreenPageModule' },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'home', loadChildren: './Pages/student/home/home.module#HomePageModule' },
   { path: 'profile', loadChildren: './Pages/student/profile/profile.module#ProfilePageModule' },

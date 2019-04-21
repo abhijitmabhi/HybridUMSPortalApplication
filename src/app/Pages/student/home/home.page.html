@@ -55,12 +55,11 @@
         </tbody>
       </table> -->
 
-
       <mat-list>
         <div *ngFor="let classSchedule of schedule">
           <mat-list-item *ngFor="let classInfo of classSchedule.Classes; index as i">
             <h4 matLine class="schedule_head">
-              <span *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
+              <div style="margin-bottom:2%;" *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</div>
             </h4>
             <p matLine>{{classInfo.SectionDescription }}</p>
             <p [hidden]="classInfo.SectionID == 0" matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p>

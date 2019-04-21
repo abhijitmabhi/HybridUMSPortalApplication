@@ -135,7 +135,6 @@ export class HomePage implements OnInit {
           element.Classes.push({ ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: "" });
         }
       });
-      // console.log(this.schedule);
     });
   }
 }

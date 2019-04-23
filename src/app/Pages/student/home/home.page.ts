@@ -125,7 +125,7 @@ export class HomePage implements OnInit {
   private fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
   private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+5),'yyyy-MM-dd HH:mm:ss.SSS');
 
-
+  // get Schedule Method
   getSchedule() {
     this.loadingService.loadingStart();
     this.homeApiService.schedule(this.fromDateTime, this.tillDateTime).subscribe(res => {

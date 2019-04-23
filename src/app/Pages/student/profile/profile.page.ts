@@ -33,6 +33,7 @@ export class ProfilePage implements OnInit {
     this.getProfile();
   }
 
+  // Get Profile Method
   getProfile() {
     this.loadingService.loadingStart();
     this.profileApiService.getStudentProfile().subscribe(res => {

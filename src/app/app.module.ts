@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './core/interceptor/intercept.service';
 import { DatePipe } from '@angular/common';
 // import { MatDialogModule } from '@angular/material';
-import { DialogOverviewExampleDialog } from './Core/dialog/dialog/dialog.component';
 
 @NgModule({
   declarations: [AppComponent],

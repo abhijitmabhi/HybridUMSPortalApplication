@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileApiService } from 'src/app/Services/student/profile-api.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
-import { DialogOverviewExampleDialog } from 'src/app/Core/dialog/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 
 export interface DialogData {
@@ -16,7 +15,7 @@ export interface DialogData {
 })
 export class ProfilePage implements OnInit {
 
-  public profile: object;
+  public profile: any;
   public errorMsg: any;
 
   //For Dialog
@@ -46,13 +45,13 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-    });
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //   });
+  // }
 }
 

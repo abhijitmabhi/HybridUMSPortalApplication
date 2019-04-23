@@ -45,13 +45,13 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-  //   });
+  openDialog(): void {
+    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    // });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //   });
-  // }
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    // });
+  }
 }
 

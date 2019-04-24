@@ -22,7 +22,6 @@ import { InterceptorService } from './core/interceptor/intercept.service';
 import { DatePipe } from '@angular/common';
 // import { MatDialogModule } from '@angular/material';
 
-import { LottieAnimationViewModule } from 'ng-lottie';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +33,6 @@ import { LottieAnimationViewModule } from 'ng-lottie';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    LottieAnimationViewModule,
     NgbModule.forRoot(),
     // MatDialogModule,
     BrowserAnimationsModule

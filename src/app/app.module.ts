@@ -20,8 +20,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './core/interceptor/intercept.service';
 import { DatePipe } from '@angular/common';
-// import { MatDialogModule } from '@angular/material';
-
 
 @NgModule({
   declarations: [AppComponent],

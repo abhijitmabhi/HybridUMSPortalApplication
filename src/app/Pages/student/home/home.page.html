@@ -58,11 +58,9 @@
       <mat-list>
         <div *ngFor="let classSchedule of schedule">
           <mat-list-item *ngFor="let classInfo of classSchedule.Classes; index as i">
-            <h4 matLine class="schedule_head">
-              <div style="margin-bottom:2%;" *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</div>
-            </h4>
-            <p matLine>{{classInfo.SectionDescription }}</p>
-            <p [hidden]="classInfo.SectionID == 0" matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p>
+            <span matLine class="schedule_head" [hidden]="i!=0" style="margin-bottom:2%;">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
+            <span matLine>{{classInfo.SectionDescription }}</span>
+            <span [hidden]="classInfo.SectionID == 0" matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</span>
           </mat-list-item>
           <mat-divider></mat-divider>
         </div>

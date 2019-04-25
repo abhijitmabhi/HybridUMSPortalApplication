@@ -17,7 +17,9 @@ const routes: Routes = [
   // { path: 'logout', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'courses-results', loadChildren: './Pages/student/courses-results/courses-results.module#CoursesResultsPageModule' },
   { path: 'profile', loadChildren: './Pages/employee/profile/profile.module#ProfilePageModule' },
-  { path: 'logout', loadChildren: './Pages/logout/logout.module#LogoutPageModule' }
+  { path: 'logout', loadChildren: './Pages/logout/logout.module#LogoutPageModule' },
+  { path: 'registration', loadChildren: './Pages/student/registration/registration.module#RegistrationPageModule' }
+
   // { path: 'logout', component: LogoutPage }
 
 

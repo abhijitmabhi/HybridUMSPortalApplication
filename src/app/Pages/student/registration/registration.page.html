@@ -1,0 +1,235 @@
+<ion-header>
+  <ion-toolbar color="aiubthemecolor">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-list>
+    <mat-list-item>Semester
+      <mat-select class="align-right">
+        <mat-option *ngFor="let semester of semesters" [value]="semester.value">
+          {{semester.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-card class="top-card">
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <div class="chip-item1">Lecture</div>
+          <div class="chip-item2">
+            <mat-chip-list>
+              <mat-chip class="chip">12.0</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="chip-item1">Science</div>
+          <div class="chip-item2">
+            <mat-chip-list>
+              <mat-chip class="chip">0</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="chip-item1">Computer</div>
+          <div class="chip-item2">
+            <mat-chip-list>
+              <mat-chip class="chip">1</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="chip-item1">Language</div>
+          <div class="chip-item2">
+            <mat-chip-list>
+              <mat-chip class="chip">0</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="chip-item1">Studio</div>
+          <div class="chip-item2">
+            <mat-chip-list>
+              <mat-chip class="chip">0</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
+      <div class="example-button-row">
+        <button mat-button color="primary">Print</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
+        <mat-panel-title style="color:white;">Registered Courses</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-card class="card_padding">
+        <mat-card-content>
+          <mat-card-title class="card_title">00359-MATHEMATICAL METHODS OF ENGINEERING [G]</mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 0 - 0 - 0 - 0</mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="card_padding">
+        <mat-card-content>
+          <mat-card-title class="card_title">00017-ADVANCED TOPICS IN PROGRAMMING III [B]</mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 1 - 0 - 0 - 0</mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="card_padding">
+        <mat-card-content>
+          <mat-card-title class="card_title">00310-SOFTWARE REQUIREMENT ENGINEERING [B]</mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 0 - 0 - 0 - 0</mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="card_padding">
+        <mat-card-content>
+          <mat-card-title class="card_title">01972-SOFTWARE PROJECT II [G4]</mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 0 - 0 - 0 - 0</mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </mat-expansion-panel>  
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
+        <mat-panel-title style="color:white;">Semester Fees</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list densed>
+        <mat-list-item>
+          <div class="list-item1">Admission</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">0.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Tuition</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">60,000.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Computer Lab</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">2,500.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Science Lab</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">0.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Language Lab</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">0.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Studio</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">0.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Development</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">10,000.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Activity</div>
+          <div class="list-item2">
+            <mat-chip-list style="align-self:flex-end;">
+              <mat-chip style="align-content:flex-end;">9,000.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Miscellaneous</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">3,500.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1" style="color:dodgerblue">Total</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">85,000.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1" style="color:lightsalmon">Deduction</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">0.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Prev. Balance</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">0.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1" style="color:dodgerblue">Net Total</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">85,000.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">Amount Paid</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">85,000.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1" style="color:lightseagreen">Balance</div>
+          <div class="list-item2">
+            <mat-chip-list>
+              <mat-chip style="align-content:flex-end;">0.00</mat-chip>
+            </mat-chip-list>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>  
+  </mat-accordion>
+</ion-content>

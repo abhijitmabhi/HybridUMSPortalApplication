@@ -33,6 +33,19 @@ export class AppComponent {
     }
   ];
 
+  public appPagesEmployees = [
+    {
+      title: 'Home',
+      url: '/employee-home',
+      icon: 'home'
+    },
+    {
+      title: 'Logout',
+      url: '/logout',
+      icon: 'log-out'
+    }
+  ];
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

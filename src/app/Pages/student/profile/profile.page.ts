@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileApiService } from 'src/app/Services/student/profile-api.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { MatDialog } from '@angular/material';
+import { AlertService } from 'src/app/Core/alert/alert.service';
+import { RouterExtServiceService } from 'src/app/Core/extra_router/router-ext-service.service';
 
 export interface DialogData {
     animal: string;
@@ -18,14 +20,11 @@ export class ProfilePage implements OnInit {
   public profile: any;
   public errorMsg: any;
 
-  //For Dialog
-  animal: string;
-  name: string;
-
   constructor(
     private profileApiService: ProfileApiService,
     private loadingService: LoadingService,
-    public dialog: MatDialog
+    private alerService:AlertService,
+    private routerExtService: RouterExtServiceService
     ) {
   }
 
@@ -41,17 +40,18 @@ export class ProfilePage implements OnInit {
     },
       error => {
         this.loadingService.loadingDismiss();
+        this.alerService.alertError(error.statusText);
         this.errorMsg = error.statusText;
+        setTimeout(()=>{this.goToPrevious()},0);
     });
   }
 
-  openDialog(): void {
-    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-    // });
+  public goToPrevious(): void {
+    let previous = this.routerExtService.getPreviousUrl();
+    console.log(`Previous URL in profile: ${previous}`);
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    // });
+    // if(previous)
+    //   this.routerExtService.router.navigateByUrl(previous);
   }
 }
 

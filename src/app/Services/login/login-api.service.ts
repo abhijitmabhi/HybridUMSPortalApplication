@@ -46,4 +46,14 @@ export class LoginApiProvider {
   usergetCurrentUserInfo(): Observable<IResult>{
     return this.http.get<IResult>("http://172.16.22.101:4962/api/Common/GetCurrentUserInfo");
   }
+
+  savePLayerIDIntoDatabase(UserID, PlayerID){
+    const dt = new HttpParams()
+      .set('UserID', UserID)
+      .set('PlayerID', PlayerID);
+
+    return this.http.post('http://172.16.22.101:2694/Token', dt).pipe(map(res =>{
+        return res;
+    }));
+  }
 }

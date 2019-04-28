@@ -33,8 +33,8 @@
   </div>
   <mat-accordion>
     <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
+      <mat-expansion-panel-header style="background-color:rgb(33, 73, 194); color:white;">
+        <mat-panel-title style="color:white;">
           Class Schedule
         </mat-panel-title>
         <mat-panel-description>
@@ -55,15 +55,12 @@
         </tbody>
       </table> -->
 
-
       <mat-list>
         <div *ngFor="let classSchedule of schedule">
           <mat-list-item *ngFor="let classInfo of classSchedule.Classes; index as i">
-            <h4 matLine class="schedule_head">
-              <span *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
-            </h4>
-            <p matLine>{{classInfo.SectionDescription }}</p>
-            <p [hidden]="classInfo.SectionID == 0" matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p>
+            <span matLine class="schedule_head" [hidden]="i!=0" style="margin-bottom:2%;">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
+            <span matLine>{{classInfo.SectionDescription }}</span>
+            <span [hidden]="classInfo.SectionID == 0" matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</span>
           </mat-list-item>
           <mat-divider></mat-divider>
         </div>
@@ -71,8 +68,8 @@
 
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
+      <mat-expansion-panel-header style="background-color:rgb(33, 73, 194); color:white;">
+        <mat-panel-title style="color:white;">
           Registration
         </mat-panel-title>
         <mat-panel-description>

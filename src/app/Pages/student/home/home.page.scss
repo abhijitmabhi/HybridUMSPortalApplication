@@ -19,6 +19,7 @@ width: 100%;
 
 .card_title{
   font-size: 14px;
+  margin-bottom:10px;
 }
 
 .schedule_head{
@@ -37,4 +38,12 @@ width: 100%;
 
 .alignright {
 	float: right;
+}
+
+::ng-deep .specific-class > .mat-expansion-indicator:after {
+  color: white;
+}
+
+::ng-deep .mat-list-item-content {
+  padding: 0 0px !important; 
 }

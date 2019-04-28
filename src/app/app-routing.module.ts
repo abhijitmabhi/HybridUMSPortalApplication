@@ -18,13 +18,13 @@ const routes: Routes = [
   { path: 'home', loadChildren: './Pages/student/home/home.module#HomePageModule' },
   { path: 'profile', loadChildren: './Pages/student/profile/profile.module#ProfilePageModule' },
   { path: 'courses-results', loadChildren: './Pages/student/courses-results/courses-results.module#CoursesResultsPageModule' },
+  { path: 'registration', loadChildren: './Pages/student/registration/registration.module#RegistrationPageModule' },
 
 
   //EMPLOYEE
   { path: 'employee-home', loadChildren: './Pages/employee/employee-home/employee-home.module#EmployeeHomePageModule' },
   { path: 'employee-profile', loadChildren: './Pages/employee/profile/profile.module#ProfilePageModule' }
-
-
+  
 ];
 
 @NgModule({

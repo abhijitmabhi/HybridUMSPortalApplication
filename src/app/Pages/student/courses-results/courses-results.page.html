@@ -10,98 +10,87 @@
 </ion-header>
 
 <ion-content>
-  <ion-item-group>
-    <ion-item-divider color=primary>
-      <ion-label>Grades Marks Quizzes</ion-label>
-    </ion-item-divider>
-    <ion-item>
-      <ion-label>Semesters</ion-label>
-      <ion-select placeholder="Select One">
-        <ion-select-option value="s1">2017-18, Fall</ion-select-option>
-        <ion-select-option value="s2">2017-18, Spring</ion-select-option>
-        <ion-select-option value="s3">2017-18, Summer</ion-select-option>
-        <ion-select-option value="s4">2018-19, Fall</ion-select-option>
-        <ion-select-option value="s5">2018-19, Spring</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Courses</ion-label>
-      <ion-select placeholder="Select One">
-        <ion-select-option value="c1">Mathematical Methods of Engineering</ion-select-option>
-        <ion-select-option value="c2">Advanced Topics in Programming |||</ion-select-option>
-        <ion-select-option value="c3">Software Requirement Engineering</ion-select-option>
-        <ion-select-option value="c4">Software Project ||</ion-select-option>
-      </ion-select>
-    </ion-item>
+  <mat-list>
+    <mat-list-item>Semesters
+      <mat-select class="align-right">
+        <mat-option *ngFor="let semester of semesters" [value]="semester.value">
+          {{semester.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Courses
+      <mat-select class="align-right">
+        <mat-option *ngFor="let course of courses" [value]="course.value">
+          {{course.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-list-item>
+    <mat-list-item class="divider">
+      <h4 matLine>SOFTWARE REQUIREMENT ENGINEERING [B]</h4>
+      <p matLine>Total Mark :100; Passing Mark:50; Contributes:100%</p>
+      <p matLine>A+ (100)</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
 
-    <ion-item-group>
-      <ion-item-divider color=primary>
-        <ion-label style="width: 80%;">SOFTWARE REQUIREMENT ENGINEERING [B]<br/>
-          <ion-text>
-            <i>Total Mark :100; Passing Mark:50; Contributes:100%</i><br/>
-            <i>Course Teacher(s): ABHIJIT BHOWMIK [0909-931-2]</i>
-          </ion-text>
-        </ion-label>
-        <ion-label style="width: 20%; text-align: right;">A+(100)</ion-label>
-      </ion-item-divider>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
+      <mat-panel-title style="color:white;">Midterm for 2018-2019, Spring</mat-panel-title>
+      <mat-panel-description style="color:white;">
+        A+ (100)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Attendances</div>
+        <div style="width:20%; text-align: right;">10</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Performance</div>
+        <div style="width:20%; text-align: right;">10</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Quizzes</div>
+        <div style="width:20%; text-align: right;">20</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Written Exam</div>
+        <div style="width:20%; text-align: right;">60</div>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
 
-      <ion-item-group>
-        <ion-item-divider color=secondary (click)="onMidTerm()">
-          <ion-icon style="width: 5%;" ios="ios-add" md="md-add" *ngIf="!midHideFlag"></ion-icon>
-          <ion-icon style="width: 5%;" ios="ios-remove" md="md-remove" *ngIf="midHideFlag"></ion-icon>
-          <ion-label style="width: 75%;">Midterm for 2018-2019, Spring<br/>
-            <ion-text>
-              <i>(Total:100; Pass:50; Contributes:40%)</i><br/>
-            </ion-text>
-          </ion-label>
-          <ion-label style="width: 20%; text-align: right;">A+(100)</ion-label>
-        </ion-item-divider>
-        <ion-item [hidden]="!midHideFlag">
-          <ion-label>Attendances</ion-label>
-          <ion-label class="ion-text-right">10</ion-label>
-        </ion-item>
-        <ion-item [hidden]="!midHideFlag">
-          <ion-label>Performance</ion-label>
-          <ion-label class="ion-text-right">10</ion-label>
-        </ion-item>
-        <ion-item [hidden]="!midHideFlag">
-          <ion-label>Quizzes</ion-label>
-          <ion-label class="ion-text-right">40</ion-label>
-        </ion-item>
-        <ion-item [hidden]="!midHideFlag">
-          <ion-label>Written Exams</ion-label>
-          <ion-label class="ion-text-right">40</ion-label>
-        </ion-item>
-      </ion-item-group>
-
-      <ion-item-group>
-        <ion-item-divider color=secondary (click)="onFinalTerm()">
-          <ion-icon style="width: 5%;" ios="ios-add" md="md-add" *ngIf="!finalHideFlag"></ion-icon>
-          <ion-icon style="width: 5%;" ios="ios-remove" md="md-remove" *ngIf="finalHideFlag"></ion-icon>
-          <ion-label style="width: 75%;">Finalterm for 2018-2019, Spring<br/>
-            <ion-text>
-              <i>(Total:100; Pass:50; Contributes:40%)</i><br/>
-            </ion-text>
-          </ion-label>
-          <ion-label style="width: 20%; text-align: right;">A+(100)</ion-label>
-        </ion-item-divider>
-        <ion-item [hidden]="!finalHideFlag">
-          <ion-label>Attendances</ion-label>
-          <ion-label class="ion-text-right">10</ion-label>
-        </ion-item>
-        <ion-item [hidden]="!finalHideFlag">
-          <ion-label>Performance</ion-label>
-          <ion-label class="ion-text-right">10</ion-label>
-        </ion-item>
-        <ion-item [hidden]="!finalHideFlag">
-          <ion-label>Quizzes</ion-label>
-          <ion-label class="ion-text-right">40</ion-label>
-        </ion-item>
-        <ion-item [hidden]="!finalHideFlag">
-          <ion-label>Written Exams</ion-label>
-          <ion-label class="ion-text-right">40</ion-label>
-        </ion-item>
-      </ion-item-group>
-    </ion-item-group>
-  </ion-item-group>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
+      <mat-panel-title style="color:white;">Finalterm for 2018-2019, Spring</mat-panel-title>
+      <mat-panel-description style="color:white;">
+        A+ (100)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Attendances</div>
+        <div style="width:20%; text-align: right;">10</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Performance</div>
+        <div style="width:20%; text-align: right;">10</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Quizzes</div>
+        <div style="width:20%; text-align: right;">20</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div style="width:80%; text-align: left;">Written Exam</div>
+        <div style="width:20%; text-align: right;">60</div>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
 </ion-content>

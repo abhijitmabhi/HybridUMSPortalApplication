@@ -1,0 +1,64 @@
+.align-right{
+    text-align: right;
+}
+
+.example-button-row button,
+.example-button-row a {
+  align-self: center;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 4%;
+  width: 96%;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 16px !important;
+    position: relative;
+    height: inherit;
+}
+
+.list-item1{
+    width: 70%;
+    text-align: left;
+}
+
+.list-item2{
+    width: 30%;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+.chip{
+    width:100%;
+}
+
+.chip-item1{
+    width: 80%;
+    text-align: left;
+}
+
+.chip-item2{
+    width: 20%;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+.card_title{
+    font-size: 14px;
+    margin-bottom:10px;
+    font-weight: bold;
+}
+
+.card_padding{
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.top-card{
+    margin-bottom:20px;
+    margin-top: 10px;
+}

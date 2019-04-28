@@ -53,8 +53,6 @@ export class HomePage implements OnInit {
     iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer) {
 
-    //this.menuCtrl.enable(true);
-
     this.dashboard =
       {
         UserID: '16-31332-1',
@@ -126,7 +124,6 @@ export class HomePage implements OnInit {
   private fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
   private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+5),'yyyy-MM-dd HH:mm:ss.SSS');
 
-
   getSchedule() {
     this.loadingService.loadingStart();
     this.homeApiService.schedule(this.fromDateTime, this.tillDateTime).subscribe(res => {
@@ -137,7 +134,6 @@ export class HomePage implements OnInit {
           element.Classes.push({ ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: "" });
         }
       });
-      // console.log(this.schedule);
     });
   }
 }

@@ -47,4 +47,6 @@ export class CoursesResultsPage implements OnInit {
   
   ngOnInit() {
   }
+
+ 
 }

@@ -33,27 +33,13 @@
   </div>
   <mat-accordion>
     <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header style="background-color:rgb(33, 73, 194); color:white;">
+      <mat-expansion-panel-header style="background-color:rgb(49, 95, 231); color:white;">
         <mat-panel-title style="color:white;">
           Class Schedule
         </mat-panel-title>
         <mat-panel-description>
-
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <!-- <table class="table table-sm">
-        <tbody>
-          <div *ngFor="let classSchedule of schedule">
-            <tr *ngFor="let classInfo of classSchedule.Classes; index as i">
-              <td rowspan="classSchedule.Classes.length"><span
-                  *ngIf="i==0">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span></td>
-              <td><b>{{classInfo.SectionDescription }}</b>
-                <p [hidden]="classInfo.SectionID == 0 ">{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</p>
-              </td>
-            </tr>
-          </div>
-        </tbody>
-      </table> -->
 
       <mat-list>
         <div *ngFor="let classSchedule of schedule">
@@ -68,7 +54,7 @@
 
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header style="background-color:rgb(33, 73, 194); color:white;">
+      <mat-expansion-panel-header style="background-color:rgb(49, 95, 231); color:white;">
         <mat-panel-title style="color:white;">
           Registration
         </mat-panel-title>
@@ -76,7 +62,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <mat-form-field style="width: 100%">
+      <mat-form-field style="width: 100%; padding: 10px;">
         <mat-label>Select Semester</mat-label>
         <mat-select class="align-right">
           <mat-option *ngFor="let semester of semesters" [value]="semester.value">

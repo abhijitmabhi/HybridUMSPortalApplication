@@ -29,4 +29,10 @@ export class PushNotificationService {
         
         this.oneSignal.endInit();  
     }
+
+    getPlayerID(){
+        this.oneSignal.getIds().then(obj => {
+            return obj.userId;
+        });
+    }
 }

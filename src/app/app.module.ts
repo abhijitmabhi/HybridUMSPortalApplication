@@ -1,4 +1,4 @@
-import { LogoutPage } from './Pages/logout/logout.page';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -20,6 +20,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './core/interceptor/intercept.service';
 import { DatePipe } from '@angular/common';
+import { RouterExtServiceService } from './Core/extra_router/router-ext-service.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +33,6 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
-    // MatDialogModule,
     BrowserAnimationsModule
   ],
   providers: [
@@ -49,4 +49,4 @@ import { DatePipe } from '@angular/common';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { constructor(private routerExtService: RouterExtServiceService){} }

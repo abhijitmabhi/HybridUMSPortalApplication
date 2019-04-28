@@ -1,6 +1,6 @@
-import { LogoutPage } from './Pages/logout/logout.page';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RouterExtServiceService } from './Core/extra_router/router-ext-service.service';
 
 const routes: Routes = [
   {
@@ -10,23 +10,27 @@ const routes: Routes = [
   },
 
   { path: '', loadChildren: './Pages/login/login.module#LoginPageModule' },
-  // { path: '', loadChildren: './Pages/splash-screen/splash-screen.module#SplashScreenPageModule' },
   { path: 'login', loadChildren: './Pages/login/login.module#LoginPageModule' },
+  { path: 'logout', loadChildren: './Pages/logout/logout.module#LogoutPageModule' },
+
+
+  //STUDENT
   { path: 'home', loadChildren: './Pages/student/home/home.module#HomePageModule' },
   { path: 'profile', loadChildren: './Pages/student/profile/profile.module#ProfilePageModule' },
-  // { path: 'logout', loadChildren: './Pages/login/login.module#LoginPageModule' },
   { path: 'courses-results', loadChildren: './Pages/student/courses-results/courses-results.module#CoursesResultsPageModule' },
-  { path: 'profile', loadChildren: './Pages/employee/profile/profile.module#ProfilePageModule' },
-  { path: 'logout', loadChildren: './Pages/logout/logout.module#LogoutPageModule' },
-  { path: 'registration', loadChildren: './Pages/student/registration/registration.module#RegistrationPageModule' }
-
-  // { path: 'logout', component: LogoutPage }
+  { path: 'registration', loadChildren: './Pages/student/registration/registration.module#RegistrationPageModule' },
 
 
+  //EMPLOYEE
+  { path: 'employee-home', loadChildren: './Pages/employee/employee-home/employee-home.module#EmployeeHomePageModule' },  { path: 'employee-profile', loadChildren: './Pages/employee/employee-profile/employee-profile.module#EmployeeProfilePageModule' }
+
+
+  
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [RouterExtServiceService]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

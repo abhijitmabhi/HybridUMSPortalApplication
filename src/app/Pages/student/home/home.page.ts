@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
+import { RouterExtServiceService } from 'src/app/Core/extra_router/router-ext-service.service';
 
 export interface SelectSemester {
   value: any;
@@ -51,8 +52,6 @@ export class HomePage implements OnInit {
     private datePipe: DatePipe,
     iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer) {
-
-    this.menuCtrl.enable(true);
 
     this.dashboard =
       {

@@ -19,8 +19,6 @@ export class LoginPage {
   Cred: any;
   userType: any;
 
-
-
   constructor(
     private loginProvider: LoginApiProvider,
     private menuCtrl: MenuController,
@@ -34,8 +32,8 @@ export class LoginPage {
     this.User = UserModel;
     this.Cred = CredModel;
 
-    this.User.username = '16-31332-1';
-    // this.User.username = '1801-1848-3';
+    // this.User.username = '16-31332-1';
+    this.User.username = '1801-1848-3';
     this.User.password = '243866';
 
   }

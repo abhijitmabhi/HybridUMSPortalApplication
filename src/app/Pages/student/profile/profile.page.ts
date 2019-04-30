@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileApiService } from 'src/app/Services/student/profile-api.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
-import { MatDialog } from '@angular/material';
 import { AlertService } from 'src/app/Core/alert/alert.service';
 import { RouterExtServiceService } from 'src/app/Core/extra_router/router-ext-service.service';
 

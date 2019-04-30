@@ -32,8 +32,8 @@ export class LoginPage {
     this.User = UserModel;
     this.Cred = CredModel;
 
-    // this.User.username = '16-31332-1';
-    this.User.username = '1801-1848-3';
+    this.User.username = '16-31332-1';
+    // this.User.username = '1801-1848-3';
     this.User.password = '243866';
 
   }
@@ -75,7 +75,7 @@ export class LoginPage {
       let playerID = this.pushNotification.getPlayerID();
 
       //Save plaerID with userID into database
-      this.loginProvider.savePLayerIDIntoDatabase(userID, playerID);  
+      // this.loginProvider.savePLayerIDIntoDatabase(userID, playerID);  
 
       if(this.userType.UserType === 0)
       {
@@ -90,7 +90,7 @@ export class LoginPage {
       }
 
       this.loadingService.loadingDismiss();
-      this.alertService.alertStart("Login Success");
+      // this.alertService.alertStart("Login Success");
     });
   }
 }

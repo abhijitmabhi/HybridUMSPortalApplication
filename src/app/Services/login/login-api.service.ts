@@ -31,7 +31,7 @@ export class LoginApiProvider {
       .set('grant_type','password')
       .set('username', user.username)
       .set('password', user.password);
-
+ 
     // const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
     // return this.http.post('https://api.aiub.edu/ums-auth-api/Token', dt, { headers }).pipe(map(res =>{
@@ -44,7 +44,7 @@ export class LoginApiProvider {
   }
 
   usergetCurrentUserInfo(): Observable<IResult>{
-    return this.http.get<IResult>("http://172.16.22.101:4962/api/Common/GetCurrentUserInfo");
+    return this.http.get<IResult>("http://172.16.22.101:1374/api/Common/GetCurrentUserInfo");
   }
 
   savePLayerIDIntoDatabase(UserID, PlayerID){

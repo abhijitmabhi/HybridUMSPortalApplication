@@ -60,8 +60,8 @@ export class LoginPage {
 
     }, err => {
       this.loadingService.loadingDismiss();
-      console.log(err);
-    });
+      this.alertService.alertStart(JSON.stringify(err));
+    }); 
   }
 
   async getUserTypeAndSubscribeOneSignal(userID) {

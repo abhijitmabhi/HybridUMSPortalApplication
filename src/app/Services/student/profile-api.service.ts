@@ -10,10 +10,8 @@ import { settings } from 'src/app/Core/settings/systemSettings';
 })
 
 export class ProfileApiService {
-
-  baseUrl = settings.baseUrl;
+  baseUrl: string = settings.baseUrl;
   constructor(public httpClient: HttpClient) { }
-
   public getStudentProfile(): Observable<IResult> {
     return this.httpClient.get<IResult>(`${this.baseUrl}/Home/GetStudentProfile`);
   }

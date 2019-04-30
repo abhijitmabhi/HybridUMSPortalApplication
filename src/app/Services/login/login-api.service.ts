@@ -47,12 +47,11 @@ export class LoginApiProvider {
     return this.http.get<IResult>("http://172.16.22.101:1374/api/Common/GetCurrentUserInfo");
   }
 
-  savePLayerIDIntoDatabase(UserID, PlayerID){
+  savePLayerIDIntoDatabase(PlayerID){
     const dt = new HttpParams()
-      .set('UserID', UserID)
-      .set('PlayerID', PlayerID);
+      .set('playerId', PlayerID);
 
-    return this.http.post('http://172.16.22.101:2694/Token', dt).pipe(map(res =>{
+    return this.http.post('/api/Notification/MapPlayerId', dt).pipe(map(res =>{
         return res;
     }));
   }

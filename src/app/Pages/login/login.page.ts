@@ -56,15 +56,15 @@ export class LoginPage {
       //Subscibe to onesignal
       //get playerID from onesignal
       //Save playerId and userId into database
-      this.getUserTypeAndSubscribeOneSignal(this.User.username);
+      this.getUserTypeAndSubscribeOneSignal();
 
     }, err => {
       this.loadingService.loadingDismiss();
-      this.alertService.alertStart(JSON.stringify(err));
+      this.alertService.Success(JSON.stringify(err));
     }); 
   }
 
-  async getUserTypeAndSubscribeOneSignal(userID) {
+  async getUserTypeAndSubscribeOneSignal() {
     this.loginProvider.usergetCurrentUserInfo().subscribe(res => {
       
       //Get usertype
@@ -75,7 +75,7 @@ export class LoginPage {
       let playerID = this.pushNotification.getPlayerID();
 
       //Save plaerID with userID into database
-      // this.loginProvider.savePLayerIDIntoDatabase(userID, playerID);  
+      this.loginProvider.savePLayerIDIntoDatabase(playerID);  
 
       if(this.userType.UserType === 0)
       {
@@ -90,7 +90,7 @@ export class LoginPage {
       }
 
       this.loadingService.loadingDismiss();
-      // this.alertService.alertStart("Login Success");
+      this.alertService.Success("Login Success");
     });
   }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { IResult } from 'src/app/Core/result/result';
+import { settings } from 'src/app/Core/settings/systemSettings';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,12 @@ import { IResult } from 'src/app/Core/result/result';
 
 export class EmployeeProfileService {
 
+  baseUrl = settings.baseUrl;
+
   constructor(public httpClient: HttpClient) { }
+
   public getEmployeeProfile(): Observable<IResult> {
-    return this.httpClient.get<IResult>("http://172.16.22.101:4962/api/Employee/GetEmployeeProfile");
+    return this.httpClient.get<IResult>(`${this.baseUrl}/api/Employee/GetEmployeeProfile`);
   }
 }
 

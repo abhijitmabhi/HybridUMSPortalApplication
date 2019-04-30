@@ -8,7 +8,7 @@ export class AlertService {
 
   constructor(private alertController: AlertController) { }
 
-  async alertStart(obj){
+  async Success(obj){
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',

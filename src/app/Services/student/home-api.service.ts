@@ -11,6 +11,6 @@ export class HomeApiService {
   baseUrl: string = settings.baseUrl;
   constructor(public httpClient: HttpClient) { }
   public schedule(fromDateTime: string, tillDateTime: string): Observable<IResult> {
-    return this.httpClient.get<IResult>(`${this.baseUrl}/api/Home/Schedule?fromDateTime=${fromDateTime}&tillDateTime=${tillDateTime}`);
+    return this.httpClient.get<IResult>(`${this.baseUrl}/Home/Schedule?fromDateTime=${fromDateTime}&tillDateTime=${tillDateTime}`);
   }
 }

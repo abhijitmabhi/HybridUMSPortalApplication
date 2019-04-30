@@ -13,7 +13,7 @@ export class EmployeeProfileService {
   baseUrl: string = settings.baseUrl;
   constructor(public httpClient: HttpClient) { }
   public getEmployeeProfile(): Observable<IResult> {
-    return this.httpClient.get<IResult>(`${this.baseUrl}/api/Employee/GetEmployeeProfile`);
+    return this.httpClient.get<IResult>(`${this.baseUrl}/Employee/GetEmployeeProfile`);
   }
 }
 

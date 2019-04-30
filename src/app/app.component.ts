@@ -21,16 +21,16 @@ export class AppComponent {
       url: '/profile',
       icon: 'person'
     },
-    {
-      title: 'Courses & Results',
-      url: '/courses-results',
-      icon: 'document'
-    },
-    {
-      title: 'Registration',
-      url: '/registration',
-      icon: 'document'
-    },
+    // {
+    //   title: 'Courses & Results',
+    //   url: '/courses-results',
+    //   icon: 'document'
+    // },
+    // {
+    //   title: 'Registration',
+    //   url: '/registration',
+    //   icon: 'document'
+    // },
     {
       title: 'Logout',
       url: '/logout',

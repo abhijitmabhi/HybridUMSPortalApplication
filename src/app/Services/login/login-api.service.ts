@@ -35,14 +35,14 @@ export class LoginApiProvider {
   }
 
   usergetCurrentUserInfo(): Observable<IResult>{
-    return this.http.get<IResult>(`${this.baseUrl}/api/Common/GetCurrentUserInfo`);
+    return this.http.get<IResult>(`${this.baseUrl}/Common/GetCurrentUserInfo`);
   }
 
   savePLayerIDIntoDatabase(PlayerID){
     const dt = new HttpParams()
       .set('playerId', PlayerID);
 
-    return this.http.post(`${this.baseUrl}/api/Notification/MapPlayerId`, dt).pipe(map(res =>{
+    return this.http.post(`${this.baseUrl}/Notification/MapPlayerId`, dt).pipe(map(res =>{
         return res;
     }));
   }

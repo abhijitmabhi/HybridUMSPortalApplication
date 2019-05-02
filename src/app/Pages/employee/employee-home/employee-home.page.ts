@@ -1,3 +1,4 @@
+import { PushNotificationService } from 'src/app/Core/oneSignal/push-notification.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeHomePage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private pushNotification: PushNotificationService
+    ) { }
 
   ngOnInit() {
+    this.pushNotification.getPlayerID();
   }
 
 }

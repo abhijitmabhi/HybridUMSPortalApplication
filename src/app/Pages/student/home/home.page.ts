@@ -35,6 +35,8 @@ export class HomePage implements OnInit {
 
   public schedule: any;
 
+  playerID:any;
+
   semesters: SelectSemester[] = [
     {value: '2017-18, Spring', viewValue: '2017-18, Spring'},
     {value: '2017-18, Summer', viewValue: '2017-18, Summer'},
@@ -120,8 +122,10 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     //Save plaerID with userID into database
-    let playerID = this.pushNotification.getPlayerID();
-    this.homeApiService.savePLayerIDIntoDatabase(playerID);  
+    this.pushNotification.getPlayerID();
+    // this.homeApiService.savePLayerIDIntoDatabase(1).subscribe(res => {
+    //   console.log(res);
+    // })
     this.getSchedule();
   }
 

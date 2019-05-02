@@ -85,7 +85,7 @@ export class LoginPage {
       }
 
       this.loadingService.loadingDismiss();
-      this.alertService.Success("Login Success");
+      // this.alertService.Success("Login Success");
     });
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { HomeApiService } from 'src/app/Services/student/home-api.service';
 
 
 @Injectable({
@@ -9,7 +10,8 @@ export class PushNotificationService {
     signal_app_id: string = "a5a0688d-fba4-4bb5-8cf2-e50143e6b4f8";
     firebase_id:string = "677592847633";
     constructor(
-        private oneSignal: OneSignal
+        private oneSignal: OneSignal,
+        private homeAPIService : HomeApiService
     ) { }
 
     oneSignalSubscription(){
@@ -32,8 +34,10 @@ export class PushNotificationService {
 
     getPlayerID(){
         this.oneSignal.getIds().then(obj => {
-            // console.log(obj.userId);
-            return obj.userId;
+            //return obj.userId;
+            this.homeAPIService.savePLayerIDIntoDatabase(obj.userId).subscribe(res => {
+                console.log(res);
+            });
         });
     }
 }

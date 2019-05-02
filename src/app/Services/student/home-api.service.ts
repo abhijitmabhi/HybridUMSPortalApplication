@@ -18,15 +18,18 @@ export class HomeApiService {
 
 
   public savePLayerIDIntoDatabase(PlayerID){
-    console.log("I am Here " + PlayerID);
-    const dt = new HttpParams().append('playerId', '456446');
+    console.log("I am Here " + JSON.stringify(PlayerID) );
+    // const dt = new HttpParams().set('playerId', '456446');
+    const dt = new HttpParams().set('playerId', PlayerID);
 
       // http://172.16.22.101:1374/api/Notification/MapPlayerId?playerId=c359f7f1-5c48-40d5-b3ff-fc69500b16ec
     console.log(dt);
 
-    return this.httpClient.post("http://172.16.22.101:1374/api/Notification/MapPlayerId", dt ).pipe(map(res =>{
-      console.log("adadad " + res);
-        return res;
-    }));
+    // return this.httpClient.post("http://172.16.22.101:1374/api/Notification/MapPlayerId", dt ).pipe(map(res =>{
+    //   console.log("adadad " + res);
+    //     return res;
+    // }));
+
+    return this.httpClient.post(`${this.baseUrl}/Notification/MapPlayerId`, dt);
   }
 }

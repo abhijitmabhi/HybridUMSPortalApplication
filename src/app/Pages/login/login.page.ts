@@ -40,7 +40,7 @@ export class LoginPage {
 
   ionViewDidEnter() {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['/home']);
+      this.redirect();
     }
   }
 
@@ -68,24 +68,35 @@ export class LoginPage {
     this.loginProvider.usergetCurrentUserInfo().subscribe(res => {
       //Get usertype
       this.userType = res.Data;
+
+      console.log(this.userType);
+
+      localStorage.setItem('userType', this.userType.UserType);
       
       //Subscribing to onesignal & retrive player id
       this.pushNotification.oneSignalSubscription();
       
-      if(this.userType.UserType === 0)
-      {
-          this.menuCtrl.enable(true,"student");
-          this.router.navigate(['/home']);
-      }
-          
-      if(this.userType.UserType === 3)
-      {
-          this.menuCtrl.enable(true,"employee");
-          this.router.navigate(['/employee-home']);
-      }
+      this.redirect();
 
       this.loadingService.loadingDismiss();
       // this.alertService.Success("Login Success");
     });
   }
+
+  redirect(){
+    let user_type = localStorage.getItem('userType');
+    console.log(user_type);
+    if(user_type == "0")
+    {
+        this.menuCtrl.enable(true,"student");
+        this.router.navigate(['/home']);
+    }
+        
+    if(user_type == "3")
+    {
+        this.menuCtrl.enable(true,"employee");
+        this.router.navigate(['/employee-home']);
+    }
+  }
+
 }

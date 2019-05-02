@@ -48,7 +48,7 @@ export class LoginPage {
     this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res => {
       this.Cred = res;
-      
+      console.log(res);
       //Save Token into local torage
       localStorage.setItem('token', this.Cred.access_token);
 
@@ -66,17 +66,12 @@ export class LoginPage {
 
   async getUserTypeAndSubscribeOneSignal() {
     this.loginProvider.usergetCurrentUserInfo().subscribe(res => {
-      
       //Get usertype
       this.userType = res.Data;
       
       //Subscribing to onesignal & retrive player id
       this.pushNotification.oneSignalSubscription();
-      let playerID = this.pushNotification.getPlayerID();
-
-      //Save plaerID with userID into database
-      this.loginProvider.savePLayerIDIntoDatabase(playerID);  
-
+      
       if(this.userType.UserType === 0)
       {
           this.menuCtrl.enable(true,"student");

@@ -32,6 +32,7 @@ export class PushNotificationService {
 
     getPlayerID(){
         this.oneSignal.getIds().then(obj => {
+            // console.log(obj.userId);
             return obj.userId;
         });
     }

@@ -1,3 +1,4 @@
+import { PushNotificationService } from './../../../Core/oneSignal/push-notification.service';
 import { DatePipe } from '@angular/common';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { HomeApiService } from 'src/app/Services/student/home-api.service';
@@ -51,6 +52,7 @@ export class HomePage implements OnInit {
     private loadingService: LoadingService,
     private datePipe: DatePipe,
     iconRegistry: MatIconRegistry, 
+    private pushNotification: PushNotificationService,
     sanitizer: DomSanitizer) {
 
     this.dashboard =
@@ -117,6 +119,9 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+    //Save plaerID with userID into database
+    let playerID = this.pushNotification.getPlayerID();
+    this.homeApiService.savePLayerIDIntoDatabase(playerID);  
     this.getSchedule();
   }
 

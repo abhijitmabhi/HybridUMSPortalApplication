@@ -48,7 +48,7 @@ export class LoginPage {
     this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res => {
       this.Cred = res;
-      console.log(res);
+      // console.log(res);
       //Save Token into local torage
       localStorage.setItem('token', this.Cred.access_token);
 
@@ -60,7 +60,7 @@ export class LoginPage {
 
     }, err => {
       this.loadingService.loadingDismiss();
-      this.alertService.Success(JSON.stringify(err));
+      this.alertService.Success(JSON.stringify(err.status));
     }); 
   }
 

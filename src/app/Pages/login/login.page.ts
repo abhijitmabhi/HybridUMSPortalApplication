@@ -92,7 +92,7 @@ export class LoginPage {
         this.router.navigate(['/home']);
     }
         
-    if(user_type == "3")
+    if(user_type == "3" || user_type == "1")
     {
         this.menuCtrl.enable(true,"employee");
         this.router.navigate(['/employee-home']);

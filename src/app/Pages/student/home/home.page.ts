@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/Core/alert/alert.service';
 import { PushNotificationService } from './../../../Core/oneSignal/push-notification.service';
 import { DatePipe } from '@angular/common';
 import { LoadingService } from 'src/app/core/loader/loading.service';
@@ -55,6 +56,7 @@ export class HomePage implements OnInit {
     private datePipe: DatePipe,
     iconRegistry: MatIconRegistry, 
     private pushNotification: PushNotificationService,
+    private alertService: AlertService,
     sanitizer: DomSanitizer) {
 
     this.dashboard =
@@ -143,6 +145,10 @@ export class HomePage implements OnInit {
           element.Classes.push({ ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: "" });
         }
       });
+    },
+    err => {
+      this.loadingService.loadingDismiss();
+      this.alertService.alertError("Something went wrong");
     });
   }
 }

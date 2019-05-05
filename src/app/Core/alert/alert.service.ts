@@ -21,7 +21,7 @@ export class AlertService {
 
   async alertError(msg){
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: 'Oops!',
       subHeader: '',
       message: msg ? msg  :'Something Went Wrong',
       buttons: [

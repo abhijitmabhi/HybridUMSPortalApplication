@@ -60,7 +60,7 @@ export class LoginPage {
 
     }, err => {
       this.loadingService.loadingDismiss();
-      this.alertService.Success(JSON.stringify(err.status));
+      this.alertService.alertError("Something went wrong");
     }); 
   }
 
@@ -69,7 +69,7 @@ export class LoginPage {
       //Get usertype
       this.userType = res.Data;
 
-      console.log(this.userType);
+      // console.log(this.userType);
 
       localStorage.setItem('userType', this.userType.UserType);
       
@@ -85,7 +85,7 @@ export class LoginPage {
 
   redirect(){
     let user_type = localStorage.getItem('userType');
-    console.log(user_type);
+    // console.log(user_type);
     if(user_type == "0")
     {
         this.menuCtrl.enable(true,"student");

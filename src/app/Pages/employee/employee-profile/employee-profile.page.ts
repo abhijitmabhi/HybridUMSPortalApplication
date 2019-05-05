@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/Core/alert/alert.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeProfileService } from 'src/app/Services/employee/employee-profile.service';
@@ -14,7 +15,9 @@ export class EmployeeProfilePage implements OnInit {
 
   constructor(
     private profileService: EmployeeProfileService,
-    private loadingService: LoadingService) { }
+    private loadingService: LoadingService,
+    private alertService: AlertService,
+    ) { }
 
   ngOnInit() {
     this.getProfile();
@@ -29,7 +32,7 @@ export class EmployeeProfilePage implements OnInit {
     },
       error => {
         this.loadingService.loadingDismiss();
-        this.errorMsg = error.statusText;
+      this.alertService.alertError("Something went wrong");
     });
   }
 

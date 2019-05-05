@@ -22,8 +22,8 @@ export class ProfilePage implements OnInit {
   constructor(
     private profileApiService: ProfileApiService,
     private loadingService: LoadingService,
-    private alerService:AlertService,
-    private routerExtService: RouterExtServiceService
+    private alertService: AlertService,
+    private routerExtService: RouterExtServiceService,
     ) {
   }
 
@@ -38,10 +38,8 @@ export class ProfilePage implements OnInit {
       this.profile = res.Data;
     },
       error => {
-        this.loadingService.loadingDismiss();
-        this.alerService.alertError(error.statusText);
-        this.errorMsg = error.statusText;
-        setTimeout(()=>{this.goToPrevious()},0);
+      this.loadingService.loadingDismiss();
+      this.alertService.alertError("Something went wrong");
     });
   }
 

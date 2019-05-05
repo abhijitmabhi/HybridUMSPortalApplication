@@ -4,59 +4,33 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home 
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<mat-expansion-panel [expanded]="true">
-  <mat-expansion-panel-header style="background-color:rgb(49, 95, 231); color:white;">
-    <mat-panel-title style="color:white;">
-      Class Schedule
-    </mat-panel-title>
-    <mat-panel-description>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header style="background-color:rgb(49, 95, 231); color:white;">
+      <mat-panel-title style="color:white;">
+        Class Schedule
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-  <mat-list>
-    <div>
-      <mat-list-item>
-        <span matLine class="schedule_head" style="margin-bottom:2%;">Today</span>
-        <span matLine></span>
-        <span matLine>No class on this day</span>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <span matLine class="schedule_head" style="margin-bottom:2%;">Tomorrow</span>
-        <span matLine></span>
-        <span matLine>No class on this day</span>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <span matLine class="schedule_head" style="margin-bottom:2%;">04-May-2019</span>
-        <span matLine></span>
-        <span matLine>No class on this day</span>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <span matLine class="schedule_head" style="margin-bottom:2%;">05-May-2019</span>
-        <span matLine></span>
-        <span matLine>No class on this day</span>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <span matLine class="schedule_head" style="margin-bottom:2%;">06-May-2019</span>
-        <span matLine></span>
-        <span matLine>No class on this day</span>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <span matLine class="schedule_head" style="margin-bottom:2%;">07-May-2019</span>
-        <span matLine></span>
-        <span matLine>No class on this day</span>
-      </mat-list-item>
-    </div>
-  </mat-list>
-</mat-expansion-panel>
+    <mat-list>
+      <div *ngFor="let classSchedule of schedule">
+        <mat-list-item *ngFor="let classInfo of classSchedule.Classes; index as i">
+          <span matLine class="schedule_head" [hidden]="i!=0"
+            style="margin-bottom:2%;">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
+          <span matLine>{{classInfo.SectionDescription }}</span>
+          <span [hidden]="classInfo.SectionID == 0"
+            matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+
+  </mat-expansion-panel>
 </ion-content>

@@ -5,8 +5,8 @@ import { AlertService } from 'src/app/Core/alert/alert.service';
 import { RouterExtServiceService } from 'src/app/Core/extra_router/router-ext-service.service';
 
 export interface DialogData {
-    animal: string;
-    name: string;
+  animal: string;
+  name: string;
 }
 
 @Component({
@@ -18,17 +18,19 @@ export class ProfilePage implements OnInit {
 
   public profile: any;
   public errorMsg: any;
+  public userImagePath: string = null;
 
   constructor(
     private profileApiService: ProfileApiService,
     private loadingService: LoadingService,
     private alertService: AlertService,
     private routerExtService: RouterExtServiceService,
-    ) {
+  ) {
   }
 
   ngOnInit() {
     this.getProfile();
+    this.getUserProfileImage();
   }
 
   getProfile() {
@@ -38,17 +40,20 @@ export class ProfilePage implements OnInit {
       this.profile = res.Data;
     },
       error => {
-      this.loadingService.loadingDismiss();
-      this.alertService.alertError("Something went wrong");
-    });
+        this.loadingService.loadingDismiss();
+        this.alertService.alertError("Something went wrong");
+      });
   }
 
   public goToPrevious(): void {
     let previous = this.routerExtService.getPreviousUrl();
     console.log(`Previous URL in profile: ${previous}`);
+  }
 
-    // if(previous)
-    //   this.routerExtService.router.navigateByUrl(previous);
+  getUserProfileImage() {
+    this.profileApiService.getImage().subscribe(res => {
+      this.userImagePath = res;
+    })
   }
 }
 

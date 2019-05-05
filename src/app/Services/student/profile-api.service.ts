@@ -10,9 +10,15 @@ import { settings } from 'src/app/Core/settings/systemSettings';
 })
 
 export class ProfileApiService {
+
   baseUrl: string = settings.baseUrl;
+  
   constructor(public httpClient: HttpClient) { }
   public getStudentProfile(): Observable<IResult> {
     return this.httpClient.get<IResult>(`${this.baseUrl}/Home/GetStudentProfile`);
+  }
+
+  public getImage(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/Common/GetProfileImage`);
   }
 }

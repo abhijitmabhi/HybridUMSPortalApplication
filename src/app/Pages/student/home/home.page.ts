@@ -8,8 +8,8 @@ import { MenuController, NavController } from '@ionic/angular';
 import { Dashboard, Semester, Schedule } from './HomeModel';
 import { Router } from '@angular/router';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 import { RouterExtServiceService } from 'src/app/Core/extra_router/router-ext-service.service';
 
 export interface SelectSemester {
@@ -36,14 +36,14 @@ export class HomePage implements OnInit {
 
   public schedule: any;
 
-  playerID:any;
+  playerID: any;
 
   semesters: SelectSemester[] = [
-    {value: '2017-18, Spring', viewValue: '2017-18, Spring'},
-    {value: '2017-18, Summer', viewValue: '2017-18, Summer'},
-    {value: '2018-19, Fall', viewValue: '2018-19, Fall'},
-    {value: '2017-18, Spring', viewValue: '2018-19, Spring'},
-    {value: '2017-18, Summer', viewValue: '2018-19, Summer'}
+    { value: '2017-18, Spring', viewValue: '2017-18, Spring' },
+    { value: '2017-18, Summer', viewValue: '2017-18, Summer' },
+    { value: '2018-19, Fall', viewValue: '2018-19, Fall' },
+    { value: '2017-18, Spring', viewValue: '2018-19, Spring' },
+    { value: '2017-18, Summer', viewValue: '2018-19, Summer' }
   ];
 
   constructor(
@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
     private homeApiService: HomeApiService,
     private loadingService: LoadingService,
     private datePipe: DatePipe,
-    iconRegistry: MatIconRegistry, 
+    iconRegistry: MatIconRegistry,
     private pushNotification: PushNotificationService,
     private alertService: AlertService,
     sanitizer: DomSanitizer) {
@@ -111,29 +111,25 @@ export class HomePage implements OnInit {
           },
         ]
       };
-      iconRegistry.addSvgIcon(
-        'tsf',
-        sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/tsf.svg'));
-      iconRegistry.addSvgIcon(
-        'notes',
-        sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notes.svg'));
-      iconRegistry.addSvgIcon(
-        'notice',
-        sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notice.svg'));
+    iconRegistry.addSvgIcon(
+      'tsf',
+      sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/tsf.svg'));
+    iconRegistry.addSvgIcon(
+      'notes',
+      sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notes.svg'));
+    iconRegistry.addSvgIcon(
+      'notice',
+      sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notice.svg'));
   }
 
   ngOnInit() {
-    //Save plaerID with userID into database
     this.pushNotification.getPlayerID();
-    // this.homeApiService.savePLayerIDIntoDatabase(1).subscribe(res => {
-    //   console.log(res);
-    // })
     this.getSchedule();
   }
 
   private currentDateTime = new Date();
-  private fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
-  private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+5),'yyyy-MM-dd HH:mm:ss.SSS');
+  private fromDateTime = this.datePipe.transform(this.currentDateTime, 'yyyy-MM-dd HH:mm:ss.SSS');
+  private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate() + 5), 'yyyy-MM-dd HH:mm:ss.SSS');
 
   getSchedule() {
     this.loadingService.loadingStart();
@@ -146,9 +142,9 @@ export class HomePage implements OnInit {
         }
       });
     },
-    err => {
-      this.loadingService.loadingDismiss();
-      this.alertService.alertError("Something went wrong");
-    });
+      err => {
+        this.loadingService.loadingDismiss();
+        this.alertService.alertError("Something went wrong");
+      });
   }
 }

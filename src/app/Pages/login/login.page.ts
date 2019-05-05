@@ -18,6 +18,7 @@ export class LoginPage {
   User: any;
   Cred: any;
   userType: any;
+  isShowLoginPage:any;
 
   constructor(
     private loginProvider: LoginApiProvider,
@@ -40,8 +41,12 @@ export class LoginPage {
 
   ionViewDidEnter() {
     if (localStorage.getItem('token')) {
+      this.isShowLoginPage = true;
       this.redirect();
     }
+    else{
+      this.isShowLoginPage = false;
+    } 
   }
 
   logForm() {

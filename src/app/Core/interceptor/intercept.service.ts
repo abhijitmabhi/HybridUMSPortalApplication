@@ -42,6 +42,8 @@ export class InterceptorService implements HttpInterceptor {
 
     // console.log("State: 03" + request);
 
+    console.log(request);
+
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {

@@ -12,6 +12,7 @@ export class EmployeeProfilePage implements OnInit {
 
   public profile: any;
   public errorMsg: any;
+  public userImagePath: string = null;
 
   constructor(
     private profileService: EmployeeProfileService,
@@ -21,12 +22,12 @@ export class EmployeeProfilePage implements OnInit {
 
   ngOnInit() {
     this.getProfile();
+    this.getUserProfileImage();
   }
 
   getProfile() {
     this.loadingService.loadingStart();
     this.profileService.getEmployeeProfile().subscribe(res => {
-      console.log(res);
       this.loadingService.loadingDismiss();
       this.profile = res.Data;
     },
@@ -34,6 +35,12 @@ export class EmployeeProfilePage implements OnInit {
         this.loadingService.loadingDismiss();
       this.alertService.alertError("Something went wrong");
     });
+  }
+
+  getUserProfileImage(){
+    this.profileService.getImage().subscribe(res => {
+      this.userImagePath =  res;
+    })
   }
 
 

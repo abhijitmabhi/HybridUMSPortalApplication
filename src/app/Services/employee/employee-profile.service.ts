@@ -15,5 +15,9 @@ export class EmployeeProfileService {
   public getEmployeeProfile(): Observable<IResult> {
     return this.httpClient.get<IResult>(`${this.baseUrl}/Employee/GetEmployeeProfile`);
   }
+
+  public getImage(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/Common/GetProfileImage`);
+  }
 }
 

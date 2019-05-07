@@ -62,7 +62,7 @@ export class InterceptorService implements HttpInterceptor {
         // return throwError(error);
         if (error instanceof HttpErrorResponse) {
           // Server Side Error
-          console.log(error);
+          // console.log(error);
           return throwError(error);
         } else {
           // Client Side Error

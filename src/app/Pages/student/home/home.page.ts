@@ -12,11 +12,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { RouterExtServiceService } from 'src/app/Core/extra_router/router-ext-service.service';
 
-export interface SelectSemester {
-  value: any;
-  viewValue: any;
-}
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -35,16 +30,9 @@ export class HomePage implements OnInit {
   ScheduleHideFlag = true;
 
   public schedule: any;
-
   playerID: any;
-
-  semesters: SelectSemester[] = [
-    { value: '2017-18, Spring', viewValue: '2017-18, Spring' },
-    { value: '2017-18, Summer', viewValue: '2017-18, Summer' },
-    { value: '2018-19, Fall', viewValue: '2018-19, Fall' },
-    { value: '2017-18, Spring', viewValue: '2018-19, Spring' },
-    { value: '2017-18, Summer', viewValue: '2018-19, Summer' }
-  ];
+  semesterList: any;
+  semesterData: any;
 
   constructor(
     public navCtrl: NavController,
@@ -125,6 +113,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.pushNotification.getPlayerID();
     this.getSchedule();
+    this.getSemesterList();
   }
 
   private currentDateTime = new Date();
@@ -147,4 +136,20 @@ export class HomePage implements OnInit {
         this.alertService.alertError("Something went wrong");
       });
   }
+
+  getSemesterList(){
+    this.homeApiService.semesterList().subscribe(res => {
+      this.semesterList = res.Data;
+    },
+    err => {
+      this.alertService.alertError("Something went wrong");
+    });
+  }
+
+  onChangeSemester(semesterid: any){
+    this.homeApiService.RegisteredCoursesBySemester(semesterid).subscribe(res => {
+    this.semesterData = res.Data;
+    })
+  }
+
 }

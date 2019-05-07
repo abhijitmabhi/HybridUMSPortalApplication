@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { IResult } from 'src/app/Core/result/result';
 import { settings } from 'src/app/Core/settings/systemSettings';
+import { encode } from 'punycode';
 
 /*
   Generated class for the LoginApiProvider provider.
@@ -23,13 +24,19 @@ export class LoginApiProvider {
   }
 
   login(user) {
+    // let encodedPassword = encodeURIComponent(user.password);
+  
     const dt = new HttpParams()
 
       .set('grant_type','password')
       .set('username', user.username)
       .set('password', user.password);
 
-    return this.http.post('http://172.16.22.101:2694/Token', dt).pipe(map(res =>{
+    // return this.http.post('http://172.16.22.101:41368/Token', dt ).pipe(map(res =>{
+    //   return res;
+    //  }));
+
+     return this.http.post('https://testapi.aiub.edu/ums-auth-api/Token', dt).pipe(map(res =>{
       return res;
      }));
   }

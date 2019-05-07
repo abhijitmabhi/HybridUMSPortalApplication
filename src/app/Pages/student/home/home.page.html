@@ -64,18 +64,18 @@
 
       <mat-form-field style="width: 100%; padding: 10px;">
         <mat-label>Select Semester</mat-label>
-        <mat-select class="align-right">
-          <mat-option *ngFor="let semester of semesters" [value]="semester.value">
-            {{semester.viewValue}}
+        <mat-select class="align-right" (selectionChange)="onChangeSemester($event.value)">
+          <mat-option *ngFor="let semester of semesterList" [value]="semester.ID">
+            {{semester.Title}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-card *ngFor="let item of dashboard.Courses" style="margin-bottom:20px">
+      <mat-card *ngFor="let item of semesterData" style="margin-bottom:20px">
         <mat-card-content>
-          <mat-card-title class="card_title">{{item.ID}} - {{item.Title}} [{{item.Section}}]</mat-card-title>
-          <mat-card-subtitle>Status : {{item.Status}}</mat-card-subtitle>
-          <mat-card-subtitle>Result : {{item.Grade}} ({{item.Marks}})</mat-card-subtitle>
+          <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>
+          <mat-card-subtitle>Status : {{item.Valid}}</mat-card-subtitle>
+          <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}} ({{item.Result?.Mark}})</mat-card-subtitle>
           <mat-divider></mat-divider>
           <div class="example-button-row">
             <button mat-button color="primary">TSF</button>

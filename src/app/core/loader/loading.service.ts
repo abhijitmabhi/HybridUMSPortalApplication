@@ -13,8 +13,8 @@ export class LoadingService {
   async loadingStart(){
     this.isLoading = true;
     return await this.loadingCtrl.create({
-        spinner: "crescent",
-        translucent: true,
+        spinner: "dots",
+        translucent: true
         }).then( a => {
           a.present().then(() => {
             if(!this.isLoading){

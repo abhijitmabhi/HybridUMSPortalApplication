@@ -32,4 +32,12 @@ export class HomeApiService {
 
     return this.httpClient.post(`${this.baseUrl}/Notification/MapPlayerId`, dt);
   }
+
+  public semesterList(): Observable<IResult>{
+    return this.httpClient.get<IResult>(`${this.baseUrl}/Home/GetSemesterList`);
+  }
+
+  public RegisteredCoursesBySemester(semesterId: number): Observable<IResult>{
+    return this.httpClient.get<IResult>(`${this.baseUrl}/Home/GetCourseList?semesterID=${semesterId}`);
+  }
 }

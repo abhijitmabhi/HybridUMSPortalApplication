@@ -38,6 +38,7 @@ export class ProfilePage implements OnInit {
     this.profileApiService.getStudentProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.profile = res.Data;
+      console.log(res.Data);
     },
       error => {
         this.loadingService.loadingDismiss();

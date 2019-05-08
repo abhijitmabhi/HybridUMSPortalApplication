@@ -32,6 +32,16 @@ export class AppComponent {
     //   icon: 'document'
     // },
     {
+      title: 'Courses & Results',
+      url: '/courses-results',
+      icon: 'document'
+    },
+    {
+      title: 'Registration',
+      url: '/registration',
+      icon: 'document'
+    },
+    {
       title: 'Logout',
       url: '/logout',
       icon: 'log-out'

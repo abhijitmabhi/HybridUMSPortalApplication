@@ -27,7 +27,7 @@
 }
 
 .list-item2{
-    width: 30%;
+    width: auto;
     align-items: flex-end;
     align-content: flex-end;
 }
@@ -61,4 +61,23 @@
 .top-card{
     margin-bottom:20px;
     margin-top: 10px;
+}
+
+.mat-list-base .mat-list-item {
+    font-size: 14px;
+}
+
+.example-button-row{
+    align-self: center;
+    margin-right: 35%;
+    margin-left: 35%;
+    margin-top: 4%;
+    width: 30%;
+}
+
+.list_padding{
+    margin-top:5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }

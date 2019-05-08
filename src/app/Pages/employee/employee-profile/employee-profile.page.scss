@@ -7,11 +7,12 @@
 }
 
 .list-item1{
-    width: 32%;
+    width: 34%;
+    padding-right: 2%;
 }
 
 .list-item2{
-    width: 68%;
+    width: 66%;
 }
 
 .mat-list-base .mat-list-item {
@@ -21,4 +22,11 @@
 .mat-card-title {
     font-size: 20px;
     font-weight: 500;
+}
+
+.name{
+    font-size: 18px;
+}
+.type{
+    font-size: 14px;
 }

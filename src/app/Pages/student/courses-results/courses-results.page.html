@@ -11,7 +11,7 @@
 
 <ion-content>
   <mat-list>
-    <mat-list-item>Semesters
+    <mat-list-item class="list_padding">Semesters
       <mat-select class="align-right">
         <mat-option *ngFor="let semester of semesters" [value]="semester.value">
           {{semester.viewValue}}
@@ -19,7 +19,7 @@
       </mat-select>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Courses
+    <mat-list-item class="list_padding">Courses
       <mat-select class="align-right">
         <mat-option *ngFor="let course of courses" [value]="course.value">
           {{course.viewValue}}
@@ -27,9 +27,9 @@
       </mat-select>
     </mat-list-item>
     <mat-list-item class="divider">
-      <h4 matLine>SOFTWARE REQUIREMENT ENGINEERING [B]</h4>
-      <p matLine>Total Mark :100; Passing Mark:50; Contributes:100%</p>
-      <p matLine>A+ (100)</p>
+      <h4 class="courseName_padding" matLine>SOFTWARE REQUIREMENT ENGINEERING [B]</h4>
+      <p class="courseName_padding" matLine>Total Mark :100; Passing Mark:50; Contributes:100%</p>
+      <p class="courseName_padding" matLine>A+ (100)</p>
     </mat-list-item>
     <mat-divider></mat-divider>
   </mat-list>

@@ -43,131 +43,135 @@
       <mat-card-subtitle>Student</mat-card-subtitle>
     </mat-card>
   </div>
-
-  <mat-list style="padding:10px;">
-    <mat-list-item>
-      <div class="list-item1">Student ID</div>
-      <div class="list-item2">{{profile?.StudentID}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Full Name</div>
-      <div class="list-item2">{{profile?.FullName}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">CGPA</div>
-      <div class="list-item2">{{profile?.CGPA}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Credit</div>
-      <div class="list-item2">{{profile?.Credit}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Program</div>
-      <div class="list-item2">{{profile?.Program}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Department</div>
-      <div class="list-item2">{{profile?.Department}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Core</div>
-      <div class="list-item2">{{profile?.Core}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Major</div>
-      <div class="list-item2">{{profile?.Major}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Second Major</div>
-      <div class="list-item2">{{profile?.SecondMajor}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Minor</div>
-      <div class="list-item2">{{profile?.Minor}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Elective</div>
-      <div class="list-item2">{{profile?.Elective}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Father Name</div>
-      <div class="list-item2">{{profile?.FatherName}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Mother Name</div>
-      <div class="list-item2">{{profile?.MotherName}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item style="height: auto">
-      <div class="list-item1">Present Address</div>
-      <div class="list-item2">{{profile?.PresentAddress}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item style="height: auto">
-      <div class="list-item1">Permanent Address</div>
-      <div class="list-item2">{{profile?.PermanentAddress}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Phone</div>
-      <div class="list-item2">{{profile?.Phone}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Email</div>
-      <div class="list-item2">{{profile?.Email}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">DOB</div>
-      <div class="list-item2">{{profile?.DOB | date:"dd-MMM-yyyy"}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Sex</div>
-      <div class="list-item2">{{profile?.Sex}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Marital Status</div>
-      <div class="list-item2">{{profile?.MaritalStatus}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Nationality</div>
-      <div class="list-item2">{{profile?.Nationality}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Religion</div>
-      <div class="list-item2">{{profile?.Religion}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Blood Group</div>
-      <div class="list-item2">{{profile?.BloodGroup}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Admission Date</div>
-      <div class="list-item2">{{profile?.AdmissionDate | date:"dd-MMM-yyyy"}}</div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <div class="list-item1">Graduation Date</div>
-      <div class="list-item2">{{profile?.GraduationDate | date:"dd-MMM-yyyy"}}</div>
-    </mat-list-item>
-  </mat-list>
+    
+  <ion-card>
+    <ion-card-content>
+      <mat-list>
+        <mat-list-item>
+          <div class="list-item1">Student ID</div>
+          <div class="list-item2">{{profile?.StudentID}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Full Name</div>
+          <div class="list-item2">{{profile?.FullName}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">CGPA</div>
+          <div class="list-item2">{{profile?.CGPA}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Credit</div>
+          <div class="list-item2">{{profile?.Credit}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item style="height: auto;">
+          <div class="list-item1">Program</div>
+          <div class="list-item2">{{profile?.Program}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Department</div>
+          <div class="list-item2">{{profile?.Department}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Core</div>
+          <div class="list-item2">{{profile?.Core}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Major</div>
+          <div class="list-item2">{{profile?.Major}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Second Major</div>
+          <div class="list-item2">{{profile?.SecondMajor}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Minor</div>
+          <div class="list-item2">{{profile?.Minor}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Elective</div>
+          <div class="list-item2">{{profile?.Elective}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Father Name</div>
+          <div class="list-item2">{{profile?.FatherName}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Mother Name</div>
+          <div class="list-item2">{{profile?.MotherName}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item style="height: auto;">
+          <div class="list-item1">Present Address</div>
+          <div class="list-item2">{{profile?.PresentAddress}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item style="height: auto;">
+          <div class="list-item1">Permanent Address</div>
+          <div class="list-item2">{{profile?.PermanentAddress}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Phone</div>
+          <div class="list-item2">{{profile?.Phone}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Email</div>
+          <div class="list-item2">{{profile?.Email}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Date of Birth</div>
+          <div class="list-item2">{{profile?.DOB | date:"dd-MMM-yy"}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Sex</div>
+          <div class="list-item2">{{profile?.Sex}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Marital Status</div>
+          <div class="list-item2">{{profile?.MaritalStatus}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Nationality</div>
+          <div class="list-item2">{{profile?.Nationality}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Religion</div>
+          <div class="list-item2">{{profile?.Religion}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Blood Group</div>
+          <div class="list-item2">{{profile?.BloodGroup}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Admission Date</div>
+          <div class="list-item2">{{profile?.AdmissionDate | date:"dd-MMM-yy"}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="list-item1">Graduation Date</div>
+          <div class="list-item2">{{profile?.GraduationDate | date:"dd-MMM-yy"}}</div>
+        </mat-list-item>
+      </mat-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

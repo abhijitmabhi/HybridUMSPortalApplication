@@ -1,29 +1,31 @@
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
+import { settings } from 'src/app/Core/settings/systemSettings';
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
-  constructor(private router: Router, public toastController: ToastController) { }
+
+  baseUrl: string = settings.baseUrl;
+
+  constructor(public toastController: ToastController) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     let token = localStorage.getItem('token');
-    // console.log(JSON.stringify(localStorage));
+
     if (token) {
       request = request.clone({
         setHeaders: {
           'Authorization': 'bearer ' + token,
           'content-type': 'application/x-www-form-urlencoded'
-        }
+        },
+        url:`${this.baseUrl}${request.url}`
       });
       // console.log("State: 01" + JSON.stringify(request));
     }
-
-
 
     if (!request.headers.has('Content-Type')) {
       request = request.clone({
@@ -31,18 +33,14 @@ export class InterceptorService implements HttpInterceptor {
           'content-type': 'application/x-www-form-urlencoded'
         }
       });
-
       // console.log("State: 02" + JSON.stringify(request));
     }
-
 
     request = request.clone({
       headers: request.headers.set('Accept', 'application/json')
     });
 
     // console.log("State: 03" + request);
-
-    // console.log(request);
 
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
@@ -53,11 +51,7 @@ export class InterceptorService implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         // if (error.status === 401) {
-        //   if (error.error.success === false) {
-        //     this.presentToast('Login failed');
-        //   } else {
-        //     this.router.navigate(['login']);
-        //   }
+        //  Do Something
         // }
         // return throwError(error);
         if (error instanceof HttpErrorResponse) {
@@ -69,14 +63,5 @@ export class InterceptorService implements HttpInterceptor {
           return throwError(error);
         }
       }));
-  }
-
-  async presentToast(msg) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: 2000,
-      position: 'top'
-    });
-    toast.present();
   }
 }

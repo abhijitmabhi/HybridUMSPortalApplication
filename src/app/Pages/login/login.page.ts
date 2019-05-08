@@ -81,10 +81,10 @@ export class LoginPage {
       
       //Subscribing to onesignal & retrive player id
       this.pushNotification.oneSignalSubscription();
-      
-      this.redirect();
 
       this.loadingService.loadingDismiss();
+
+      this.redirect();
       // this.alertService.Success("Login Success");
     });
   }

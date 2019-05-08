@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { IResult } from 'src/app/Core/result/result';
-import { settings } from 'src/app/Core/settings/systemSettings';
 import { encode } from 'punycode';
 
 /*
@@ -16,12 +15,8 @@ import { encode } from 'punycode';
   providedIn: 'root'
 })
 export class LoginApiProvider {
-  baseUrl = settings.baseUrl;
 
-
-  constructor(public http: HttpClient) {
-    
-  }
+  constructor(public http: HttpClient) {}
 
   login(user) {
     // let encodedPassword = encodeURIComponent(user.password);
@@ -42,7 +37,7 @@ export class LoginApiProvider {
   }
 
   usergetCurrentUserInfo(): Observable<IResult>{
-    return this.http.get<IResult>(`${this.baseUrl}/Common/GetCurrentUserInfo`);
+    return this.http.get<IResult>(`Common/GetCurrentUserInfo`);
   }
 
  

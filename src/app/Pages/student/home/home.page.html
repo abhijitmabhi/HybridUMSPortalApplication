@@ -62,20 +62,27 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <mat-form-field style="width: 100%; padding: 10px;">
+      <!-- <mat-form-field style="width: 100%; padding: 10px;">
         <mat-label>Select Semester</mat-label>
-        <mat-select class="align-right" (selectionChange)="onChangeSemester($event.value)">
+        <mat-select class="align-right" [(ngModel)]='nrSelect' (change)="onChangeSemester($event.value)">
           <mat-option *ngFor="let semester of semesterList" [value]="semester.ID">
             {{semester.Title}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
+
+      <ion-item style="width: 100%; padding: 10px;">
+        <ion-label>Select Semester</ion-label>
+        <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
+          <ion-select-option *ngFor="let semester of semesterList" [value]="semester.ID"> {{semester.Title}}</ion-select-option>
+        </ion-select>
+      </ion-item>
 
       <mat-card *ngFor="let item of semesterData" style="margin-bottom:20px">
         <mat-card-content>
           <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>
           <mat-card-subtitle>Status : {{item.Valid == true ? 'Valid' : 'Invalid'}}</mat-card-subtitle>
-          <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}} ({{item.Result?.Mark != null ? item.Result.Mark : 'Pending' }})</mat-card-subtitle>
+          <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}} {{item.Result?.Mark != null ? '(' + item.Result.Mark + ')' : 'Pending' }}</mat-card-subtitle>
           <mat-divider></mat-divider>
           <div class="example-button-row">
             <button mat-button color="primary">TSF</button>

@@ -34,6 +34,8 @@ export class HomePage implements OnInit {
   semesterList: any;
   semesterData: any;
 
+  nrSelect: any;
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -113,6 +115,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.pushNotification.getPlayerID();
     this.getSchedule();
+    this.getCurrentSemesterId();
     this.getSemesterList();
   }
 
@@ -146,9 +149,15 @@ export class HomePage implements OnInit {
     });
   }
 
-  onChangeSemester(semesterid: any){
-    this.homeApiService.RegisteredCoursesBySemester(semesterid).subscribe(res => {
+  onChangeSemester(){
+    this.homeApiService.registeredCoursesBySemester(this.nrSelect).subscribe(res => {
     this.semesterData = res.Data;
+    })
+  }
+
+  getCurrentSemesterId(){
+    this.homeApiService.currentSemesterId().subscribe(res => {
+      this.nrSelect = res;
     })
   }
 

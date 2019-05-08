@@ -27,7 +27,12 @@ export class HomeApiService {
     return this.httpClient.get<IResult>(`Home/GetSemesterList`);
   }
 
-  public RegisteredCoursesBySemester(semesterId: number): Observable<IResult>{
+  public registeredCoursesBySemester(semesterId: number): Observable<IResult>{
     return this.httpClient.get<IResult>(`Home/GetCourseList?semesterID=${semesterId}`);
+  }
+
+  public currentSemesterId(): Observable<IResult >{
+    return this.httpClient.get<IResult>(`Common/GetCurrentSemesterId`);
+
   }
 }

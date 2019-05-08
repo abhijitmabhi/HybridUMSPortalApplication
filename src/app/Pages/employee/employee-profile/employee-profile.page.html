@@ -33,15 +33,13 @@
   </div>
 
   <h2>{{errorMsg}}</h2>
-
-  <div>
-    <mat-card align="center" style="padding-top: 30px !important;">
-      <!-- <img class="profile-logo-align" mat-card-image src="../../../assets/icon/student_photo.jpg" alt="Student Image"> -->
-      <img class="profile-logo-align" mat-card-image src="{{'data:image/jpg;base64,' + userImagePath}}" alt="Employee Image">
-      <mat-card-title>{{profile?.FullName}}</mat-card-title>
-      <mat-card-subtitle>Employee</mat-card-subtitle>
-    </mat-card>
-  </div>
+  <ion-card>
+    <ion-card-content align="center">
+        <img class="profile-logo-align" mat-card-image src="{{'data:image/jpg;base64,' + userImagePath}}" alt="Employee Image">
+        <ion-card-title class="name">{{profile?.FullName}}</ion-card-title>
+        <ion-card-subtitle class="type">Employee</ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
     
   <mat-list style="padding:10px;">
     <mat-list-item>

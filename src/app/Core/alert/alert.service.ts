@@ -1,12 +1,13 @@
 import { AlertController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertService {
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private router: Router) { }
 
   async Success(obj){
     const alert = await this.alertController.create({
@@ -20,6 +21,7 @@ export class AlertService {
   }
 
   async alertError(msg){
+    let route = 'profile';
     const alert = await this.alertController.create({
       header: 'Oops!',
       subHeader: '',
@@ -30,8 +32,29 @@ export class AlertService {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-              console.log("Redirect");
+            // localStorage.setItem('route', route);
+            // this.router.navigate(['/error-landing']);
           }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async alertErrorWithLandingPage(msg, route){
+    const alert = await this.alertController.create({
+      header: 'Oops!',
+      subHeader: '',
+      message: msg ? msg  :'Something Went Wrong',
+      buttons: [
+        {
+          text: 'Close',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            localStorage.setItem('route', route);
+            this.router.navigate(['/error-landing']);
+          } 
         }
       ]
     });

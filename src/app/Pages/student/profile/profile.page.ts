@@ -14,7 +14,7 @@ export interface DialogData {
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
 
   public profile: any;
   public errorMsg: any;
@@ -28,7 +28,12 @@ export class ProfilePage implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  // ngOnInit() {
+  //   this.getProfile();
+  //   this.getUserProfileImage();
+  // }
+
+  ionViewDidEnter(){
     this.getProfile();
     this.getUserProfileImage();
   }
@@ -41,7 +46,7 @@ export class ProfilePage implements OnInit {
     },
       error => {
         this.loadingService.loadingDismiss();
-        this.alertService.alertError("Something went wrong");
+        this.alertService.alertErrorWithLandingPage("Something went wrong", 'profile');
       });
   }
 

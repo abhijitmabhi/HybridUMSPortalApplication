@@ -1,6 +1,6 @@
 export interface IResult {
     Count: number;
-    Data: object;
+    Data: any;
     ExtraData: object;
     HasError: boolean;
     HasWarning: boolean;

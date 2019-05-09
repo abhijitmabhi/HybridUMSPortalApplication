@@ -114,9 +114,8 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.pushNotification.getPlayerID();
-    this.getSchedule();
-    this.getCurrentSemesterId();
     this.getSemesterList();
+    this.getSchedule();
   }
 
   private currentDateTime = new Date();
@@ -127,7 +126,7 @@ export class HomePage implements OnInit {
     this.loadingService.loadingStart();
     this.homeApiService.schedule(this.fromDateTime, this.tillDateTime).subscribe(res => {
       this.loadingService.loadingDismiss();
-      this.schedule = res.Data
+      this.schedule = res.Data;
       this.schedule.forEach(element => {
         if (element.Classes.length === 0) {
           element.Classes.push({ ID: 0, SectionID: 0, SectionDescription: "No class on this day", Room: "", Time: "" });
@@ -141,23 +140,29 @@ export class HomePage implements OnInit {
   }
 
   getSemesterList(){
-    this.homeApiService.semesterList().subscribe(res => {
-      this.semesterList = res.Data;
-    },
-    err => {
-      this.alertService.alertError("Something went wrong");
+    this.homeApiService.semesterList().subscribe(semesterLists => {
+      this.semesterList = semesterLists.Data;
+      this.homeApiService.currentSemester().subscribe(currentSemester => {
+        let currentSemesterId = currentSemester.Data.ID;
+        let isCurrentSemesterEnrolled = false;
+        this.semesterList.forEach(semester => {
+          if(semester.ID === currentSemesterId){
+            isCurrentSemesterEnrolled = true;
+          }
+        });
+
+        if(isCurrentSemesterEnrolled){
+          this.nrSelect = currentSemesterId;
+        }else {
+          this.nrSelect = this.semesterList[0].ID;
+        }
+      })
     });
   }
 
   onChangeSemester(){
     this.homeApiService.registeredCoursesBySemester(this.nrSelect).subscribe(res => {
     this.semesterData = res.Data;
-    })
-  }
-
-  getCurrentSemesterId(){
-    this.homeApiService.currentSemesterId().subscribe(res => {
-      this.nrSelect = res;
     })
   }
 

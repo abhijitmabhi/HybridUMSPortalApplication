@@ -8,15 +8,22 @@
 </ion-header>
   
 <ion-content>
-  <mat-list class="list_padding">
+  <!-- <mat-list class="list_padding">
     <mat-list-item>Month
       <mat-select class="align-right">
-        <mat-option *ngFor="let month of months" [value]="month.value">
-          {{month.viewValue}}
+        <mat-option *ngFor="let payroll of reversedPayrollList" [value]="payroll.Value">
+          {{payroll.Name}}
         </mat-option>
       </mat-select>
     </mat-list-item>
-  </mat-list>
+  </mat-list> -->
+
+  <ion-item style="width: 100%; padding: 10px;">
+    <ion-label>Select Semester</ion-label>
+    <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">
+      <ion-select-option *ngFor="let payroll of reversedPayrollList" [value]="payroll.Value"> {{payroll.Name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
 
   <mat-list dense>
     <mat-list-item>
@@ -50,53 +57,13 @@
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-expansion-panel [expanded]="false">
+    <mat-expansion-panel [expanded]="false"  *ngFor="let attendance of attendanceList.AttendanceDetailModels">
       <mat-expansion-panel-header>
-        <div class="attendance-list-head1">01-May-2019</div>
-        <div class="attendance-list-head2">0</div>
-        <div class="attendance-list-head3">0</div>
+        <div class="attendance-list-head1">{{attendance.Date}}</div>
+        <div class="attendance-list-head2">{{attendance.AllShift}}</div>
+        <div class="attendance-list-head3">{{attendance.Filo}}</div>
       </mat-expansion-panel-header>
-      <mat-panel-description>International Labour Day</mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="attendance-list-head1">02-May-2019</div>
-        <div class="attendance-list-head2">11 (11)</div>
-        <div class="attendance-list-head3">11 (11)</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>IN: 09:00:57 OUT: 19:58:01 Time: [11]</mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="attendance-list-head1">03-May-2019</div>
-        <div class="attendance-list-head2">0</div>
-        <div class="attendance-list-head3">0</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>Weekly Holiday</mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="attendance-list-head1">04-May-2019</div>
-        <div class="attendance-list-head2">0</div>
-        <div class="attendance-list-head3">0</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>Weekly Holiday</mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="attendance-list-head1">05-May-2019</div>
-        <div class="attendance-list-head2">10.9</div>
-        <div class="attendance-list-head3">10.9</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>IN: 09:06:48 OUT: 20:00:25 Time: [10.9]</mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="attendance-list-head1">06-May-2019</div>
-        <div class="attendance-list-head2">8.6</div>
-        <div class="attendance-list-head3">8.6</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>IN: 09:43:42 OUT: 18:17:52 <br>IN: 09:43:42 OUT: 18:17:52 IN: 09:43:42 OUT: 18:17:52 Time: [8.6] Time: [8.6]</mat-panel-description>
+      <mat-panel-description>{{attendance.InOut}}</mat-panel-description>
     </mat-expansion-panel>
   </mat-list>
 </ion-content>

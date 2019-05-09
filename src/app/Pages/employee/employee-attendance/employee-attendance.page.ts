@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeAttendanceService } from 'src/app/Services/employee/employee-attendance.service';
 
 export interface SelectMonth {
   value: any;
@@ -14,7 +15,7 @@ export class EmployeeAttendancePage implements OnInit {
 
   // step = 0;
 
-  constructor() { }
+  constructor(public attService: EmployeeAttendanceService) { }
 
   months: SelectMonth[] = [
     {value: 'May, 2019', viewValue: 'May, 2019'},
@@ -23,6 +24,11 @@ export class EmployeeAttendancePage implements OnInit {
     {value: 'February, 2019', viewValue: 'February, 2019'},
     {value: 'January, 2019', viewValue: 'January, 2019'}
   ];
+
+  payrolls = [];
+  reversedPayrollList = [];
+  attendanceList:any;
+  nrSelect:any;
 
   // setStep(index: number) {
   //   this.step = index;
@@ -37,5 +43,40 @@ export class EmployeeAttendancePage implements OnInit {
   // }
 
   ngOnInit() {
+    this.getPayroll();
+  }
+
+  getPayroll(){
+    this.attService.getPayroll().subscribe(res=>{
+      this.generatePayrollDropdown(res.Data);
+      // this.attService.getAttendance(this.payrolls)
+  });
+  }
+
+  generatePayrollDropdown(payrolls){
+
+    payrolls.forEach(payroll => {
+      let year = payroll.PayrollYear;
+      let split = payroll.PayMonth.split(" ");
+      let month = split[0];
+
+      this.payrolls.push({
+          Name:`${year},${month}`,
+          Value:payroll.ID
+      }); 
+    });
+    this.reversedPayrollList = this.payrolls.slice().reverse();
+    this.nrSelect = this.reversedPayrollList[0].Value;
+  }
+
+  onChangePayroll(){
+    this.attService.getAttendance(this.nrSelect).subscribe(res=>{
+      this.attendanceList = res.Data;
+      console.log(this.attendanceList);
+
+      res.Data.AttendanceDetailModels.forEach(element => {
+        element.InOut = element.InOut.replace(/<b>/g,'').replace(/<\/b>/g,'').replace(/<br \/>/g,'');
+      });
+    });
   }
 }

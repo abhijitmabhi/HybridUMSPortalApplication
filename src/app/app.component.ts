@@ -55,6 +55,11 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Attendance',
+      url: '/employee-attendance',
+      icon: 'today'
+    },
+    {
       title: 'Profile',
       url: '/employee-profile',
       icon: 'person'

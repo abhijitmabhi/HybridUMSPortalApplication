@@ -1,0 +1,94 @@
+.list_padding{
+    margin-top:5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.align-right{
+    text-align: right;
+}
+
+.list-item1{
+    padding-left:5%; 
+    width: 70%;
+    text-align: left;
+}
+
+.list-item2{
+    padding-right: 5%;
+    width: 20%;
+    text-align: right;
+}
+
+.attendance-list-head1{
+    width: 33.33%;
+    text-align: center;
+}
+
+.attendance-list-head2{
+    width: 33.33%;
+    text-align: center;
+}
+
+.attendance-list-head3{
+    width: 33.33%;
+    text-align: center;
+}
+
+.button-row{
+    align-self: center;
+    margin-right: 35%;
+    margin-left: 35%;
+    margin-top: 4%;
+    width: 30%;
+}
+
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 100%;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+    color: white;
+    background-color: royalblue;
+}
+
+.footerDiv{
+    height: 20px;
+    width: 100%;
+}
+
+.mat-list-base .mat-list-item {
+    font-size: 14px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}

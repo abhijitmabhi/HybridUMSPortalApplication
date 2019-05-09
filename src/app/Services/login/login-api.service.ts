@@ -19,7 +19,6 @@ export class LoginApiProvider {
   constructor(public http: HttpClient) {}
 
   login(user) {
-    // let encodedPassword = encodeURIComponent(user.password);
   
     const dt = new HttpParams()
 

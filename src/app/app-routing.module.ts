@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'employee-home', loadChildren: './Pages/employee/employee-home/employee-home.module#EmployeeHomePageModule' },
   { path: 'employee-profile', loadChildren: './Pages/employee/employee-profile/employee-profile.module#EmployeeProfilePageModule' },
   
-  { path: 'error-landing', loadChildren: './Core/errorLandingPage/error-landing/error-landing.module#ErrorLandingPageModule' }
+  { path: 'error-landing', loadChildren: './Core/errorLandingPage/error-landing/error-landing.module#ErrorLandingPageModule' },  { path: 'employee-attendance', loadChildren: './Pages/employee/employee-attendance/employee-attendance.module#EmployeeAttendancePageModule' }
+
   
 ];
 

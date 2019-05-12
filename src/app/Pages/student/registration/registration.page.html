@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <mat-list class="list_padding">
+  <!-- <mat-list class="list_padding">
     <mat-list-item>Semester
       <mat-select class="align-right">
         <mat-option *ngFor="let semester of semesters" [value]="semester.value">
@@ -16,11 +16,20 @@
         </mat-option>
       </mat-select>
     </mat-list-item>
-  </mat-list>
+  </mat-list> -->
+
+  <ion-item style="width: 100%; padding: 10px;">
+    <ion-label style="width:30%;">Semester: </ion-label>
+    <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
+      <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester.ID">
+        {{semester.Title}}</ion-select-option>
+    </ion-select>
+  </ion-item>
 
   <mat-accordion>
     <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
+      <mat-expansion-panel-header
+        style="background-color:rgb(51, 100, 247); color: white; margin-left:5px; margin-right: 5px; margin-top: 5px;">
         <mat-panel-title style="color:white;">Registered Courses</mat-panel-title>
       </mat-expansion-panel-header>
       <mat-card class="card_padding">
@@ -58,11 +67,11 @@
           <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 12 - 1 - 0 - 0 - 0</mat-card-subtitle>
         </mat-card-content>
       </mat-card>
-    </mat-expansion-panel>  
+    </mat-expansion-panel>
   </mat-accordion>
   <mat-accordion>
     <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
+      <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white; margin: 5px;">
         <mat-panel-title style="color:white;">Semester Fees</mat-panel-title>
       </mat-expansion-panel-header>
       <mat-list densed>
@@ -188,9 +197,12 @@
         </mat-list-item>
       </mat-list>
       <mat-divider></mat-divider>
-      <div class="example-button-row">
-        <button mat-button color="primary">Print</button>
-      </div>
-    </mat-expansion-panel>  
+    </mat-expansion-panel>
   </mat-accordion>
 </ion-content>
+<ion-footer>
+  <div class="button-row">
+    <button mat-button>Download</button>
+  </div>
+  <div class="footerDiv"></div>
+</ion-footer>

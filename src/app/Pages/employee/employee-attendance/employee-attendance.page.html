@@ -6,7 +6,7 @@
     <ion-title>Attendance</ion-title>
   </ion-toolbar>
 </ion-header>
-  
+
 <ion-content>
   <!-- <mat-list class="list_padding">
     <mat-list-item>Month
@@ -19,31 +19,35 @@
   </mat-list> -->
 
   <ion-item style="width: 100%; padding: 10px;">
-    <ion-label>Select Semester</ion-label>
+    <ion-label>Select Month</ion-label>
     <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">
-      <ion-select-option *ngFor="let payroll of payrollList" [value]="payroll.Value"> {{payroll.Name}}</ion-select-option>
+      <ion-select-option *ngFor="let payroll of payrollList" [value]="payroll.Value"> {{payroll.Name}}
+      </ion-select-option>
     </ion-select>
   </ion-item>
 
-  <mat-list dense>
-    <mat-list-item>
-      <div class="list-item1" style="color:dodgerblue">
-        <b>Total (by shift)</b>
-      </div>
-      <div class="list-item2" style="color:dodgerblue">
-        <b>11.0</b>
-      </div>
-    </mat-list-item>
-    <mat-list-item>
-      <div class="list-item1" style="color:dodgerblue">
-        <b>Total (by FI-LO)</b>
-      </div>
-      <div class="list-item2" style="color:dodgerblue">
-        <b>11.0</b>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-  </mat-list>
+  <mat-card style="margin:10px;">
+    <mat-card-content>
+      <mat-list dense>
+        <mat-list-item>
+          <div class="list-item1">
+            <b>Total (by shift)</b>
+          </div>
+          <div class="list-item2">
+            <b>11.0</b>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="list-item1">
+            <b>Total (by FI-LO)</b>
+          </div>
+          <div class="list-item2">
+            <b>11.0</b>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
   <mat-list dense>
     <mat-list-item>
       <div class="attendance-list-head1">
@@ -57,7 +61,7 @@
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-expansion-panel [expanded]="false"  *ngFor="let attendance of attendanceList">
+    <mat-expansion-panel [expanded]="false" *ngFor="let attendance of attendanceList">
       <mat-expansion-panel-header>
         <div class="attendance-list-head1">{{attendance.Date}}</div>
         <div class="attendance-list-head2">{{attendance.AllShift}}</div>
@@ -94,7 +98,7 @@
 
 <ion-footer>
   <div class="button-row">
-    <button mat-button>Print</button>
+    <button mat-button>Download</button>
   </div>
   <div class="footerDiv"></div>
 </ion-footer>

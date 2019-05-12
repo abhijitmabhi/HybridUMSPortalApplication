@@ -26,13 +26,13 @@ export class LoginApiProvider {
       .set('username', user.username)
       .set('password', user.password);
 
-    // return this.http.post('http://172.16.22.101:41368/Token', dt ).pipe(map(res =>{
-    //   return res;
-    //  }));
-
-     return this.http.post('https://testapi.aiub.edu/ums-auth-api/Token', dt).pipe(map(res =>{
+    return this.http.post('http://172.16.22.101:41368/Token', dt ).pipe(map(res =>{
       return res;
      }));
+
+    //  return this.http.post('https://testapi.aiub.edu/ums-auth-api/Token', dt).pipe(map(res =>{
+    //   return res;
+    //  }));
   }
 
   usergetCurrentUserInfo(): Observable<IResult>{

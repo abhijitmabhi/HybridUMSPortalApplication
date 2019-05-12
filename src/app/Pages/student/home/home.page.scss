@@ -1,28 +1,27 @@
-#static-1{
+#static-1 {
   color: primary;
   background-color: primary-contrast;
 }
-#static-2{
+#static-2 {
   color: primary;
   background-color: primary-contrast;
 }
 
 .example-container {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .example-container > * {
-width: 100%;
+  width: 100%;
 }
 
-
-.card_title{
+.card_title {
   font-size: 14px;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
-.schedule_head{
+.schedule_head {
   font-weight: bold;
   color: royalblue;
 }
@@ -37,7 +36,7 @@ width: 100%;
 }
 
 .alignright {
-	float: right;
+  float: right;
 }
 
 ::ng-deep .specific-class > .mat-expansion-indicator:after {
@@ -50,4 +49,9 @@ width: 100%;
 
 .semesterInput{
   max-width: 100% !important;
+}
+  
+ion-select {
+  max-width: 70% !important;
+  text-align: right;
 }

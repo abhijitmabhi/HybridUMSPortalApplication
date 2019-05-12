@@ -73,7 +73,7 @@
 
       <ion-item style="width: 100%; padding: 10px;">
         <ion-label>Select Semester</ion-label>
-        <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
+        <ion-select class="semesterInput" placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
           <ion-select-option *ngFor="let semester of semesterList" [value]="semester.ID"> {{semester.Title}}</ion-select-option>
         </ion-select>
       </ion-item>

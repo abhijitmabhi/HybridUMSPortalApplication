@@ -21,7 +21,7 @@
   <ion-item style="width: 100%; padding: 10px;">
     <ion-label>Select Semester</ion-label>
     <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">
-      <ion-select-option *ngFor="let payroll of reversedPayrollList" [value]="payroll.Value"> {{payroll.Name}}</ion-select-option>
+      <ion-select-option *ngFor="let payroll of payrollList" [value]="payroll.Value"> {{payroll.Name}}</ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -57,7 +57,7 @@
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-expansion-panel [expanded]="false"  *ngFor="let attendance of attendanceList.AttendanceDetailModels">
+    <mat-expansion-panel [expanded]="false"  *ngFor="let attendance of attendanceList">
       <mat-expansion-panel-header>
         <div class="attendance-list-head1">{{attendance.Date}}</div>
         <div class="attendance-list-head2">{{attendance.AllShift}}</div>
@@ -66,6 +66,30 @@
       <mat-panel-description>{{attendance.InOut}}</mat-panel-description>
     </mat-expansion-panel>
   </mat-list>
+
+
+  <!-- JAOWAT's Customise -->
+  <!-- <mat-list dense>
+    <mat-list-item>
+      <div class="attendance-list-head1">
+        <b>Date</b>
+      </div>
+      <div class="attendance-list-head2">
+        <b>InOut</b>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-expansion-panel [expanded]="false"  *ngFor="let attendance of attendanceList">
+      <mat-expansion-panel-header>
+        <div class="attendance-list-head1">{{attendance.Date}}</div>
+        <div class="attendance-list-head2"><b>{{attendance.InOut}}</b></div>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+        <div>Total (Shift):<b>{{attendance.Filo}}</b></div>
+        <div>Total (FI-LO):<b>{{attendance.AllShift}}</b></div>
+      </mat-panel-description>
+    </mat-expansion-panel>
+  </mat-list> -->
 </ion-content>
 
 <ion-footer>

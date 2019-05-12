@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeAttendanceService } from 'src/app/Services/employee/employee-attendance.service';
 
@@ -25,8 +26,7 @@ export class EmployeeAttendancePage implements OnInit {
     {value: 'January, 2019', viewValue: 'January, 2019'}
   ];
 
-  payrolls = [];
-  reversedPayrollList = [];
+  payrollList = [];
   attendanceList:any;
   nrSelect:any;
 
@@ -60,23 +60,34 @@ export class EmployeeAttendancePage implements OnInit {
       let split = payroll.PayMonth.split(" ");
       let month = split[0];
 
-      this.payrolls.push({
+      this.payrollList.push({
           Name:`${year},${month}`,
           Value:payroll.ID
       }); 
     });
-    this.reversedPayrollList = this.payrolls.slice().reverse();
-    this.nrSelect = this.reversedPayrollList[0].Value;
+    this.payrollList = this.payrollList.slice().reverse();
+    this.nrSelect = this.payrollList[0].Value;
   }
 
   onChangePayroll(){
-    this.attService.getAttendance(this.nrSelect).subscribe(res=>{
-      this.attendanceList = res.Data;
-      console.log(this.attendanceList);
 
-      res.Data.AttendanceDetailModels.forEach(element => {
+    let isStart = false;
+
+    this.attService.getAttendance(this.nrSelect).subscribe(res=>{
+
+      this.attendanceList = res.Data.AttendanceDetailModels;
+      this.attendanceList.forEach(element => {
         element.InOut = element.InOut.replace(/<b>/g,'').replace(/<\/b>/g,'').replace(/<br \/>/g,'');
       });
+
+      //JAOWAT's Customise
+      // this.attendanceList = this.attendanceList.slice().reverse().filter(e =>{
+      //   if(e.InOut.match(/IN/) || (isStart && e.InOut.match(/[ Weekly Holiday ]/)))
+      //   {
+      //     isStart = true;
+      //     return e;
+      //   }
+      // });
     });
   }
 }

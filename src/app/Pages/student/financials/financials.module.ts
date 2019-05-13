@@ -5,16 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
-import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import { EmployeeAttendancePage } from './employee-attendance.page';
+import { FinancialsPage } from './financials.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: EmployeeAttendancePage
+    component: FinancialsPage
   }
 ];
 
@@ -25,12 +22,9 @@ const routes: Routes = [
     IonicModule,
     MatDividerModule,
     MatListModule,
-    MatSelectModule,
     MatExpansionModule,
-    MatButtonModule,
-    MatCardModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [EmployeeAttendancePage]
+  declarations: [FinancialsPage]
 })
-export class EmployeeAttendancePageModule {}
+export class FinancialsPageModule {}

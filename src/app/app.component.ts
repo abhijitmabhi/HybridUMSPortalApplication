@@ -26,11 +26,11 @@ export class AppComponent {
     //   url: '/courses-results',
     //   icon: 'document'
     // },
-    // {
-    //   title: 'Registration',
-    //   url: '/registration',
-    //   icon: 'document'
-    // },
+    {
+      title: 'Financials',
+      url: '/financials',
+      icon: 'logo-usd'
+    },
     {
       title: 'Courses & Results',
       url: '/courses-results',

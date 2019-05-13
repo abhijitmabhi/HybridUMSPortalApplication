@@ -37,8 +37,8 @@ export class LoginPage {
     // this.User.password = '26103588';
     this.User.username = '16-31332-1';
     // this.User.username = '1801-1848-3';
-    this.User.password = '243866';
-    // this.User.password = '26103588';
+    // this.User.password = '243866';
+    this.User.password = '26103588';
 
   }
 
@@ -77,7 +77,7 @@ export class LoginPage {
       //Get usertype
       this.userType = res.Data;
 
-      console.log(this.userType);
+      // console.log(this.userType);
 
       localStorage.setItem('userType', this.userType.UserType);
       

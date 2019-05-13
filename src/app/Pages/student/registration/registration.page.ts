@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/Services/common/common.service';
 
 export interface SelectSemester {
   value: any;
@@ -12,7 +13,10 @@ export interface SelectSemester {
 })
 export class RegistrationPage implements OnInit {
 
-  constructor() { }
+  semesterList: any;
+  nrSelect: any;
+
+  constructor(private commonService: CommonService) { }
 
   semesters: SelectSemester[] = [
     {value: '2017-18, Spring', viewValue: '2017-18, Spring'},
@@ -23,6 +27,19 @@ export class RegistrationPage implements OnInit {
   ];
   
   ngOnInit() {
+    this.getSemesterList();
   }
+
+  getSemesterList(){
+    this.commonService.semesterList().subscribe(semesterLists => {
+      this.semesterList = semesterLists.Data;
+      console.log(this.semesterList);
+    })
+  }
+
+  onChangeSemester(){
+    
+  }
+  
 
 }

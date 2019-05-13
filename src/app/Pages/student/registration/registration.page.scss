@@ -1,118 +1,154 @@
-.align-right{
-    text-align: right;
+.align-right {
+  text-align: right;
 }
 
-.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 0 16px !important;
-    position: relative;
-    height: inherit;
+.mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16px !important;
+  position: relative;
+  height: inherit;
 }
 
-.list-item1{
-    width: 70%;
-    text-align: left;
+.example-button-row button,
+.example-button-row a {
+  align-self: center;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 4%;
+  width: 96%;
 }
 
-.list-item2{
-    width: auto;
-    align-items: flex-end;
-    align-content: flex-end;
+.mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16px !important;
+  position: relative;
+  height: inherit;
 }
 
-.chip{
-    width:100%;
+.list-item1 {
+  width: 70%;
+  text-align: left;
 }
 
-.chip-item1{
-    width: 80%;
-    text-align: left;
+.list-item2 {
+  width: auto;
+  align-items: flex-end;
+  align-content: flex-end;
 }
 
-.chip-item2{
-    width: 20%;
-    align-items: flex-end;
-    align-content: flex-end;
+.chip {
+  width: 100%;
 }
 
-.card_title{
-    font-size: 14px;
-    margin-bottom:10px;
-    font-weight: bold;
+.chip-item1 {
+  width: 80%;
+  text-align: left;
 }
 
-.card_padding{
-    margin-top:10px;
-    margin-bottom: 10px;
+.chip-item2 {
+  width: 20%;
+  align-items: flex-end;
+  align-content: flex-end;
 }
 
-.top-card{
-    margin-bottom:20px;
-    margin-top: 10px;
+.card_title {
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.card_padding {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.top-card {
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .mat-list-base .mat-list-item {
-    font-size: 14px;
+  font-size: 14px;
 }
 
-.example-button-row{
-    align-self: center;
-    margin-right: 35%;
-    margin-left: 35%;
-    margin-top: 4%;
-    width: 30%;
+.example-button-row {
+  align-self: center;
+  margin-right: 35%;
+  margin-left: 35%;
+  margin-top: 4%;
+  width: 30%;
 }
 
-.list_padding{
-    margin-top:5px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
+.list_padding {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.button-row{
-    align-self: center;
-    margin-right: 35%;
-    margin-left: 35%;
-    margin-top: 4%;
-    width: 30%;
+.button-row {
+  align-self: center;
+  margin-right: 35%;
+  margin-left: 35%;
+  margin-top: 4%;
+  width: 30%;
 }
 
-.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
-    box-sizing: border-box;
-    position: relative;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    outline: 0;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
-    display: inline-block;
-    white-space: nowrap;
-    text-decoration: none;
-    vertical-align: baseline;
-    text-align: center;
-    margin: 0;
-    min-width: 100%;
-    line-height: 36px;
-    padding: 0 16px;
-    border-radius: 4px;
-    overflow: visible;
-    color: white;
-    background-color: royalblue;
+.mat-button,
+.mat-flat-button,
+.mat-icon-button,
+.mat-stroked-button {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 100%;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 4px;
+  overflow: visible;
+  color: white;
+  background-color: royalblue;
 }
 
-.footerDiv{
-    height: 20px;
-    width: 100%;
+.footerDiv {
+  height: 20px;
+  width: 100%;
 }
 
 ion-select {
-    max-width: 70% !important;
-    text-align: right;
-  }
+  max-width: 70% !important;
+  text-align: right;
+}
+
+.list_padding {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+ion-select {
+  max-width: 70% !important;
+  text-align: right;
+}

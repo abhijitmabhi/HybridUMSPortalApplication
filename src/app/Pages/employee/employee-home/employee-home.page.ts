@@ -1,4 +1,4 @@
-import { LoadingService } from './../../../Core/loader/loading.service';
+import { LoadingService } from 'src/app/core/loader/loading.service';
 import { AlertService } from 'src/app/Core/alert/alert.service';
 import { PushNotificationService } from 'src/app/Core/oneSignal/push-notification.service';
 import { Component, OnInit } from '@angular/core';

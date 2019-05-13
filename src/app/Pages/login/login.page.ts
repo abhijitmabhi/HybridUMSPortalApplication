@@ -35,9 +35,17 @@ export class LoginPage {
 
     // this.User.username = '16-31332-1';
     // this.User.password = '26103588';
+<<<<<<< HEAD
     this.User.password = '243866';
     this.User.username = '1801-1848-3';
     // this.User.password = '58389796';
+=======
+    // this.User.username = '16-31332-1';
+    this.User.username = '1801-1848-3';
+    this.User.password = '58389796';
+    // this.User.password = '26103588';
+
+>>>>>>> Login page modified
   }
 
   ionViewDidEnter() {

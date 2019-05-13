@@ -42,39 +42,6 @@
 //     text-align: center;
 // }
 
-.button-row{
-    align-self: center;
-    margin-right: 35%;
-    margin-left: 35%;
-    margin-top: 4%;
-    width: 30%;
-}
-
-.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
-    box-sizing: border-box;
-    position: relative;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    outline: 0;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
-    display: inline-block;
-    white-space: nowrap;
-    text-decoration: none;
-    vertical-align: baseline;
-    text-align: center;
-    margin: 0;
-    min-width: 100%;
-    line-height: 36px;
-    padding: 0 16px;
-    border-radius: 4px;
-    overflow: visible;
-    color: white;
-    background-color: royalblue;
-}
 
 .footerDiv{
     height: 20px;
@@ -106,4 +73,13 @@ mat-form-field {
   margin-left: 2%;
   margin-top: 4%;
   width: 29.33%;
+}
+
+.desc-head{
+    width: 50%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    text-align: center;
+    align-items: center;
+    align-content: center;
 }

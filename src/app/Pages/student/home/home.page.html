@@ -31,41 +31,41 @@
       <svg:g ngx-bullet-list-preset></svg:g>
     </ngx-content-loading>
   </div>
-  <mat-accordion>
-    <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header
-        style="background-color:rgb(49, 95, 231); color:white; margin-left:5px; margin-right: 5px; margin-top: 5px;">
-        <mat-panel-title style="color:white;">
-          Class Schedule
-        </mat-panel-title>
-        <mat-panel-description>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header
+      style="background-color:rgb(49, 95, 231); color:white; margin-left:5px; margin-right: 5px; margin-top: 5px;">
+      <mat-panel-title style="color:white;">
+        Class Schedule
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-      <mat-list>
-        <div *ngFor="let classSchedule of schedule">
-          <mat-list-item *ngFor="let classInfo of classSchedule.Classes; index as i">
-            <span matLine class="schedule_head" [hidden]="i!=0"
-              style="margin-bottom:2%;">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
-            <span matLine>{{classInfo.SectionDescription }}</span>
-            <span [hidden]="classInfo.SectionID == 0"
-              matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</span>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        </div>
-      </mat-list>
+    <mat-list>
+      <div *ngFor="let classSchedule of schedule">
+        <mat-list-item *ngFor="let classInfo of classSchedule.Classes; index as i">
+          <span matLine class="schedule_head" [hidden]="i!=0"
+            style="margin-bottom:2%;">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
+          <span matLine>{{classInfo.SectionDescription }}</span>
+          <span [hidden]="classInfo.SectionID == 0"
+            matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
 
-    </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header style="background-color:rgb(49, 95, 231); color:white; margin: 5px;">
-        <mat-panel-title style="color:white;">
-          Registration
-        </mat-panel-title>
-        <mat-panel-description>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+  </mat-expansion-panel>
+  <!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"> -->
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header style="background-color:rgb(49, 95, 231); color:white; margin: 5px;">
+      <mat-panel-title style="color:white;">
+        Registration
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-      <!-- <mat-form-field style="width: 100%; padding: 10px;">
+    <!-- <mat-form-field style="width: 100%; padding: 10px;">
         <mat-label>Select Semester</mat-label>
         <mat-select class="align-right" [(ngModel)]='nrSelect' (change)="onChangeSemester($event.value)">
           <mat-option *ngFor="let semester of semesterList" [value]="semester.ID">
@@ -74,28 +74,27 @@
         </mat-select>
       </mat-form-field> -->
 
-      <ion-item style="width: 100%; padding: 10px;">
-        <ion-label style="width:30%;">Semester: </ion-label>
-        <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
-          <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester.ID">
-            {{semester.Title}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+    <ion-item style="width: 100%; padding: 10px;">
+      <ion-label style="width:30%;">Semester: </ion-label>
+      <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
+        <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester.ID">
+          {{semester.Title}}</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-      <mat-card *ngFor="let item of semesterData" style="margin-bottom:20px">
-        <mat-card-content>
-          <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>
-          <mat-card-subtitle>Status : {{item.Valid == true ? 'Valid' : 'Invalid'}}</mat-card-subtitle>
-          <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}}
-            {{item.Result?.TotalMark != null ? '(' + item.Result.TotalMark + ')' : 'Pending' }}</mat-card-subtitle>
-          <mat-divider></mat-divider>
-          <div class="example-button-row">
-            <button mat-button color="primary">TSF</button>
-            <button mat-button color="primary">Notes</button>
-            <button mat-button color="primary">Notice</button>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-expansion-panel>
-  </mat-accordion>
+    <mat-card *ngFor="let item of semesterData" style="margin-bottom:20px">
+      <mat-card-content>
+        <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>
+        <mat-card-subtitle>Status : {{item.Valid == true ? 'Valid' : 'Invalid'}}</mat-card-subtitle>
+        <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}}
+          {{item.Result?.TotalMark != null ? '(' + item.Result.TotalMark + ')' : 'Pending' }}</mat-card-subtitle>
+        <mat-divider></mat-divider>
+        <div class="example-button-row">
+          <button mat-button color="primary">TSF</button>
+          <button mat-button color="primary">Notes</button>
+          <button mat-button color="primary">Notice</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-expansion-panel>
 </ion-content>

@@ -12,7 +12,7 @@ export class ProfileApiService {
   
   constructor(public httpClient: HttpClient) { }
   public getStudentProfile(): Observable<IResult> {
-    return this.httpClient.get<IResult>(`Home/GetStudentProfile`);
+    return this.httpClient.get<IResult>(`Student/GetStudentProfile`);
   }
 
   public getImage(): Observable<any> {

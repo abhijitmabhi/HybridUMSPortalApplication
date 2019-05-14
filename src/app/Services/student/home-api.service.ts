@@ -10,7 +10,7 @@ export class HomeApiService {
   constructor(public httpClient: HttpClient) { }
 
   public schedule(fromDateTime: string, tillDateTime: string): Observable<IResult> {
-    return this.httpClient.get<IResult>(`Home/Schedule?fromDateTime=${fromDateTime}&tillDateTime=${tillDateTime}`);
+    return this.httpClient.get<IResult>(`Student/Schedule?fromDateTime=${fromDateTime}&tillDateTime=${tillDateTime}`);
   }
 
   public savePLayerIDIntoDatabase(PlayerID){
@@ -24,11 +24,11 @@ export class HomeApiService {
   }
 
   public semesterList(): Observable<IResult>{
-    return this.httpClient.get<IResult>(`Home/GetSemesterList`);
+    return this.httpClient.get<IResult>(`Student/GetSemesterList`);
   }
 
   public registeredCoursesBySemester(semesterId: number): Observable<IResult>{
-    return this.httpClient.get<IResult>(`Home/GetCourseList?semesterID=${semesterId}`);
+    return this.httpClient.get<IResult>(`Student/GetCourseList?semesterID=${semesterId}`);
   }
 
   public currentSemester(): Observable<IResult >{

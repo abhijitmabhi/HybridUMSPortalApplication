@@ -17,10 +17,10 @@
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-expansion-panel [expanded]="false">
+    <mat-expansion-panel [expanded]="false" *ngFor="let financialDeatil of financialDeatils?.Accounts">
       <mat-expansion-panel-header>
-        <div class="financials-list-desc1" style="color:dodgerblue;">**Total Fees for SY 2015-2016,1- Spring</div>
-        <div class="financials-list-desc2">132,000.00</div>
+        <div class="financials-list-desc1" style="color:dodgerblue;">{{financialDeatil.TransactionDescription}}</div>
+        <div class="financials-list-desc2">{{financialDeatil.Balance}}</div>
       </mat-expansion-panel-header>
       <mat-panel-description>
         <mat-list-item style="height:auto; margin-top:2%;">
@@ -37,116 +37,13 @@
       </mat-panel-description>
       <mat-panel-description>
         <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
-          <div class="desc-head">29-Nov-2015</div>
-          <div class="desc-head">132,000.00</div>
-          <div class="desc-head">0.00</div>
+          <div class="desc-head">{{financialDeatil.TransactionDate | date:"dd-MMM-yyyy" }}</div>
+          <div class="desc-head">{{financialDeatil.DebitAmount}}</div>
+          <div class="desc-head">{{financialDeatil.CreditAmount}}</div>
         </mat-list-item>
       </mat-panel-description>
     </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="financials-list-desc1"> Semester Payment</div>
-        <div class="financials-list-desc2">0.00</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%;">
-          <div class="desc-head">
-            <b>Date</b>
-          </div>
-          <div class="desc-head">
-            <b>Debit</b>
-          </div>
-          <div class="desc-head">
-            <b>Credit</b>
-          </div>
-        </mat-list-item>
-      </mat-panel-description>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
-          <div class="desc-head">29-Nov-2015</div>
-          <div class="desc-head">0.00</div>
-          <div class="desc-head">132,000.00</div>
-        </mat-list-item>
-      </mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="financials-list-desc1" style="color:dodgerblue;">**Total Fees for SY 2015-2016,2- Summer</div>
-        <div class="financials-list-desc2">87,500.00</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%;">
-          <div class="desc-head">
-            <b>Date</b>
-          </div>
-          <div class="desc-head">
-            <b>Debit</b>
-          </div>
-          <div class="desc-head">
-            <b>Credit</b>
-          </div>
-        </mat-list-item>
-      </mat-panel-description>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
-          <div class="desc-head">10-May-2016</div>
-          <div class="desc-head">87,500.00</div>
-          <div class="desc-head">0.00</div>
-        </mat-list-item>
-      </mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="financials-list-desc1"> Semester Payment</div>
-        <div class="financials-list-desc2">30,000.00</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%;">
-          <div class="desc-head">
-            <b>Date</b>
-          </div>
-          <div class="desc-head">
-            <b>Debit</b>
-          </div>
-          <div class="desc-head">
-            <b>Credit</b>
-          </div>
-        </mat-list-item>
-      </mat-panel-description>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
-          <div class="desc-head">10-May-2016</div>
-          <div class="desc-head">0.00</div>
-          <div class="desc-head">57,500.00</div>
-        </mat-list-item>
-      </mat-panel-description>
-    </mat-expansion-panel>
-    <mat-expansion-panel [expanded]="false">
-      <mat-expansion-panel-header>
-        <div class="financials-list-desc1"> Semester Payment</div>
-        <div class="financials-list-desc2">0.00</div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%;">
-          <div class="desc-head">
-            <b>Date</b>
-          </div>
-          <div class="desc-head">
-            <b>Debit</b>
-          </div>
-          <div class="desc-head">
-            <b>Credit</b>
-          </div>
-        </mat-list-item>
-      </mat-panel-description>
-      <mat-panel-description>
-        <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
-          <div class="desc-head">10-June-2016</div>
-          <div class="desc-head">0.00</div>
-          <div class="desc-head">30,000.00</div>
-        </mat-list-item>
-      </mat-panel-description>
-    </mat-expansion-panel>
+  
   </mat-list>
 </ion-content>
 <ion-footer>
@@ -164,9 +61,13 @@
       </div>
     </mat-list-item>
     <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
-      <div class="desc-head">219,500</div>
-      <div class="desc-head">219,500</div>
+      <div class="desc-head">{{financialDeatils?.TotalDebit}}</div>
+      <div class="desc-head">{{financialDeatils?.TotalCredit}}</div>
+<<<<<<< Updated upstream
+      <div class="desc-head">{{totalBalance}}</div>
+=======
       <div class="desc-head">0.00</div>
+>>>>>>> Stashed changes
     </mat-list-item>
   </mat-list>
 </ion-footer>

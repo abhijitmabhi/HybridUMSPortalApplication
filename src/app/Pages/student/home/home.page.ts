@@ -120,7 +120,7 @@ export class HomePage implements OnInit {
 
   private currentDateTime = new Date();
   private fromDateTime = this.datePipe.transform(this.currentDateTime, 'yyyy-MM-dd HH:mm:ss.SSS');
-  private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate() + 5), 'yyyy-MM-dd HH:mm:ss.SSS');
+  private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate() + 4), 'yyyy-MM-dd HH:mm:ss.SSS');
 
   getSchedule() {
     this.loadingService.loadingStart();

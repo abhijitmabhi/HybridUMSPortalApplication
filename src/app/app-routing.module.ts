@@ -18,13 +18,16 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './Pages/student/profile/profile.module#ProfilePageModule' },
   { path: 'courses-results', loadChildren: './Pages/student/courses-results/courses-results.module#CoursesResultsPageModule' },
   { path: 'registration', loadChildren: './Pages/student/registration/registration.module#RegistrationPageModule' },
+  { path: 'financials', loadChildren: './Pages/student/financials/financials.module#FinancialsPageModule' },
+  { path: 'grades', loadChildren: './Pages/student/grades/grades.module#GradesPageModule' },
 
   //EMPLOYEE
   { path: 'employee-home', loadChildren: './Pages/employee/employee-home/employee-home.module#EmployeeHomePageModule' },
   { path: 'employee-profile', loadChildren: './Pages/employee/employee-profile/employee-profile.module#EmployeeProfilePageModule' },
   
-  { path: 'error-landing', loadChildren: './Core/errorLandingPage/error-landing/error-landing.module#ErrorLandingPageModule' },  { path: 'employee-attendance', loadChildren: './Pages/employee/employee-attendance/employee-attendance.module#EmployeeAttendancePageModule' },
-  { path: 'financials', loadChildren: './Pages/student/financials/financials.module#FinancialsPageModule' }
+  { path: 'error-landing', loadChildren: './Core/errorLandingPage/error-landing/error-landing.module#ErrorLandingPageModule' },
+  { path: 'employee-attendance', loadChildren: './Pages/employee/employee-attendance/employee-attendance.module#EmployeeAttendancePageModule' }
+  
 
   
 ];

@@ -65,15 +65,6 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <!-- <mat-form-field style="width: 100%; padding: 10px;">
-        <mat-label>Select Semester</mat-label>
-        <mat-select class="align-right" [(ngModel)]='nrSelect' (change)="onChangeSemester($event.value)">
-          <mat-option *ngFor="let semester of semesterList" [value]="semester.ID">
-            {{semester.Title}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> -->
-
     <ion-item style="width: 100%; padding: 10px;">
       <ion-label style="width:30%;">Semester: </ion-label>
       <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">

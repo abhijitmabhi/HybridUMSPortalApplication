@@ -21,11 +21,11 @@ export class AppComponent {
       url: '/profile',
       icon: 'person'
     },
-    // {
-    //   title: 'Courses & Results',
-    //   url: '/courses-results',
-    //   icon: 'document'
-    // },
+    {
+      title: 'Grades',
+      url: '/grades',
+      icon: 'ribbon'
+    },
     {
       title: 'Financials',
       url: '/financials',
@@ -34,12 +34,12 @@ export class AppComponent {
     {
       title: 'Courses & Results',
       url: '/courses-results',
-      icon: 'document'
+      icon: 'copy'
     },
     {
       title: 'Registration',
       url: '/registration',
-      icon: 'document'
+      icon: 'flash'
     },
     {
       title: 'Logout',

@@ -8,15 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <!-- <mat-list class="list_padding">
-    <mat-list-item>Semester
-      <mat-select class="align-right">
-        <mat-option *ngFor="let semester of semesters" [value]="semester.value">
-          {{semester.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-list-item>
-  </mat-list> -->
 
   <ion-item style="width: 100%; padding: 10px;">
     <ion-label style="width:30%;">Semester: </ion-label>
@@ -35,55 +26,21 @@
       <mat-card class="card_padding" *ngFor="let registrationDetails of registrationData?.Courses">
         <mat-card-content>
           <mat-card-title class="card_title">{{registrationDetails.Section.Description}}</mat-card-title>
-          <p *ngFor="let sectionDetails of registrationDetails.Section.SectionRoutine">{{sectionDetails.Details}}{{' Room: ' + sectionDetails.Room}}</p>
+          <p *ngFor="let sectionDetails of registrationDetails.Section.SectionRoutine">
+            {{sectionDetails.Details}}{{' Room: ' + sectionDetails.Room}}</p>
           <mat-divider></mat-divider>
-          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 
+          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu:
             {{registrationDetails.LectureCredit + ' -'}}
             {{registrationDetails.ComputerCredit + ' -'}}
             {{registrationDetails.ScienceCredit + ' -'}}
             {{registrationDetails.LanguageCredit + ' -'}}
             {{registrationDetails.StudioCredit}}
           </mat-card-subtitle>
-          <mat-card-title class="card_title">00359-MATHEMATICAL METHODS OF ENGINEERING [G]</mat-card-title>
-          <mat-card-subtitle>(Theory) Time: Sun 12:30 PM - Sun 2:0 PM Room: 1122</mat-card-subtitle>
-          <mat-card-subtitle>(Theory) Time: Tue 12:30 PM - Tue 2:0 PM Room: 1122</mat-card-subtitle>
-          <mat-divider></mat-divider>
-          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 0 - 0 - 0 - 0</mat-card-subtitle>
+
         </mat-card-content>
       </mat-card>
-      <mat-card class="card_padding">
-        <mat-card-content>
-          <mat-card-title class="card_title">00017-ADVANCED TOPICS IN PROGRAMMING III [B]</mat-card-title>
-          <mat-card-subtitle>(Theory) Time: Mon 12:0 PM - Mon 2:0 PM Room: 3113</mat-card-subtitle>
-          <mat-card-subtitle>(Lab) Time: Wed 11:0 - Wed 2:0 PM Room: D0203</mat-card-subtitle>
-          <mat-divider></mat-divider>
-          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 1 - 0 - 0 - 0</mat-card-subtitle>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="card_padding">
-        <mat-card-content>
-          <mat-card-title class="card_title">00310-SOFTWARE REQUIREMENT ENGINEERING [B]</mat-card-title>
-          <mat-card-subtitle>(Theory) Time: Sun 9:30 - Sun 11:0 Room: 3104</mat-card-subtitle>
-          <mat-card-subtitle>(Theory) Time: Tue 9:30 - Tue 11:0 Room: 3104</mat-card-subtitle>
-          <mat-divider></mat-divider>
-          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 0 - 0 - 0 - 0</mat-card-subtitle>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="card_padding">
-        <mat-card-content>
-          <mat-card-title class="card_title">01972-SOFTWARE PROJECT II [G4]</mat-card-title>
-          <mat-divider></mat-divider>
-          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 3 - 0 - 0 - 0 - 0</mat-card-subtitle>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="card_padding">
-        <mat-card-content>
-          <mat-card-title class="card_title">Registered Credits for 2018-19, Summer</mat-card-title>
-          <mat-divider></mat-divider>
-          <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu: 12 - 1 - 0 - 0 - 0</mat-card-subtitle>
-        </mat-card-content>
-      </mat-card>
-   
+
+
     </mat-expansion-panel>
   </mat-accordion>
   <mat-accordion>
@@ -200,7 +157,8 @@
           <div class="list-item1">Amount Paid</div>
           <div class="list-item2">
             <mat-chip-list>
-              <mat-chip style="align-content:flex-end;">{{-registrationData?.Assesment?.CurrentSemesterBalance}}</mat-chip>
+              <mat-chip style="align-content:flex-end;">{{-registrationData?.Assesment?.CurrentSemesterBalance}}
+              </mat-chip>
             </mat-chip-list>
           </div>
         </mat-list-item>

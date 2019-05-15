@@ -11,7 +11,7 @@
 
 <ion-content>
   <mat-list>
-    <mat-list-item class="list_padding">Semesters
+    <mat-list-item class="list_padding">
       <mat-select class="align-right">
         <mat-option *ngFor="let semester of semesters" [value]="semester.value">
           {{semester.viewValue}}
@@ -19,77 +19,79 @@
       </mat-select>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item class="list_padding">Courses
+    <mat-list-item class="list_padding">
       <mat-select class="align-right">
         <mat-option *ngFor="let course of courses" [value]="course.value">
           {{course.viewValue}}
         </mat-option>
       </mat-select>
     </mat-list-item>
-    <mat-list-item class="divider">
-      <h4 style="padding-left: 10px; padding-right: 10px;" matLine>SOFTWARE REQUIREMENT ENGINEERING [B]</h4>
-      <p style="padding-left: 10px; padding-right: 10px;" matLine>Total Mark :100; Passing Mark:50; Contributes:100%</p>
-      <p style="padding-left: 10px; padding-right: 10px;" matLine>A+ (100)</p>
+  </mat-list>
+
+  <mat-list style="background-color:rgb(33, 73, 194); margin:5px;">
+    <mat-list-item style="color: white; font-size: 14px; height: auto; padding-left:1%; padding-top: 2%;">
+      <b>SOFTWARE REQUIREMENT ENGINEERING [B]</b>
     </mat-list-item>
-    <mat-divider></mat-divider>
+    <mat-list-item style="color: white; font-size: 13px; height: auto; padding-left:1%;">Total Mark :100; Passing Mark:50;
+      Contributes:100%</mat-list-item>
+    <mat-list-item style="color: white; font-size: 14px; height: auto; padding-left:1%; padding-bottom: 3%; ">
+      <b>A+ (100)</b>
+    </mat-list-item>
   </mat-list>
 
   <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
-      <mat-panel-title style="color:white;">Midterm for 2018-2019, Spring</mat-panel-title>
-      <mat-panel-description style="color:white;">
-        A+ (100)
-      </mat-panel-description>
+    <mat-expansion-panel-header
+      style="background-color:rgb(51, 100, 247); color: white; margin-left:5px; margin-right: 5px;">
+      <div class="term-head1">Midterm for 2018-2019, Spring</div>
+      <div class="term-head2">A+ (100)</div>
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Attendances</div>
-        <div style="width:20%; text-align: right;">10</div>
+        <div class="left-desc">Attendances</div>
+        <div class="right-desc">10</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Performance</div>
-        <div style="width:20%; text-align: right;">10</div>
+        <div class="left-desc">Performance</div>
+        <div class="right-desc">10</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Quizzes</div>
-        <div style="width:20%; text-align: right;">20</div>
+        <div class="left-desc">Quizzes</div>
+        <div class="right-desc">20</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Written Exam</div>
-        <div style="width:20%; text-align: right;">60</div>
+        <div class="left-desc">Written Exam</div>
+        <div class="right-desc">60</div>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
 
   <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white;">
-      <mat-panel-title style="color:white;">Finalterm for 2018-2019, Spring</mat-panel-title>
-      <mat-panel-description style="color:white;">
-        A+ (100)
-      </mat-panel-description>
+    <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white; margin: 5px;">
+      <div class="term-head1">Finalterm for 2018-2019, Spring</div>
+      <div class="term-head2">A+ (100)</div>
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Attendances</div>
-        <div style="width:20%; text-align: right;">10</div>
+        <div class="left-desc">Attendances</div>
+        <div class="right-desc">10</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Performance</div>
-        <div style="width:20%; text-align: right;">10</div>
+        <div class="left-desc">Performance</div>
+        <div class="right-desc">10</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Quizzes</div>
-        <div style="width:20%; text-align: right;">20</div>
+        <div class="left-desc">Quizzes</div>
+        <div class="right-desc">20</div>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <div style="width:80%; text-align: left;">Written Exam</div>
-        <div style="width:20%; text-align: right;">60</div>
+        <div class="left-desc">Written Exam</div>
+        <div class="right-desc">60</div>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>

@@ -61,9 +61,9 @@
       </div>
     </mat-list-item>
     <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
-      <div class="desc-head">{{financialDeatils?.TotalDebit}}</div>
-      <div class="desc-head">{{financialDeatils?.TotalCredit}}</div>
-      <div class="desc-head">{{totalBalance}}</div>
+      <div class="desc-head">{{financialDeatils?.TotalDebit | number}}</div>
+      <div class="desc-head">{{financialDeatils?.TotalCredit | number}}</div>
+      <div class="desc-head">{{totalBalance | number}}</div>
     </mat-list-item>
   </mat-list>
 </ion-footer>

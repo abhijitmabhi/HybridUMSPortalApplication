@@ -14,5 +14,10 @@ export class CommonService {
     return this.httpClient.get<IResult>(`Student/GetSemesterList`);
   }
 
+  public currentSemester(): Observable<IResult >{
+    return this.httpClient.get<IResult>(`Common/GetCurrentSemester`);
+
+  }
+
  
 }

@@ -6,6 +6,7 @@ import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Router } from '@angular/router';
 import { PushNotificationService } from 'src/app/Core/oneSignal/push-notification.service';
 import { AlertService } from 'src/app/Core/alert/alert.service';
+import { AppModule } from 'src/app/app.module';
 
 
 @Component({
@@ -33,11 +34,13 @@ export class LoginPage {
     this.User = UserModel;
     this.Cred = CredModel;
 
-    // this.User.password = '26103588';
     this.User.password = '243866';
     this.User.username = '16-31332-1';
-    // this.User.username = '1801-1848-3';
     // this.User.password = '58389796';
+    // this.User.username = '16-31332-1';
+    // this.User.password = '26103588';
+    // this.User.username = '16-31332-1';
+    // this.User.username = '1801-1848-3';
   }
 
   ionViewDidEnter() {
@@ -57,13 +60,8 @@ export class LoginPage {
       // console.log(res);
       //Save Token into local torage
       localStorage.setItem('token', this.Cred.access_token);
-
-      //Get UserType
-      //Subscibe to onesignal
-      //get playerID from onesignal
       //Save playerId and userId into database
       this.getUserTypeAndSubscribeOneSignal();
-
     }, err => {
       this.loadingService.loadingDismiss();
       this.alertService.alertError("Something went wrong");
@@ -74,32 +72,23 @@ export class LoginPage {
     this.loginProvider.usergetCurrentUserInfo().subscribe(res => {
       //Get usertype
       this.userType = res.Data;
-
       // console.log(this.userType);
-
       localStorage.setItem('userType', this.userType.UserType);
-      
       //Subscribing to onesignal & retrive player id
       this.pushNotification.oneSignalSubscription();
-
+      //Loader dismissing
       this.loadingService.loadingDismiss();
-
       this.redirect();
-      // this.alertService.Success("Login Success");
     });
   }
 
   redirect(){
     let user_type = localStorage.getItem('userType');
-    // console.log(user_type);
-    if(user_type == "0")
-    {
+    if(user_type == "0"){
         this.menuCtrl.enable(true,"student");
         this.router.navigate(['/home']);
     }
-        
-    if(user_type == "3" || user_type == "1")
-    {
+    if(user_type == "3" || user_type == "1"){
         this.menuCtrl.enable(true,"employee");
         this.router.navigate(['/employee-home']);
     }

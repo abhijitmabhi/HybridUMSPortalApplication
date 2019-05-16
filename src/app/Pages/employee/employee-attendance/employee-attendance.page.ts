@@ -42,7 +42,8 @@ export class EmployeeAttendancePage implements OnInit {
     this.nrSelect = this.payrollList[0].Value;
   }
 
-  onChangePayroll() {
+
+  onChangePayroll(){
 
     this.attService.getAttendance(this.nrSelect).subscribe(res => {
       this.attendanceList = res.Data;
@@ -51,6 +52,7 @@ export class EmployeeAttendancePage implements OnInit {
       });
 
       //JAOWAT's Customise
+      //let isStart = false;
       // this.attendanceList = this.attendanceList.slice().reverse().filter(e =>{
       //   if(e.InOut.match(/IN/) || (isStart && e.InOut.match(/[ Weekly Holiday ]/)))
       //   {

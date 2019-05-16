@@ -6,6 +6,7 @@ import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Router } from '@angular/router';
 import { PushNotificationService } from 'src/app/Core/oneSignal/push-notification.service';
 import { AlertService } from 'src/app/Core/alert/alert.service';
+import {AppModule} from 'src/app/app.module';
 
 
 @Component({

@@ -1,3 +1,4 @@
+
 import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeAttendanceService } from 'src/app/Services/employee/employee-attendance.service';
@@ -15,6 +16,10 @@ export class EmployeeAttendancePage implements OnInit {
   payrollList = [];
   attendanceList: any;
   nrSelect: any;
+
+  //JAOWAT's CUSTOMISE
+  // isCurrentMonth = false;
+  // attendanceCurrentMonth:any;
 
   ngOnInit() {
     this.getPayroll();
@@ -52,14 +57,25 @@ export class EmployeeAttendancePage implements OnInit {
       });
 
       //JAOWAT's Customise
-      //let isStart = false;
-      // this.attendanceList = this.attendanceList.slice().reverse().filter(e =>{
+      // let isStart = false;
+      // this.attendanceCurrentMonth = this.attendanceList.AttendanceDetailModels.slice().reverse().filter(e =>{
       //   if(e.InOut.match(/IN/) || (isStart && e.InOut.match(/[ Weekly Holiday ]/)))
       //   {
       //     isStart = true;
       //     return e;
       //   }
       // });
+      // let split = this.attendanceCurrentMonth[0].Date.split('-');
+      // let currDate = new Date();
+      // let currYear = currDate.getFullYear();
+      // let currMonth = this.month_name(new Date()).substring(0, 3);
+      // if(currYear == split[2] && currMonth == split[1]) this.isCurrentMonth = true;
+      // else this.isCurrentMonth = false;
     });
   }
+  //JAOWAT's Customise
+  // month_name(dt){
+  //   let mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+  //     return mlist[dt.getMonth()];
+  // };
 }

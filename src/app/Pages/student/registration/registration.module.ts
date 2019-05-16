@@ -11,6 +11,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonModule} from '@angular/material/button';
 import { RegistrationPage } from './registration.page';
+import { NgxContentLoadingModule } from 'ngx-content-loading';
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
     MatCardModule,
     MatChipsModule,
     MatButtonModule,
+    NgxContentLoadingModule,
     RouterModule.forChild(routes)
   ],
   declarations: [RegistrationPage]

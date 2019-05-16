@@ -8,7 +8,27 @@
 </ion-header>
 
 <ion-content>
-
+    <div [hidden]="registrationData">
+        <ngx-content-loading [width]="222">
+          <svg:g ngx-facebook-preset></svg:g>
+        </ngx-content-loading>
+    
+        <ngx-content-loading [width]="222">
+          <svg:g ngx-instagram-preset></svg:g>
+        </ngx-content-loading>
+    
+        <ngx-content-loading [width]="280">
+          <svg:g ngx-code-preset></svg:g>
+        </ngx-content-loading>
+    
+        <ngx-content-loading [width]="202">
+          <svg:g ngx-list-preset></svg:g>
+        </ngx-content-loading>
+    
+        <ngx-content-loading [width]="222">
+          <svg:g ngx-bullet-list-preset></svg:g>
+        </ngx-content-loading>
+      </div>
   <ion-item style="width: 100%; padding: 10px;">
     <ion-label style="width:30%;">Semester: </ion-label>
     <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
@@ -27,7 +47,7 @@
         <mat-card-content>
           <mat-card-title class="card_title">{{registrationDetails.Section.Description}}</mat-card-title>
           <p *ngFor="let sectionDetails of registrationDetails.Section.SectionRoutine">
-            {{sectionDetails.Details}}{{' Room: ' + sectionDetails.Room}}</p>
+            {{'(' + sectionDetails.Type + ') ' + sectionDetails.Details}}{{' Room: ' + sectionDetails.Room}}</p>
           <mat-divider></mat-divider>
           <mat-card-subtitle style="padding-top:14px;">Lec-Com-Sci-Lan-Stu:
             {{registrationDetails.LectureCredit + ' -'}}

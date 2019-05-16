@@ -20,12 +20,12 @@ export class LoginApiProvider {
 
   login(user) {
 
-    let formattedPassword = encodeURIComponent("Abhi+Abhijit").replace(/%20/g, '+');
+    let formattedPassword = encodeURIComponent(user.password);
 
     const dt = new HttpParams()
       .set('grant_type','password')
       .set('username', user.username)
-      .set('password', user.password);
+      .set('password', formattedPassword);
 
     // return this.http.post('http://172.16.22.101:41368/Token', dt ).pipe(map(res =>{
     //   return res;

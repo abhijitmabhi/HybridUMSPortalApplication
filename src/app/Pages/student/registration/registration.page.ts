@@ -14,6 +14,10 @@ export class RegistrationPage implements OnInit {
   nrSelect: any;
   registrationData: any;
 
+  color = 'warn';
+  mode = 'indeterminate';
+  value = 50;
+
   constructor(
     private commonService: CommonService,
     private registrationService: RegistrationService,
@@ -45,9 +49,9 @@ export class RegistrationPage implements OnInit {
   }
 
   onChangeSemester() {
-    this.loadingService.loadingStart();
+    // this.loadingService.loadingStart();
     this.registrationService.getRegistrationDetails(this.nrSelect).subscribe(res => {
-      this.loadingService.loadingDismiss();
+      // this.loadingService.loadingDismiss();
       this.registrationData = res.Data;
     })
   }

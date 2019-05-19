@@ -3,32 +3,11 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Registration</ion-title>
+    <ion-title>Assesment</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<mat-progress-bar mode="indeterminate" [color]="color" [hidden]="registrationData"></mat-progress-bar>
 <ion-content>
-    <div [hidden]="registrationData">
-        <ngx-content-loading [width]="222">
-          <svg:g ngx-facebook-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="222">
-          <svg:g ngx-instagram-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="280">
-          <svg:g ngx-code-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="202">
-          <svg:g ngx-list-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="222">
-          <svg:g ngx-bullet-list-preset></svg:g>
-        </ngx-content-loading>
-      </div>
   <ion-item style="width: 100%; padding: 10px;">
     <ion-label style="width:30%;">Semester: </ion-label>
     <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
@@ -43,6 +22,11 @@
         style="background-color:rgb(51, 100, 247); color: white; margin-left:5px; margin-right: 5px; margin-top: 5px;">
         <mat-panel-title style="color:white;">Registered Courses</mat-panel-title>
       </mat-expansion-panel-header>
+      <div [hidden]="registrationData">
+        <ngx-content-loading [width]="222">
+          <svg:g ngx-bullet-list-preset></svg:g>
+        </ngx-content-loading>
+      </div>
       <mat-card class="card_padding" *ngFor="let registrationDetails of registrationData?.Courses">
         <mat-card-content>
           <mat-card-title class="card_title">{{registrationDetails.Section.Description}}</mat-card-title>
@@ -56,10 +40,8 @@
             {{registrationDetails.LanguageCredit + ' -'}}
             {{registrationDetails.StudioCredit}}
           </mat-card-subtitle>
-
         </mat-card-content>
       </mat-card>
-
 
     </mat-expansion-panel>
   </mat-accordion>
@@ -68,7 +50,12 @@
       <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white; margin: 5px;">
         <mat-panel-title style="color:white;">Semester Fees</mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-list densed>
+      <div [hidden]="registrationData">
+        <ngx-content-loading [width]="222">
+          <svg:g ngx-bullet-list-preset></svg:g>
+        </ngx-content-loading>
+      </div>
+      <mat-list densed [hidden]="!registrationData">
         <mat-list-item>
           <div class="list-item1">Admission</div>
           <div class="list-item2">
@@ -191,7 +178,7 @@
           </div>
         </mat-list-item>
       </mat-list>
-      <mat-divider></mat-divider>
+      <!-- <mat-divider></mat-divider> -->
     </mat-expansion-panel>
   </mat-accordion>
 </ion-content>

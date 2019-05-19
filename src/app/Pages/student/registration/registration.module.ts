@@ -12,6 +12,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonModule} from '@angular/material/button';
 import { RegistrationPage } from './registration.page';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const routes: Routes = [
   {
@@ -33,6 +35,8 @@ const routes: Routes = [
     MatChipsModule,
     MatButtonModule,
     NgxContentLoadingModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(routes)
   ],
   declarations: [RegistrationPage]

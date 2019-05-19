@@ -76,14 +76,16 @@
     <mat-card *ngFor="let item of semesterData" style="margin-bottom:20px">
       <mat-card-content>
         <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>
-        <mat-card-subtitle>Status : {{item.Valid == true ? 'Valid' : 'Invalid'}}</mat-card-subtitle>
+        <mat-card-subtitle>Status : <ion-chip [color]="item.Valid? 'success': 'warning'">
+            {{item.Valid ? 'Valid' : 'Invalid'}} </ion-chip>
+        </mat-card-subtitle>
         <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}}
           {{item.Result?.TotalMark != null ? '(' + item.Result.TotalMark + ')' : 'Pending' }}</mat-card-subtitle>
         <mat-divider></mat-divider>
         <div class="example-button-row">
-          <button mat-button color="primary">TSF</button>
-          <button mat-button color="primary">Notes</button>
-          <button mat-button color="primary">Notice</button>
+          <button mat-stroked-button color="primary">TSF</button>
+          <button mat-stroked-button color="primary">Notes</button>
+          <button mat-stroked-button color="primary">Notice</button>
         </div>
       </mat-card-content>
     </mat-card>

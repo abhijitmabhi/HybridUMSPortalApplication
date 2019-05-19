@@ -37,7 +37,7 @@ export class AppComponent {
       icon: 'copy'
     },
     {
-      title: 'Registration',
+      title: 'Assesment',
       url: '/registration',
       icon: 'flash'
     },

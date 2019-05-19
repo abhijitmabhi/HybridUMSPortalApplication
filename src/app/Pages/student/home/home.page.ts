@@ -11,6 +11,7 @@ import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { RouterExtServiceService } from 'src/app/Core/extra_router/router-ext-service.service';
+import { CommonService } from 'src/app/Services/common/common.service';
 
 @Component({
   selector: 'app-home',
@@ -39,9 +40,8 @@ export class HomePage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
-    private loginService: LoginApiProvider,
-    private router: Router,
     private homeApiService: HomeApiService,
+    private commonService: CommonService,
     private loadingService: LoadingService,
     private datePipe: DatePipe,
     iconRegistry: MatIconRegistry,
@@ -140,9 +140,9 @@ export class HomePage implements OnInit {
   }
 
   getSemesterList(){
-    this.homeApiService.semesterList().subscribe(semesterLists => {
+    this.commonService.semesterList().subscribe(semesterLists => {
       this.semesterList = semesterLists.Data;
-      this.homeApiService.currentSemester().subscribe(currentSemester => {
+      this.commonService.currentSemester().subscribe(currentSemester => {
         let currentSemesterId = currentSemester.Data.ID;
         let isCurrentSemesterEnrolled = false;
         this.semesterList.forEach(semester => {
@@ -161,9 +161,9 @@ export class HomePage implements OnInit {
   }
 
   onChangeSemester(){
-    this.homeApiService.registeredCoursesBySemester(this.nrSelect).subscribe(res => {
-    this.semesterData = res.Data;
-    })
+    this.commonService.registeredCoursesBySemester(this.nrSelect).subscribe(res => {
+      this.semesterData = res.Data;
+    });
   }
 
 }

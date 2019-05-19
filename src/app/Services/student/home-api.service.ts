@@ -22,17 +22,4 @@ export class HomeApiService {
     // }));
     return this.httpClient.post(`Notification/MapPlayerId`, dt);
   }
-
-  public semesterList(): Observable<IResult>{
-    return this.httpClient.get<IResult>(`Student/GetSemesterList`);
-  }
-
-  public registeredCoursesBySemester(semesterId: number): Observable<IResult>{
-    return this.httpClient.get<IResult>(`Student/GetCourseList?semesterID=${semesterId}`);
-  }
-
-  public currentSemester(): Observable<IResult >{
-    return this.httpClient.get<IResult>(`Common/GetCurrentSemester`);
-
-  }
 }

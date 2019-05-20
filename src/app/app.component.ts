@@ -17,21 +17,6 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Profile',
-      url: '/profile',
-      icon: 'person'
-    },
-    {
-      title: 'Grades',
-      url: '/grades',
-      icon: 'ribbon'
-    },
-    {
-      title: 'Financials',
-      url: '/financials',
-      icon: 'logo-usd'
-    },
-    {
       title: 'Courses & Results',
       url: '/courses-results',
       icon: 'copy'
@@ -40,6 +25,26 @@ export class AppComponent {
       title: 'Assesment',
       url: '/registration',
       icon: 'flash'
+    }, 
+    {
+      title: 'Offered Courses',
+      url: '/offered-courses',
+      icon: 'book'
+    },
+    {
+      title: 'Financials',
+      url: '/financials',
+      icon: 'logo-usd'
+    },
+    {
+      title: 'Grades',
+      url: '/grades',
+      icon: 'ribbon'
+    },
+    {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'person'
     },
     {
       title: 'Logout',

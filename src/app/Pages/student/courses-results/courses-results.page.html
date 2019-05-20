@@ -56,7 +56,8 @@
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white; margin-left:5px; margin-right: 5px;">
       <div class="term-head1">{{ midtermResult?.Title }} (Total: {{ midtermResult?.ExamCourse?.TotalMark  }}; Pass:{{ midtermResult?.ExamCourse?.PassMark  }}; Contributes:{{ midtermResult?.ExamCourse?.Percent  }}%)</div>
-      <div class="term-head2">{{ midtermResult?.ExamCourseResult?.ResultantGrade?.Grade }}( {{ midtermResult?.ExamCourseResult?.TotalMark - midtermResult?.ExamCourseResult?.Bonus }}<span [hidden]="midtermResult.ExamCourseResult?.Bonus == 0">/{{ midtermResult?.ExamCourseResult?.Bonus }}</span>  )</div>
+      <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult === null">{{ midtermResult?.ExamCourseResult?.ResultantGrade?.Grade }}( {{ midtermResult?.ExamCourseResult?.TotalMark - midtermResult?.ExamCourseResult?.Bonus }}<span [hidden]="midtermResult?.ExamCourseResult?.Bonus == 0">/{{ midtermResult?.ExamCourseResult?.Bonus }}</span>  )</div>
+      <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult !== null">-(-)</div>
     </mat-expansion-panel-header>
     <mat-list *ngFor="let midResult of midtermResult?.Components">
       <mat-list-item>
@@ -75,7 +76,8 @@
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header style="background-color:rgb(51, 100, 247); color: white; margin: 5px;">
         <div class="term-head1">{{ finaltermResult?.Title }} (Total: {{ finaltermResult?.ExamCourse?.TotalMark  }}; Pass:{{ finaltermResult?.ExamCourse?.PassMark  }}; Contributes:{{ finaltermResult?.ExamCourse?.Percent  }}%)</div>
-        <div class="term-head2">{{ finaltermResult?.ExamCourseResult?.ResultantGrade?.Grade }}( {{ finaltermResult?.ExamCourseResult?.TotalMark - finaltermResult?.ExamCourseResult?.Bonus }}<span [hidden]="finaltermResult.ExamCourseResult?.Bonus == 0">/{{ finaltermResult?.ExamCourseResult?.Bonus }}</span>  )</div>
+        <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult === null">{{ finaltermResult?.ExamCourseResult?.ResultantGrade?.Grade }}( {{ finaltermResult?.ExamCourseResult?.TotalMark - finaltermResult?.ExamCourseResult?.Bonus }}<span [hidden]="finaltermResult?.ExamCourseResult?.Bonus == 0">/{{ finaltermResult?.ExamCourseResult?.Bonus }}</span>  )</div>
+        <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult !== null">-(-)</div>
     </mat-expansion-panel-header>
     <mat-list *ngFor="let finalResult of finaltermResult?.Components">
         <mat-list-item>

@@ -30,6 +30,10 @@ export class HomePage implements OnInit {
   RegistrationHideFlag = true;
   ScheduleHideFlag = true;
 
+  color = 'warn';
+  mode = 'indeterminate';
+  value = 50;
+
   public schedule: any;
   playerID: any;
   semesterList: any;

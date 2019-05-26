@@ -72,7 +72,12 @@
           {{semester.Title}}</ion-select-option>
       </ion-select>
     </ion-item>
-
+    <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="semesterData"></mat-progress-bar>
+    <div [hidden]="semesterData">
+        <ngx-content-loading [width]="222">
+          <svg:g ngx-bullet-list-preset></svg:g>
+        </ngx-content-loading>
+      </div>
     <mat-card *ngFor="let item of semesterData" style="margin-bottom:20px">
       <mat-card-content>
         <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>

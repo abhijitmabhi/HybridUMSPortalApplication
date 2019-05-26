@@ -1,3 +1,4 @@
+import { OfferedCoursesService } from './../../../Services/student/offered-courses.service';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
@@ -11,9 +12,9 @@ NgModule({
 })
 
 export interface OfferedCourses {
-  course: any;
-  time1: any;
-  time2: any;
+  Description: any;
+  StudentCount: any;
+  Capacity: any;
 }
 
 @Component({
@@ -23,57 +24,75 @@ export interface OfferedCourses {
 })
 
 export class OfferedCoursesPage implements OnInit {
+  color = 'warn';
+  mode = 'indeterminate';
+  value = 50;
+
+  listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['course', 'time'];
-  dataSource = new MatTableDataSource<OfferedCourses>(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.listData.filter = filterValue.trim().toLowerCase();
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor() { }
+  
+  constructor(private offeredCoursesService: OfferedCoursesService) { }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    this.offeredCoursesService.getOfferedCourses().subscribe(res => {
+      this.listData = new MatTableDataSource(res.Data);
+      this.listData.paginator = this.paginator;
+      console.log(this.listData);
+    });
+    // this.dataSource.paginator = this.paginator;
+  }
+
+  getOfferedCourses(){
+    this.offeredCoursesService.getOfferedCourses().subscribe(res => {
+      this.listData = new MatTableDataSource(res.Data);
+      this.listData.paginator = this.paginator;
+      console.log(this.listData);
+    });
   }
 }
 
-const ELEMENT_DATA: OfferedCourses[] = [
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
-  {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'}
-];
+// const ELEMENT_DATA: OfferedCourses[] = [
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - ADVANCED COMPUTER NETWORKS [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'},
+//   {course: '00001 - HAHAHA HAHAHA HAHAHAH [A] 37/40', time1: 'Th: S 10:00 AM - 12:00 PM [3103]', time2: 'Lab: T 11:00 AM - 02:AM [D0202]'}
+// ];

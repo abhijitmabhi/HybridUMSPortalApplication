@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesResultsService } from 'src/app/Services/student/courses-results.service';
-import { LoadingService } from 'src/app/Core/loader/loading.service';
 import { CommonService } from 'src/app/Services/common/common.service';
+import { LoadingService } from 'src/app/Core/loader/loading.service';
 
 @Component({
   selector: 'app-courses-results',

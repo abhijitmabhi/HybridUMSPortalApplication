@@ -27,11 +27,6 @@ export class AppComponent {
       icon: 'flash'
     }, 
     {
-      title: 'Registration',
-      url: '/registration',
-      icon: 'flash'
-    },
-    {
       title: 'Offered Courses',
       url: '/offered-courses',
       icon: 'book'

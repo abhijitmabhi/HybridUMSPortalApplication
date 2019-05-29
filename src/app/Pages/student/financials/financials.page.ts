@@ -34,5 +34,4 @@ export class FinancialsPage implements OnInit {
     let result = debit - credit;
     return Number(result.toFixed(2));
   }
-
 }

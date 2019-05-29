@@ -107,5 +107,4 @@ export class HomePage implements OnInit {
       this.semesterData = res.Data;
     });
   }
-
 }

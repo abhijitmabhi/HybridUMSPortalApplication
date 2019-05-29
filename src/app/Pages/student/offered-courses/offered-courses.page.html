@@ -10,8 +10,8 @@
 </ion-header>
 
 <ion-content>
-  <div class="mat-elevation-z8">
-    <mat-form-field>
+  <div>
+    <mat-form-field style="margin-top: 2%; margin-left: 2%; margin-right: 2%;">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Course">
     </mat-form-field>
     
@@ -33,7 +33,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="listData"></mat-progress-bar>
-    <div [hidden]="listData">
+    <div [hidden]="listData" style="margin-top: 6%;">
         <ngx-content-loading [width]="222">
           <svg:g ngx-bullet-list-preset></svg:g>
         </ngx-content-loading>

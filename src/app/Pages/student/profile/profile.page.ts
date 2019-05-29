@@ -50,7 +50,7 @@ export class ProfilePage {
       });
   }
 
-  public goToPrevious(): void {
+  public goToPrevious(): void { 
     let previous = this.routerExtService.getPreviousUrl();
     console.log(`Previous URL in profile: ${previous}`);
   }

@@ -1,49 +1,72 @@
-<ion-content [hidden]="isShowLoginPage">
-  <div class="container">
-    <img class="loginLogo" alt="AIUB LOGO" src="../../../assets/icon/aiub_logo.png">
-    <form (ngSubmit)="logForm()">
-    <div class="login-box">
-      <h1>Login</h1>
-      <ion-list>
-          <ion-item>
-            <ion-label position="floating">Username</ion-label>
-            <ion-input name = "user" type="text" [(ngModel)]="User.username" ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input name="pass" type="password" [(ngModel)]="User.password" ></ion-input>
-          </ion-item>
-        </ion-list>
-      <button type="submit" class="loginButton">Login</button>
-    </div>
-  </form>
+<ion-content class="mainContent">
+  <ion-grid class="main">
+      <div> 
+          <div class = "centerElement">
+              <div class="contentCard">
+                  <ion-grid>
+                      <ion-row text-center>
+                        <ion-col no-padding>
+                            <div class="logoContainer">
+                                <!-- <img class="pageLogo" src="../../../../../assets/logos/aiub_bg.png" alt="Description" /> -->
+                                <img class="pageLogo" alt="Description" src="../../../assets/icon/aiub_logo.png">
+                            </div>
+                            <div style="margin-top: -10px;">
+                                <blockquote class="aiubTitle">
+                                    <p>AMERICAN INTERNATIONAL UNIVERSITY-BANGLADESH</p>
+                                    <small class="aiub_slogan"> -- where leaders are created.</small>
+                                </blockquote>
+                            </div>
+      
+                            <div style="padding: 10px; margin-bottom: 30px;">
+                                <!-- Login form -->
+                                <form class="list-form">
+                                  <ion-item style="margin: -5px;">
+                                    <ion-label>
+                                      <ion-icon style="height: 20px; width: 20px;" name="ios-person" item-start class="text-primary"></ion-icon>
+                                    </ion-label>
+                                    <ion-input #Username name="Username" placeholder="Username" type="text" [(ngModel)]="User.username"></ion-input>
+                                  </ion-item>
+      
+                                  <ion-item style="margin: -5px;">
+                                      <ion-label>
+                                        <ion-icon style="height: 20px; width: 20px;" ios="ios-key" md="md-key" item-start class="text-primary"></ion-icon>
+                                      </ion-label>
+                                      <ion-input #password name="password" type="password" placeholder="Password" [(ngModel)]="User.password"></ion-input>
+                                      <ion-button icon-only clear (click)="showPassword()" item-end class="showPassButton">
+                                          <ion-icon style="height: 20px; width: 20px;" [name]="visible ? 'eye' : 'eye-off'"></ion-icon>
+                                        </ion-button>
+                                    </ion-item>
 
-  <!-- Login form -->
-  <!-- <form class="list-form">
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="usr" item-start class="text-primary"></ion-icon>
-          ID
-        </ion-label>
-        <ion-input name = "user" type="text" [(ngModel)]="User.username" ></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>
-          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Password
-        </ion-label>
-        <ion-input name="pass" type="password" [(ngModel)]="User.password" ></ion-input>
-      </ion-item>
-    </form>
-
-    <div>
-      <button ion-button icon-start block color="dark" tappable (click)="logForm()">
-        <ion-icon name="log-in"></ion-icon>
-        Login
-      </button>
-    </div> -->
-  </div>
+                                    <ion-item style="margin: -5px;" lines="none">
+                                        <ion-checkbox name="RememberMe" [(ngModel)]="User.isRemember"></ion-checkbox>
+                                        <ion-label style="
+                                        font-size: 18px;
+                                        padding-left: 10px;">Remember Me!</ion-label>
+                                      </ion-item>
+      
+                                  <div text-center>
+                                      <ion-button class="margin-top-10 loginButton" shape="round" (click)="Login()">LOGIN</ion-button>
+                                  </div>
+                                </form>
+                            </div>
+                            
+                        </ion-col>
+                      </ion-row>
+                  </ion-grid>
+              </div>
+          </div>
+          <div class="bottom">
+              <button style="margin-top: 15px;" class="aiubButton" ion-button block clear (click)="GoTOAiubWebSite()">GO TO AIUB.EDU</button>
+              <!-- <a (click)="GoTOAiubWebSite()" style="font-weight: 500; text-decoration: none !important;">
+                <div class="anchorButtonContent">
+                  <div>
+                    GO TO AIUB.EDU
+                  </div>
+                </div>
+              </a> -->
+          </div> 
+      </div>
+  </ion-grid>
 </ion-content>
 
 

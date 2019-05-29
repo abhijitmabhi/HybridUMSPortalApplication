@@ -1,12 +1,11 @@
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { UserModel, CredModel } from './loginModel';
-import { Component } from '@angular/core';
-import { MenuController, AlertController } from '@ionic/angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { MenuController, AlertController, IonInput } from '@ionic/angular';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Router } from '@angular/router';
 import { PushNotificationService } from 'src/app/Core/oneSignal/push-notification.service';
 import { AlertService } from 'src/app/Core/alert/alert.service';
-import { AppModule } from 'src/app/app.module';
 
 
 @Component({
@@ -16,10 +15,14 @@ import { AppModule } from 'src/app/app.module';
 })
 export class LoginPage {
 
+  @ViewChild('password', { read: ElementRef }) private password: ElementRef;
+  @ViewChild('Username') private username: IonInput;
+
   User: any;
+  visible: boolean = false;
   Cred: any;
   userType: any;
-  isShowLoginPage:any;
+  isShowLoginPage: any;
 
   constructor(
     private loginProvider: LoginApiProvider,
@@ -54,12 +57,41 @@ export class LoginPage {
       this.isShowLoginPage = true;
       this.redirect();
     }
-    else{
+    else {
       this.isShowLoginPage = false;
-    } 
+    }
   }
 
-  logForm() {
+  async Login() {
+
+    if (this.User.username) {
+      if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))
+        || (/^[0-9]{4}-[0-9]{4}-[1-3]$/i.test(this.User.username))) {
+        // await this.showAlert('Info', this.User.username);
+      } else {
+        await this.showAlert('Error', 'Invalid Username!');
+        return;
+      }
+    } else {
+      await this.showAlert('Warning', 'Username is requried!');
+      return;
+    }
+
+    if (this.User.password) {
+      // await this.showAlert('Info', this.User.password);
+    } else {
+      await this.showAlert('Warning', 'Password is requried!');
+      return;
+    }
+
+
+    if (this.User.isRemember) {
+      // await this.showAlert('Info', 'Store User Info');
+    } else {
+      // await this.showAlert('Info', 'Clear User Info');
+    }
+
+
     this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res => {
       this.Cred = res;
@@ -71,7 +103,7 @@ export class LoginPage {
     }, err => {
       this.loadingService.loadingDismiss();
       this.alertService.alertError("Something went wrong");
-    }); 
+    });
   }
 
   async getUserTypeAndSubscribeOneSignal() {
@@ -88,16 +120,41 @@ export class LoginPage {
     });
   }
 
-  redirect(){
+  redirect() {
     let user_type = localStorage.getItem('userType');
-    if(user_type == "0"){
-        this.menuCtrl.enable(true,"student");
-        this.router.navigate(['/home']);
+    if (user_type == "0") {
+      this.menuCtrl.enable(true, "student");
+      this.router.navigate(['/home']);
     }
-    if(user_type == "3" || user_type == "1"){
-        this.menuCtrl.enable(true,"employee");
-        this.router.navigate(['/employee-home']);
+    if (user_type == "3" || user_type == "1") {
+      this.menuCtrl.enable(true, "employee");
+      this.router.navigate(['/employee-home']);
     }
+  }
+
+  GoTOAiubWebSite() {
+    window.open('https://www.aiub.edu/', '_system');
+  }
+
+  showPassword() {
+    if (this.visible) {
+      this.visible = false;
+      this.password.nativeElement.setAttribute('type', 'password');
+    } else {
+      this.visible = true;
+      this.password.nativeElement.setAttribute('type', 'text');
+    }
+  }
+
+  async showAlert(title: string, message: string) {
+    const alert = await this.alertCtrl.create({
+      header: title,
+      //subHeader: message,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

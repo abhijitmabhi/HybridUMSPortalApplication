@@ -52,68 +52,6 @@ export class HomePage implements OnInit {
     private pushNotification: PushNotificationService,
     private alertService: AlertService,
     sanitizer: DomSanitizer) {
-
-    this.dashboard =
-      {
-        UserID: '16-31332-1',
-        Semesters: [
-          {
-            ID: 1,
-            Title: "2015-2016, Spring"
-          },
-          {
-            ID: 2,
-            Title: "2017-2018, Summer"
-          }
-        ],
-        Courses: [
-          {
-            ID: '00359',
-            Grade: 'A-',
-            Marks: 86.00,
-            Section: 'G',
-            Status: 'Valid',
-            Title: 'MATHEMATICAL METHODS OF ENGINEERING',
-            SemesterID: '10'
-          },
-          {
-            ID: '00017',
-            Grade: 'A+',
-            Marks: 99.00,
-            Section: 'B',
-            Status: 'Valid',
-            Title: 'ADVANCED TOPICS IN PROGRAMMING III',
-            SemesterID: '10'
-          },
-          {
-            ID: '00310',
-            Grade: 'A+',
-            Marks: 96.00,
-            Section: 'B',
-            Status: 'Valid',
-            Title: 'SOFTWARE REQUIREMENT ENGINEERING',
-            SemesterID: '10'
-          },
-          {
-            ID: '01972',
-            Grade: 'A+',
-            Marks: 94.00,
-            Section: 'G4',
-            Status: 'Valid',
-            Title: 'SOFTWARE PROJECT II',
-            SemesterID: '10'
-          },
-        ]
-      };
-    iconRegistry.addSvgIcon(
-      'tsf',
-      sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/tsf.svg'));
-    iconRegistry.addSvgIcon(
-      'notes',
-      sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notes.svg'));
-    iconRegistry.addSvgIcon(
-      'notice',
-      sanitizer.bypassSecurityTrustResourceUrl('src/assets/icon/notice.svg'));
   }
 
   ngOnInit() {

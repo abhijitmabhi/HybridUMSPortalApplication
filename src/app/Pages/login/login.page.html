@@ -20,7 +20,7 @@
                 <div style="padding: 10px; margin-bottom: 30px;">
                   <!-- Login form -->
                   <form class="list-form">
-                    <ion-item style="margin: -5px;">
+                    <ion-item>
                       <ion-label>
                         <ion-icon style="height: 20px; width: 20px;" name="ios-person" item-start class="text-primary">
                         </ion-icon>
@@ -29,7 +29,7 @@
                         [(ngModel)]="User.username"></ion-input>
                     </ion-item>
 
-                    <ion-item style="margin: -5px;">
+                    <ion-item>
                       <ion-label>
                         <ion-icon style="height: 20px; width: 20px;" ios="ios-key" md="md-key" item-start
                           class="text-primary"></ion-icon>
@@ -41,11 +41,9 @@
                       </ion-button>
                     </ion-item>
 
-                    <ion-item style="margin: -5px;" lines="none">
+                    <ion-item lines="none">
                       <ion-checkbox name="RememberMe" [(ngModel)]="User.isRemember"></ion-checkbox>
-                      <ion-label style="
-                                        font-size: 18px;
-                                        padding-left: 10px;">Remember Me!</ion-label>
+                      <ion-label style="font-size: 18px; padding-left: 10px;">Remember Me!</ion-label>
                     </ion-item>
 
                     <div text-center>

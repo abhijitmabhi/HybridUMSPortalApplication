@@ -31,13 +31,13 @@ export class LoginApiProvider {
     //   return res;
     //  }));
 
-    //  return this.http.post('http://172.16.22.101:2694/Token', dt ).pipe(map(res =>{
-    //   return res;
-    //  }));
-
-     return this.http.post('https://testapi.aiub.edu/ums-auth-api/Token', dt).pipe(map(res =>{
+     return this.http.post('http://172.16.22.101:2694/Token', dt ).pipe(map(res =>{
       return res;
      }));
+
+    //  return this.http.post('https://testapi.aiub.edu/ums-auth-api/Token', dt).pipe(map(res =>{
+    //   return res;
+    //  }));
   }
 
   usergetCurrentUserInfo(): Observable<IResult>{

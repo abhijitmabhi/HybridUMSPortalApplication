@@ -16,31 +16,31 @@ export class AppComponent {
       url: '/home',
       icon: 'home'
     },
-    {
-      title: 'Courses & Results',
-      url: '/courses-results',
-      icon: 'copy'
-    },
-    {
-      title: 'Assesment',
-      url: '/registration',
-      icon: 'flash'
-    }, 
-    {
-      title: 'Offered Courses',
-      url: '/offered-courses',
-      icon: 'book'
-    },
-    {
-      title: 'Financials',
-      url: '/financials',
-      icon: 'logo-usd'
-    },
-    {
-      title: 'Grades',
-      url: '/grades',
-      icon: 'ribbon'
-    },
+    // {
+    //   title: 'Courses & Results',
+    //   url: '/courses-results',
+    //   icon: 'copy'
+    // },
+    // {
+    //   title: 'Assesment',
+    //   url: '/registration',
+    //   icon: 'flash'
+    // }, 
+    // {
+    //   title: 'Offered Courses',
+    //   url: '/offered-courses',
+    //   icon: 'book'
+    // },
+    // {
+    //   title: 'Financials',
+    //   url: '/financials',
+    //   icon: 'logo-usd'
+    // },
+    // {
+    //   title: 'Grades',
+    //   url: '/grades',
+    //   icon: 'ribbon'
+    // },
     {
       title: 'Profile',
       url: '/profile',

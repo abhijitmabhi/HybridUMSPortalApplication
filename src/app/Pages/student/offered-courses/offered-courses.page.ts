@@ -40,12 +40,7 @@ export class OfferedCoursesPage implements OnInit {
   constructor(private offeredCoursesService: OfferedCoursesService) { }
 
   ngOnInit() {
-    this.offeredCoursesService.getOfferedCourses().subscribe(res => {
-      this.listData = new MatTableDataSource(res.Data);
-      this.listData.paginator = this.paginator;
-      console.log(this.listData);
-    });
-    // this.dataSource.paginator = this.paginator;
+    this.getOfferedCourses();
   }
 
   getOfferedCourses(){

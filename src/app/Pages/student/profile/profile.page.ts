@@ -43,6 +43,7 @@ export class ProfilePage {
     this.profileApiService.getStudentProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.profile = res.Data;
+      console.log(this.profile);
     },
       error => {
         this.loadingService.loadingDismiss();

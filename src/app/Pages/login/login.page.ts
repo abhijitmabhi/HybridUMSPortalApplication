@@ -87,29 +87,25 @@ export class LoginPage {
     this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res => {
       this.Cred = res;
+      //Detect User Type
+      localStorage.setItem('userType', this.Cred.UserTypeID);
       // console.log(res);
       //Save Token into local torage
       localStorage.setItem('token', this.Cred.access_token);
       //Save playerId and userId into database
-      this.getUserTypeAndSubscribeOneSignal();
+      this.subscribeOneSignal();
     }, err => {
       this.loadingService.loadingDismiss();
       this.alertService.alertError("Something went wrong");
     });
   }
 
-  async getUserTypeAndSubscribeOneSignal() {
-    this.loginProvider.usergetCurrentUserInfo().subscribe(res => {
-      //Get usertype
-      this.userType = res.Data;
-      // console.log(this.userType);
-      localStorage.setItem('userType', this.userType.UserType);
-      //Subscribing to onesignal & retrive player id
-      this.pushNotification.oneSignalSubscription();
-      //Loader dismissing
-      this.loadingService.loadingDismiss();
-      this.redirect();
-    });
+  async subscribeOneSignal() {
+    //Subscribing to onesignal & retrive player id
+    this.pushNotification.oneSignalSubscription();
+    //Loader dismissing
+    this.loadingService.loadingDismiss();
+    this.redirect();
   }
 
   redirect() {

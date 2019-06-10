@@ -40,4 +40,8 @@ export class PushNotificationService {
             });
         });
     }
+
+    unsubscribeFromNotification(){
+        this.oneSignal.setSubscription(false);
+    }
 }

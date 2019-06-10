@@ -30,6 +30,7 @@ export class HomePage implements OnInit {
   RegistrationHideFlag = true;
   ScheduleHideFlag = true;
 
+  //ProgressBar
   color = 'warn';
   mode = 'indeterminate';
   value = 50;

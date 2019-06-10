@@ -21,6 +21,11 @@ export class EmployeeAttendancePage implements OnInit {
   // isCurrentMonth = false;
   // attendanceCurrentMonth:any;
 
+  //ProgressBar
+  color = 'warn';
+  mode = 'indeterminate';
+  value = 50;
+
   ngOnInit() {
     this.getPayroll();
   }

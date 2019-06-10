@@ -40,8 +40,8 @@ export class LoginApiProvider {
     //  }));
   }
 
-  usergetCurrentUserInfo(): Observable<IResult>{
-    return this.http.get<IResult>(`Common/GetCurrentUserInfo`);
-  }
+  // usergetCurrentUserInfo(): Observable<IResult>{
+  //   return this.http.get<IResult>(`Common/GetCurrentUserInfo`);
+  // }
  
 }

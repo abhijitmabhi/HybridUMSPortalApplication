@@ -9,7 +9,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { EmployeeAttendancePage } from './employee-attendance.page';
+import {EmployeeAttendancePage} from './employee-attendance.page';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     MatExpansionModule,
     MatButtonModule,
     MatCardModule,
+    MatProgressBarModule,
     RouterModule.forChild(routes)
   ],
   declarations: [EmployeeAttendancePage]

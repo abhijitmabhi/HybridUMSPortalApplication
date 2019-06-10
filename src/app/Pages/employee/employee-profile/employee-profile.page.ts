@@ -30,7 +30,6 @@ export class EmployeeProfilePage implements OnInit {
     this.profileService.getEmployeeProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.profile = res.Data;
-      console.log(this.profile);
     },
       error => {
         this.loadingService.loadingDismiss();

@@ -57,6 +57,7 @@ export class EmployeeAttendancePage implements OnInit {
 
     this.attService.getAttendance(this.nrSelect).subscribe(res => {
       this.attendanceList = res.Data;
+      console.log(this.attendanceList);
       this.attendanceList.AttendanceDetailModels.forEach(element => {
         element.InOut = element.InOut.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '');
       });

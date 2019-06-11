@@ -19,7 +19,6 @@ export class CoursesResultsPage implements OnInit {
   nrSelect1: any;
   midtermResult:any;
   finaltermResult:any;
-
   courseName:any;
   finalGradeText:any;
 
@@ -90,8 +89,8 @@ export class CoursesResultsPage implements OnInit {
       this.midtermResult = res.Data.Exams[0];
       this.finaltermResult = res.Data.Exams[1];
 
-      console.log(this.midtermResult );
-      console.log(this.finaltermResult );
+      // console.log(this.midtermResult );
+      // console.log(this.finaltermResult );
     });
 
     this.loadingService.loadingDismiss();

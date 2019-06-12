@@ -2,7 +2,7 @@
 import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeAttendanceService } from 'src/app/Services/employee/employee-attendance.service';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-employee-attendance',
@@ -11,11 +11,13 @@ import { EmployeeAttendanceService } from 'src/app/Services/employee/employee-at
 })
 export class EmployeeAttendancePage implements OnInit {
 
-  constructor(public attService: EmployeeAttendanceService) { }
+  constructor(public attService: EmployeeAttendanceService, private datePipe: DatePipe) { }
 
   payrollList = [];
   attendanceList: any;
   nrSelect: any;
+  private currentDateTime = new Date();
+  private today = this.datePipe.transform(this.currentDateTime, 'dd-MMM-yyyy');
 
   //JAOWAT's CUSTOMISE
   // isCurrentMonth = false;

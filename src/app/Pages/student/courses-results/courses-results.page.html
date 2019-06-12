@@ -52,8 +52,8 @@
         </div>
       </div>
       <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult === null">
-        {{ midtermResult?.ExamCourseResult?.ResultantGrade?.Grade }} ({{ midtermResult?.ExamCourseResult?.TotalMark - midtermResult?.ExamCourseResult?.Bonus }}<span
-          [hidden]="midtermResult?.ExamCourseResult?.Bonus == 0">/{{ midtermResult?.ExamCourseResult?.Bonus }}</span>)
+        {{ midtermResult?.ExamCourseResult?.ResultantGrade?.Grade }} ({{ midtermResult?.ExamCourseResult?.TotalMark - midtermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}<span
+          [hidden]="midtermResult?.ExamCourseResult?.Bonus == 0">/{{ midtermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}</span>)
       </div>
       <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult !== null">- (-)</div>
     </mat-expansion-panel-header>
@@ -63,13 +63,13 @@
           <b>{{ midResult?.CourseComponent?.Title }}</b>
         </div>
         <div class="right-desc">
-          <b>{{ midResult?.Result?.Mark }}</b>
+          <b>{{ midResult?.Result?.Mark | number:'.0-2' }}</b>
         </div>
         <mat-divider></mat-divider>
       </mat-list-item>
       <mat-list-item *ngFor="let element of midResult?.Elements">
         <div class="left-desc" style="color: rgba(0,0,0,.54);">{{ element?.Element?.Title }}</div>
-        <div class="right-desc" style="color: rgba(0,0,0,.54);">{{ element?.Result?.Mark }}</div>
+        <div class="right-desc" style="color: rgba(0,0,0,.54);">{{ element?.Result?.Mark | number:'.0-2' }}</div>
         <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>
@@ -89,8 +89,8 @@
         </div>
       </div>
       <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult === null">
-        {{ finaltermResult?.ExamCourseResult?.ResultantGrade?.Grade }} ({{ finaltermResult?.ExamCourseResult?.TotalMark - finaltermResult?.ExamCourseResult?.Bonus }}<span
-          [hidden]="finaltermResult?.ExamCourseResult?.Bonus == 0">/{{ finaltermResult?.ExamCourseResult?.Bonus }}</span>)</div>
+        {{ finaltermResult?.ExamCourseResult?.ResultantGrade?.Grade }} ({{ finaltermResult?.ExamCourseResult?.TotalMark - finaltermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}<span
+          [hidden]="finaltermResult?.ExamCourseResult?.Bonus == 0">/{{ finaltermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}</span>)</div>
       <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult !== null">- (-)</div>
     </mat-expansion-panel-header>
     <mat-list *ngFor="let finalResult of finaltermResult?.Components">
@@ -99,13 +99,13 @@
           <b>{{ finalResult?.CourseComponent?.Title }}</b>
         </div>
         <div class="right-desc">
-          <b>{{ finalResult?.Result?.Mark }}</b>
+          <b>{{ finalResult?.Result?.Mark | number:'.0-2' }}</b>
         </div>
         <mat-divider></mat-divider>
       </mat-list-item>
       <mat-list-item *ngFor="let element of finalResult?.Elements">
         <div class="left-desc" style="color: rgba(0,0,0,.54);">{{ element?.Element?.Title }}</div>
-        <div class="right-desc" style="color: rgba(0,0,0,.54);">{{ element?.Result?.TotalMark }}</div>
+        <div class="right-desc" style="color: rgba(0,0,0,.54);">{{ element?.Result?.TotalMark | number:'.0-2' }}</div>
         <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>

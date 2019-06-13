@@ -21,7 +21,6 @@ export class AlertService {
   }
 
   async alertError(msg){
-    let route = 'profile';
     const alert = await this.alertController.create({
       header: 'Oops!',
       subHeader: '',
@@ -29,6 +28,35 @@ export class AlertService {
       buttons: [
         {
           text: 'Close',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            // localStorage.setItem('route', route);
+            // this.router.navigate(['/error-landing']);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async alertForSubscribeToOneSignal(msg){
+    const alert = await this.alertController.create({
+      header: 'Push Notification Alert!',
+      subHeader: '',
+      message: msg ? msg  :'Something Went Wrong',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            // localStorage.setItem('route', route);
+            // this.router.navigate(['/error-landing']);
+          }
+        },
+        {
+          text: 'Yes',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {

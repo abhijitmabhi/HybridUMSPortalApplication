@@ -4,6 +4,7 @@ import { PushNotificationService } from 'src/app/Core/oneSignal/push-notificatio
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { EmployeeHomeService } from 'src/app/Services/employee/employee-home.service';
+import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 
 @Component({
   selector: 'app-employee-home',
@@ -12,8 +13,10 @@ import { EmployeeHomeService } from 'src/app/Services/employee/employee-home.ser
 })
 export class EmployeeHomePage implements OnInit {
   public schedule: any;
+  userInfo: any;
 
   constructor(
+    private loginProvider: LoginApiProvider,
     private pushNotification: PushNotificationService,
     private datePipe: DatePipe,
     private loadingService: LoadingService,
@@ -23,6 +26,7 @@ export class EmployeeHomePage implements OnInit {
 
   ngOnInit() {
     this.pushNotification.getPlayerID();
+    this.getCurrentUserInfo();
     this.getSchedule();
   }
 
@@ -45,5 +49,11 @@ export class EmployeeHomePage implements OnInit {
       this.loadingService.loadingDismiss();
       this.alertService.alertError("Something went wrong");
     });
+  }
+  
+  getCurrentUserInfo(){
+    this.loginProvider.currentUserInfo().subscribe(res => {
+      this.userInfo = res.Data;
+    })
   }
 }

@@ -1,6 +1,6 @@
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { UserModel, CredModel } from './loginModel';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { MenuController, AlertController, IonInput } from '@ionic/angular';
 import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
 import { Router } from '@angular/router';
@@ -13,8 +13,8 @@ import { AlertService } from 'src/app/Core/alert/alert.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
-
+export class LoginPage implements OnInit {
+  
   @ViewChild('password', { read: ElementRef }) private password: ElementRef;
   @ViewChild('Username') private username: IonInput;
 
@@ -44,7 +44,7 @@ export class LoginPage {
     // this.User.password = '58389796';
   }
 
-  ionViewDidEnter() {
+  ngOnInit() {
     if (localStorage.getItem('token')) {
       this.isShowLoginPage = true;
       this.redirect();
@@ -58,8 +58,12 @@ export class LoginPage {
 
     if (this.User.username) {
       if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))
-        || (/^[0-9]{4}-[0-9]{4}-[1-3]$/i.test(this.User.username))) {
-        // await this.showAlert('Info', this.User.username);
+        || (/^[0-9]{4}-[0-9]{3,4}-[1-3]$/i.test(this.User.username))) {
+          if((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))){
+            await this.showAlert('Warning', 'Student version is coming soon!');
+            return;
+          }
+        
       } else {
         await this.showAlert('Error', 'Invalid Username!');
         return;
@@ -87,11 +91,13 @@ export class LoginPage {
     this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res => {
       this.Cred = res;
+      // console.log(this.Cred);
       //Detect User Type
       localStorage.setItem('userType', this.Cred.UserTypeID);
-      // console.log(res);
       //Save Token into local torage
       localStorage.setItem('token', this.Cred.access_token);
+
+    
       //Save playerId and userId into database
       this.subscribeOneSignal();
     }, err => {

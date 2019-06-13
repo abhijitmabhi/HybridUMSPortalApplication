@@ -41,8 +41,11 @@ export class HomePage implements OnInit {
   semesterData: any;
 
   nrSelect: any;
+  invalidUserMessage: any;
+
 
   constructor(
+    private loginProvider: LoginApiProvider,
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     private homeApiService: HomeApiService,
@@ -56,6 +59,32 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+
+      //Check Student Validity
+      // this.loginProvider.checkStudentValidity().subscribe(res => {
+      //   console.log(res.Data);
+      //   let validity = res.Data;
+      //   if(validity.IsValid == 'true'){
+      //     console.log("Valid User");
+      //     //Subscription Validity
+      //     if(validity.IsValidToSubscribe == 0){
+      //       this.pushNotification.getPlayerID();
+      //     }
+      //     else if(validity.IsValidToSubscribe == 1){
+      //       console.log("User Not Valid");
+      //     }
+      //     else if(validity.IsValidToSubscribe == 2){
+      //       this.alertService.alertForSubscribeToOneSignal("Warning!");
+      //     }
+          
+      //   }
+      //   else if(validity.IsValid == true) {
+      //     console.log("User Not Valid");
+      //     this.invalidUserMessage = "You don't have permission!"
+      //   }
+      // })
+
+
     this.pushNotification.getPlayerID();
     this.getSemesterList();
     this.getSchedule();
@@ -108,4 +137,6 @@ export class HomePage implements OnInit {
       this.semesterData = res.Data;
     });
   }
+
+  
 }

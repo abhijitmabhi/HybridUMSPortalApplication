@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {EmployeeAttendancePage} from './employee-attendance.page';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { NgxContentLoadingModule } from 'ngx-content-loading';
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatProgressBarModule,
+    NgxContentLoadingModule,
     RouterModule.forChild(routes)
   ],
   declarations: [EmployeeAttendancePage]

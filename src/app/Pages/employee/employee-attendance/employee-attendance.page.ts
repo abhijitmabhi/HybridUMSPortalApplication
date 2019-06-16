@@ -62,7 +62,7 @@ export class EmployeeAttendancePage implements OnInit {
 
   onChangePayroll(){
     this.attendanceList = null;
-    if(this.nrSelect !== null || this.nrSelect !== undefined || this.nrSelect !== "" ){
+    if(this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "" ){
       this.attService.getAttendance(this.nrSelect).subscribe(res => {
         this.attendanceList = res.Data;
         // console.log(this.attendanceList);

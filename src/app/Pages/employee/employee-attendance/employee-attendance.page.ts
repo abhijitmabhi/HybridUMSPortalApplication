@@ -51,13 +51,12 @@ export class EmployeeAttendancePage implements OnInit {
       });
     });
 
-    let month = this.month_name(new Date());
-    let year = new Date().getFullYear();
-    let yr = `${year},${month}`;
-    
+    //let month = this.month_name(new Date());
+    //let year = new Date().getFullYear();
+    //let yr = `${year},${month}`;
     this.payrollList = this.payrollList.slice().reverse();
-
-    this.nrSelect = this.payrollList[0].Value === yr ? this.payrollList[0].Value : this.payrollList[1].Value;
+    // this.nrSelect = this.payrollList[0].Value === yr ? this.payrollList[0].Value : this.payrollList[1].Value;
+    this.nrSelect = this.payrollList[0].Value;
   }
 
 
@@ -88,8 +87,8 @@ export class EmployeeAttendancePage implements OnInit {
     });
   }
   //JAOWAT's Customise
-  month_name(dt){
-    let mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-      return mlist[dt.getMonth()];
-  };
+  // month_name(dt){
+  //   let mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+  //     return mlist[dt.getMonth()];
+  // };
 }

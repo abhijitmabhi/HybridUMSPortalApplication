@@ -62,30 +62,31 @@ export class EmployeeAttendancePage implements OnInit {
 
   onChangePayroll(){
     this.attendanceList = null;
-    if(this.nrSelect !== null || this.nrSelect !== undefined || this.nrSelect !== "" )
-    this.attService.getAttendance(this.nrSelect).subscribe(res => {
-      this.attendanceList = res.Data;
-      // console.log(this.attendanceList);
-      // this.attendanceList.AttendanceDetailModels.forEach(element => {
-      //   element.InOut = element.InOut.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '');
-      // });
-
-      //JAOWAT's Customise
-      // let isStart = false;
-      // this.attendanceCurrentMonth = this.attendanceList.AttendanceDetailModels.slice().reverse().filter(e =>{
-      //   if(e.InOut.match(/IN/) || (isStart && e.InOut.match(/[ Weekly Holiday ]/)))
-      //   {
-      //     isStart = true;
-      //     return e;
-      //   }
-      // });
-      // let split = this.attendanceCurrentMonth[0].Date.split('-');
-      // let currDate = new Date();
-      // let currYear = currDate.getFullYear();
-      // let currMonth = this.month_name(new Date()).substring(0, 3);
-      // if(currYear == split[2] && currMonth == split[1]) this.isCurrentMonth = true;
-      // else this.isCurrentMonth = false;
-    });
+    if(this.nrSelect !== null || this.nrSelect !== undefined || this.nrSelect !== "" ){
+      this.attService.getAttendance(this.nrSelect).subscribe(res => {
+        this.attendanceList = res.Data;
+        // console.log(this.attendanceList);
+        // this.attendanceList.AttendanceDetailModels.forEach(element => {
+        //   element.InOut = element.InOut.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '');
+        // });
+  
+        //JAOWAT's Customise
+        // let isStart = false;
+        // this.attendanceCurrentMonth = this.attendanceList.AttendanceDetailModels.slice().reverse().filter(e =>{
+        //   if(e.InOut.match(/IN/) || (isStart && e.InOut.match(/[ Weekly Holiday ]/)))
+        //   {
+        //     isStart = true;
+        //     return e;
+        //   }
+        // });
+        // let split = this.attendanceCurrentMonth[0].Date.split('-');
+        // let currDate = new Date();
+        // let currYear = currDate.getFullYear();
+        // let currMonth = this.month_name(new Date()).substring(0, 3);
+        // if(currYear == split[2] && currMonth == split[1]) this.isCurrentMonth = true;
+        // else this.isCurrentMonth = false;
+      });
+    }
   }
   //JAOWAT's Customise
   // month_name(dt){

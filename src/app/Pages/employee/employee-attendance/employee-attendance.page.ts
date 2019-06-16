@@ -46,7 +46,7 @@ export class EmployeeAttendancePage implements OnInit {
       let month = split[0];
 
       this.payrollList.push({
-        Name: `${year},${month}`,
+        Name: `${year}, ${month}`,
         Value: payroll.ID
       });
     });
@@ -59,10 +59,10 @@ export class EmployeeAttendancePage implements OnInit {
     this.attendanceList = null;
     this.attService.getAttendance(this.nrSelect).subscribe(res => {
       this.attendanceList = res.Data;
-      console.log(this.attendanceList);
-      this.attendanceList.AttendanceDetailModels.forEach(element => {
-        element.InOut = element.InOut.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '');
-      });
+      // console.log(this.attendanceList);
+      // this.attendanceList.AttendanceDetailModels.forEach(element => {
+      //   element.InOut = element.InOut.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '');
+      // });
 
       //JAOWAT's Customise
       // let isStart = false;

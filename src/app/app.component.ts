@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 import { Platform, AlertController, NavController } from '@ionic/angular';
@@ -9,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  
+  isShowLoginPage: any;
   public appPages = [
     {
       title: 'Home',
@@ -80,12 +81,20 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private router: Router,
   ) {
     this.initializeApp(); 
   }
  
   initializeApp() {
     this.platform.ready().then(() => {
+      if (localStorage.getItem('token')) {
+        this.isShowLoginPage = true;
+        this.router.navigateByUrl('employee-home');
+      }
+      else {
+        this.isShowLoginPage = false;
+      }
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });

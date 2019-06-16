@@ -18,7 +18,7 @@ export class PushNotificationService {
         this.oneSignal.startInit(this.signal_app_id, this.firebase_id);
     
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-        this.oneSignal.setSubscription(true);
+        
         this.oneSignal.handleNotificationReceived().subscribe((res) => {
         // do something when notification is received
             console.log(res);
@@ -30,6 +30,7 @@ export class PushNotificationService {
         });
         
         this.oneSignal.endInit();  
+        // this.oneSignal.setSubscription(true);
     }
 
     getPlayerID(){

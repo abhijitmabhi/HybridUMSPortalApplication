@@ -8,15 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <!-- <mat-list class="list_padding">
-    <mat-list-item>Month
-      <mat-select class="align-right">
-        <mat-option *ngFor="let payroll of reversedPayrollList" [value]="payroll.Value">
-          {{payroll.Name}}
-        </mat-option>
-      </mat-select>
-    </mat-list-item>
-  </mat-list> -->
 
   <ion-item style="width: 100%; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
     <ion-label>Select Month</ion-label>
@@ -25,29 +16,6 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
-
-  <!-- <mat-card style="margin:10px;">
-    <mat-card-content>
-      <mat-list dense>
-        <mat-list-item>
-          <div class="list-item1">
-            <b>Total (by shift)</b>
-          </div>
-          <div class="list-item2">
-            <b>{{byShiftTotal}}</b>
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <div class="list-item1">
-            <b>Total (by FI-LO)</b>
-          </div>
-          <div class="list-item2">
-            <b>{{byFiloTotal}}</b>
-          </div>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card> -->
   <mat-list dense>
     <!-- <mat-list dense [hidden]="isCurrentMonth"> -->
     <mat-list-item>
@@ -67,35 +35,31 @@
     <mat-divider></mat-divider>
     <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
     <div [hidden]="attendanceList" style="margin-top: 6%;">
-        <ngx-content-loading [width]="222">
-          <svg:g ngx-facebook-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="222">
-          <svg:g ngx-instagram-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="280">
-          <svg:g ngx-code-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="202">
-          <svg:g ngx-list-preset></svg:g>
-        </ngx-content-loading>
-    
-        <ngx-content-loading [width]="222">
-          <svg:g ngx-bullet-list-preset></svg:g>
-        </ngx-content-loading>
-      </div>
-    <mat-expansion-panel [expanded]="false" [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}" *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
-      <mat-expansion-panel-header [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}" >
+      <ngx-content-loading [width]="222">
+        <svg:g ngx-bullet-list-preset></svg:g>
+      </ngx-content-loading>
+
+      <ngx-content-loading [width]="222">
+        <svg:g ngx-bullet-list-preset></svg:g>
+      </ngx-content-loading>
+
+      <ngx-content-loading [width]="222">
+        <svg:g ngx-bullet-list-preset></svg:g>
+      </ngx-content-loading>
+    </div>
+    <mat-expansion-panel [expanded]="false"
+      [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}"
+      *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
+      <mat-expansion-panel-header
+        [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
         <div class="attendance-list-head1">{{attendance?.Date}}</div>
         <div class="attendance-list-head1">{{attendance?.Date | date:'E'}}</div>
         <div class="attendance-list-head2">{{attendance?.AllShift}}</div>
         <!-- <div class="attendance-list-head3">{{attendance?.Filo}}</div> -->
       </mat-expansion-panel-header>
-      <mat-panel-description [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}" >
-        <div style="width:100%; text-align:center;">{{attendance?.InOut}}</div>
+      <mat-panel-description
+        [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+        <div style="width:100%; text-align:center;" [innerHTML]="attendance?.InOut"></div>
       </mat-panel-description>
     </mat-expansion-panel>
   </mat-list>

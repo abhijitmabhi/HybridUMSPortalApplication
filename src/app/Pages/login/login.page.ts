@@ -14,7 +14,7 @@ import { AlertService } from 'src/app/Core/alert/alert.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  
+
   @ViewChild('password', { read: ElementRef }) private password: ElementRef;
   @ViewChild('Username') private username: IonInput;
 
@@ -37,10 +37,10 @@ export class LoginPage implements OnInit {
     this.User = UserModel;
     this.Cred = CredModel;
 
-    this.User.password = '243866';
+    // this.User.password = '243866';
     // this.User.username = '16-31332-1';
     // this.User.password = '26103588';
-    this.User.username = '1801-1848-3';
+    // this.User.username = '1801-1848-3';
     // this.User.password = '58389796';
   }
 
@@ -59,11 +59,11 @@ export class LoginPage implements OnInit {
     if (this.User.username) {
       if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))
         || (/^[0-9]{4}-[0-9]{3,4}-[1-3]$/i.test(this.User.username))) {
-          if((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))){
-            await this.showAlert('Warning', 'Student version is coming soon!');
-            return;
-          }
-        
+        if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))) {
+          await this.showAlert('Warning', 'Student version is coming soon!');
+          return;
+        }
+
       } else {
         await this.showAlert('Error', 'Invalid Username!');
         return;
@@ -97,7 +97,7 @@ export class LoginPage implements OnInit {
       //Save Token into local torage
       localStorage.setItem('token', this.Cred.access_token);
 
-    
+
       //Save playerId and userId into database
       this.subscribeOneSignal();
     }, err => {

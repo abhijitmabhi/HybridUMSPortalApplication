@@ -31,13 +31,13 @@
       <svg:g ngx-bullet-list-preset></svg:g>
     </ngx-content-loading>
   </div>
-
+  <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="userInfo?.HasAttendanceWarning"></mat-progress-bar> -->
   <ion-card *ngIf="userInfo?.HasAttendanceWarning" color="danger">
     <ion-card-header >
-      <ion-card-title>Alert</ion-card-title>
+      <ion-card-title>Warning</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-       You have pending leave application!
+       You have missed some attendances!
     </ion-card-content>
   </ion-card>
 
@@ -57,7 +57,7 @@
             style="margin-bottom:2%;">{{classSchedule.ClassRoutineDate | date: 'dd-MMM-yy'}}</span>
           <span matLine>{{classInfo.SectionDescription }}</span>
           <span [hidden]="classInfo.SectionID == 0"
-            matLine>{{ 'Room: '+classInfo.Room}}{{' Time '+classInfo.Time}}</span>
+            matLine>{{ 'Room: '+classInfo.Room}}{{' Time: '+classInfo.Time}}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
       </div>

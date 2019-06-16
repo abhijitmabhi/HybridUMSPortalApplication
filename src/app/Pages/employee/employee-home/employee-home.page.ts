@@ -15,6 +15,11 @@ export class EmployeeHomePage implements OnInit {
   public schedule: any;
   userInfo: any;
 
+  //ProgressBar
+  color = 'warn';
+  mode = 'indeterminate';
+  value = 50;
+
   constructor(
     private loginProvider: LoginApiProvider,
     private pushNotification: PushNotificationService,

@@ -24,7 +24,7 @@ export class LogoutPage implements OnInit {
 
   logMeOut(){
     localStorage.clear();
-    this.pushNotification.unsubscribeFromNotification();
+    // this.pushNotification.unsubscribeFromNotification();
     this.router.navigate(['']);
   }
 

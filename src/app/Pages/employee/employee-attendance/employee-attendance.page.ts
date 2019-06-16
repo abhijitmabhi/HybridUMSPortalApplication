@@ -17,6 +17,8 @@ export class EmployeeAttendancePage implements OnInit {
   attendanceList: any;
   nrSelect: any;
   private currentDateTime = new Date();
+  private firstDateOfCurrentMonth = new Date(this.currentDateTime.getFullYear(), this.currentDateTime.getMonth(),1);
+  private forMattedfirstDateOfCurrentMonth = this.datePipe.transform(this.firstDateOfCurrentMonth, 'dd-MMM-yyyy');
   private today = this.datePipe.transform(this.currentDateTime, 'dd-MMM-yyyy');
 
   //JAOWAT's CUSTOMISE

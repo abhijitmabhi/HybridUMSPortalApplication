@@ -48,10 +48,10 @@
       </ngx-content-loading>
     </div>
     <mat-expansion-panel [expanded]="false"
-      [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}"
+      [ngStyle]="{'color': forMattedfirstDateOfCurrentMonth < attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}"
       *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
       <mat-expansion-panel-header
-        [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+        [ngStyle]="{'color': forMattedfirstDateOfCurrentMonth < attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
         <div class="attendance-list-head1">{{attendance?.Date}}</div>
         <div class="attendance-list-head1">{{attendance?.Date | date:'E'}}</div>
         <div class="attendance-list-head2">{{attendance?.AllShift}}</div>

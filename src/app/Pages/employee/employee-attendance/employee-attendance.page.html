@@ -8,7 +8,10 @@
 </ion-header>
 
 <ion-content>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   <ion-item style="width: 100%; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
     <ion-label>Select Month</ion-label>
     <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">
@@ -33,6 +36,7 @@
       </div> -->
     </mat-list-item>
     <mat-divider></mat-divider>
+<<<<<<< Updated upstream
     <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
     <div [hidden]="attendanceList" style="margin-top: 6%;">
       <ngx-content-loading [width]="222">
@@ -62,7 +66,31 @@
         <div style="width:100%; text-align:center;" [innerHTML]="attendance?.InOut"></div>
       </mat-panel-description>
     </mat-expansion-panel>
+=======
+>>>>>>> Stashed changes
   </mat-list>
+  <!-- **Page Refresher**
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher> -->
+  <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
+  <mat-expansion-panel [expanded]="isExpanded(attendance?.Date, today)"
+    [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}"
+    *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
+    <mat-expansion-panel-header
+      [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+      <div class="attendance-list-head1">{{attendance?.Date}}</div>
+      <div class="attendance-list-head1">{{attendance?.Date | date:'E'}}</div>
+      <div class="attendance-list-head2">{{attendance?.AllShift}}</div>
+      <!-- <div class="attendance-list-head3">{{attendance?.Filo}}</div> -->
+    </mat-expansion-panel-header>
+    <mat-panel-description
+      [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+      <div style="width:100%; text-align:center;">{{attendance?.InOut}}</div>
+    </mat-panel-description>
+  </mat-expansion-panel>
+
 
   <!-- JAOWAT's Customise -->
   <!-- <mat-list dense [hidden]="!isCurrentMonth">

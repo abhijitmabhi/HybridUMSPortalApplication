@@ -34,6 +34,28 @@ export class EmployeeAttendancePage implements OnInit {
     this.getPayroll();
   }
 
+  //Page Refresh
+  // doRefresh(event) {
+  //   console.log('Page refresh start: Async operation has began');
+
+  //   setTimeout(() => {
+  //     console.log('Page refresh complete: Async operation has ended');
+  //     event.target.complete();
+  //   }, 2000);
+  // }
+
+  isExpanded(attendanceDate: any, today: any)
+  {
+
+    if(attendanceDate == today)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
   getPayroll() {
     this.attService.getPayroll().subscribe(res => {
       this.generatePayrollDropdown(res.Data);

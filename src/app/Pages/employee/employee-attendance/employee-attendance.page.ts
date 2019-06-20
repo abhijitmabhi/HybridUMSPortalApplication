@@ -44,18 +44,11 @@ export class EmployeeAttendancePage implements OnInit {
   //   }, 2000);
   // }
 
-  isExpanded(attendanceDate: any, today: any)
+  isExpanded(attendanceDate, today)
   {
-
-    if(attendanceDate == today)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+    return attendanceDate == today ? true : false;
   }
+
   getPayroll() {
     this.attService.getPayroll().subscribe(res => {
       this.generatePayrollDropdown(res.Data);

@@ -17,7 +17,6 @@
     </ion-select>
   </ion-item>
   <mat-list dense>
-    <!-- <mat-list dense [hidden]="isCurrentMonth"> -->
     <mat-list-item>
       <div class="attendance-list-head1">
         <b>Date</b>
@@ -55,10 +54,10 @@
     </ion-refresher-content>
   </ion-refresher> -->
 
-  <mat-expansion-panel [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+  <mat-expansion-panel [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}"
     *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
-    <mat-expansion-panel-header [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+    <mat-expansion-panel-header [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}">
       <div class="attendance-list-head1">{{attendance?.Date}}</div>
       <div class="attendance-list-head1">{{attendance?.Date | date:'E'}}</div>
@@ -66,7 +65,7 @@
       <!-- <div class="attendance-list-head3">{{attendance?.Filo}}</div> -->
     </mat-expansion-panel-header>
     <mat-panel-description
-      [ngStyle]="{'color': (forMattedfirstDateOfCurrentMonth < attendance?.Date &&  attendance?.Date > today ) && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+      [ngStyle]="{'color': isCurrentPayroll && attendance?.Date > today  && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
       <div style="width:100%; text-align:center;" [innerHTML]="attendance?.InOut"></div>
     </mat-panel-description>
   </mat-expansion-panel>
@@ -79,31 +78,6 @@
     </ion-refresher-content>
   </ion-refresher> -->
   <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
-
-
-
-  <!-- JAOWAT's Customise -->
-  <!-- <mat-list dense [hidden]="!isCurrentMonth">
-    <mat-list-item>
-      <div class="attendance-list-head4">
-        <b>Date</b>
-      </div>
-      <div class="attendance-list-head5">
-        <b>InOut</b>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-expansion-panel [expanded]="false"  *ngFor="let attendance of attendanceCurrentMonth">
-      <mat-expansion-panel-header>
-        <div class="attendance-list-head4">{{attendance.Date}}</div>
-        <div class="attendance-list-head5"><b>{{attendance.InOut}}</b></div>
-      </mat-expansion-panel-header>
-      <mat-panel-description>
-        <div>Total (Shift):<b>{{attendance.Filo}}</b></div>
-        <div>Total (FI-LO):<b>{{attendance.AllShift}}</b></div>
-      </mat-panel-description>
-    </mat-expansion-panel>
-  </mat-list>  -->
 </ion-content>
 
 <ion-footer>

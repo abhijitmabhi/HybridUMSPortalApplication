@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
   <ion-item style="width: 100%; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
     <ion-label>Select Month</ion-label>
     <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">
@@ -32,7 +33,7 @@
       </div> -->
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
+    <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
     <div [hidden]="attendanceList" style="margin-top: 6%;">
       <ngx-content-loading [width]="222">
         <svg:g ngx-bullet-list-preset></svg:g>
@@ -53,19 +54,19 @@
     <ion-refresher-content>
     </ion-refresher-content>
   </ion-refresher> -->
-  <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
-  <mat-expansion-panel [expanded]="isExpanded(attendance?.Date, today)"
-    [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}"
+
+  <mat-expansion-panel [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+                'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}"
     *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
-    <mat-expansion-panel-header
-      [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+    <mat-expansion-panel-header [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+                'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}">
       <div class="attendance-list-head1">{{attendance?.Date}}</div>
       <div class="attendance-list-head1">{{attendance?.Date | date:'E'}}</div>
       <div class="attendance-list-head2">{{attendance?.AllShift}}</div>
       <!-- <div class="attendance-list-head3">{{attendance?.Filo}}</div> -->
     </mat-expansion-panel-header>
     <mat-panel-description
-      [ngStyle]="{'color': attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+      [ngStyle]="{'color': (forMattedfirstDateOfCurrentMonth < attendance?.Date &&  attendance?.Date > today ) && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
       <div style="width:100%; text-align:center;" [innerHTML]="attendance?.InOut"></div>
     </mat-panel-description>
   </mat-expansion-panel>

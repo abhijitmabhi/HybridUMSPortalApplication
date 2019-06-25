@@ -40,8 +40,8 @@ export class LoginPage implements OnInit {
     // this.User.password = '243866';
     // this.User.username = '16-31332-1';
     // this.User.password = '26103588';
-    this.User.username = '1801-1848-3';
-    this.User.password = '58389796';
+    // this.User.username = '1801-1848-3';
+    // this.User.password = '58389796';
   }
 
   ngOnInit() {
@@ -62,12 +62,14 @@ export class LoginPage implements OnInit {
         if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))) {
           await this.showAlert('Warning', 'Student version is coming soon!');
           return;
+
         }
 
       } else {
         await this.showAlert('Error', 'Invalid Username!');
         return;
       }
+      
     } else {
       await this.showAlert('Warning', 'Username is requried!');
       return;
@@ -91,6 +93,7 @@ export class LoginPage implements OnInit {
     this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res => {
       this.Cred = res;
+      this.User.password = null;
       // console.log(this.Cred);
       //Detect User Type
       localStorage.setItem('userType', this.Cred.UserTypeID);

@@ -94,4 +94,3 @@ export class EmployeeAttendancePage implements OnInit {
       return mlist[dt.getMonth()];
   };
 }
-//[ngStyle]="{'color': attendance?.Date > today  && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">

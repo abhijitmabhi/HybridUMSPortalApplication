@@ -21,9 +21,10 @@ export class EmployeeAttendancePage implements OnInit {
   private forMattedfirstDateOfCurrentMonth = this.datePipe.transform(this.firstDateOfCurrentMonth, 'dd-MMM-yyyy');
   private today = this.datePipe.transform(this.currentDateTime, 'dd-MMM-yyyy');
 
-  //JAOWAT's CUSTOMISE
   isCurrentMonth = false;
   attendanceCurrentMonth:any;
+  currentPayroll:any;
+  isCurrentPayroll:any;
 
   //ProgressBar
   color = 'warn';
@@ -31,7 +32,6 @@ export class EmployeeAttendancePage implements OnInit {
   value = 50;
 
   ngOnInit() {
-    console.log(this.today);
     this.getPayroll();
   }
 
@@ -59,10 +59,10 @@ export class EmployeeAttendancePage implements OnInit {
   generatePayrollDropdown(payrolls) {
 
     payrolls.forEach(payroll => {
+      if(payroll.IsCurrent == true) this.currentPayroll = payroll.ID;
       let year = payroll.PayrollYear;
       let split = payroll.PayMonth.split(" ");
       let month = split[0];
-
       this.payrollList.push({
         Name: `${year}, ${month}`,
         Value: payroll.ID
@@ -73,42 +73,25 @@ export class EmployeeAttendancePage implements OnInit {
     let year = new Date().getFullYear();
     let yr = `${year},${month}`;
     this.payrollList = this.payrollList.slice().reverse();
-    this.nrSelect = this.payrollList[0].Value === yr ? this.payrollList[0].Value : this.payrollList[1].Value;
-    // this.nrSelect = this.payrollList[0].Value;
+    this.nrSelect = this.currentPayroll;
   }
 
 
   onChangePayroll(){
+    // console.log(this.nrSelect);
+    // console.log(this.currentPayroll);
     this.attendanceList = null;
+    this.isCurrentPayroll = this.nrSelect === this.currentPayroll ? true: false;
+    // console.log(this.isCurrentPayroll);
     if(this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "" ){
       this.attService.getAttendance(this.nrSelect).subscribe(res => {
         this.attendanceList = res.Data;
-        // console.log(this.attendanceList);
-        // this.attendanceList.AttendanceDetailModels.forEach(element => {
-        //   element.InOut = element.InOut.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '');
-        // });
-  
-        //JAOWAT's Customise
-        // let isStart = false;
-        // this.attendanceCurrentMonth = this.attendanceList.AttendanceDetailModels.slice().reverse().filter(e =>{
-        //   if(e.InOut.match(/IN/) || (isStart && e.InOut.match(/[ Weekly Holiday ]/)))
-        //   {
-        //     isStart = true;
-        //     return e;
-        //   }
-        // });
-        // let split = this.attendanceCurrentMonth[0].Date.split('-');
-        // let currDate = new Date();
-        // let currYear = currDate.getFullYear();
-        // let currMonth = this.month_name(new Date()).substring(0, 3);
-        // if(currYear == split[2] && currMonth == split[1]) this.isCurrentMonth = true;
-        // else this.isCurrentMonth = false;
       });
     }
   }
-  //JAOWAT's Customise
   month_name(dt){
     let mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
       return mlist[dt.getMonth()];
   };
 }
+//[ngStyle]="{'color': attendance?.Date > today  && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">

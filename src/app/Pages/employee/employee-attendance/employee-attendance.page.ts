@@ -17,14 +17,14 @@ export class EmployeeAttendancePage implements OnInit {
   attendanceList: any;
   nrSelect: any;
   private currentDateTime = new Date();
-  private firstDateOfCurrentMonth = new Date(this.currentDateTime.getFullYear(), this.currentDateTime.getMonth(),1);
+  private firstDateOfCurrentMonth = new Date(this.currentDateTime.getFullYear(), this.currentDateTime.getMonth(), 1);
   private forMattedfirstDateOfCurrentMonth = this.datePipe.transform(this.firstDateOfCurrentMonth, 'dd-MMM-yyyy');
   private today = this.datePipe.transform(this.currentDateTime, 'dd-MMM-yyyy');
 
   isCurrentMonth = false;
-  attendanceCurrentMonth:any;
-  currentPayroll:any;
-  isCurrentPayroll:any;
+  attendanceCurrentMonth: any;
+  currentPayroll: any;
+  isCurrentPayroll: any;
 
   //ProgressBar
   color = 'warn';
@@ -35,18 +35,7 @@ export class EmployeeAttendancePage implements OnInit {
     this.getPayroll();
   }
 
-  //Page Refresh
-  // doRefresh(event) {
-  //   console.log('Page refresh start: Async operation has began');
-
-  //   setTimeout(() => {
-  //     console.log('Page refresh complete: Async operation has ended');
-  //     event.target.complete();
-  //   }, 2000);
-  // }
-
-  isExpanded(attendanceDate, today)
-  {
+  isExpanded(attendanceDate, today) {
     return attendanceDate == today ? true : false;
   }
 
@@ -57,9 +46,8 @@ export class EmployeeAttendancePage implements OnInit {
   }
 
   generatePayrollDropdown(payrolls) {
-
     payrolls.forEach(payroll => {
-      if(payroll.IsCurrent == true) this.currentPayroll = payroll.ID;
+      if (payroll.IsCurrent == true) this.currentPayroll = payroll.ID;
       let year = payroll.PayrollYear;
       let split = payroll.PayMonth.split(" ");
       let month = split[0];
@@ -69,28 +57,23 @@ export class EmployeeAttendancePage implements OnInit {
       });
     });
 
-    let month = this.month_name(new Date());
-    let year = new Date().getFullYear();
-    let yr = `${year},${month}`;
     this.payrollList = this.payrollList.slice().reverse();
     this.nrSelect = this.currentPayroll;
+    this.onChangePayroll();
   }
 
 
-  onChangePayroll(){
-    // console.log(this.nrSelect);
-    // console.log(this.currentPayroll);
+  onChangePayroll() {
     this.attendanceList = null;
-    this.isCurrentPayroll = this.nrSelect === this.currentPayroll ? true: false;
-    // console.log(this.isCurrentPayroll);
-    if(this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "" ){
+    this.isCurrentPayroll = this.nrSelect === this.currentPayroll ? true : false;
+    if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "") {
       this.attService.getAttendance(this.nrSelect).subscribe(res => {
         this.attendanceList = res.Data;
       });
     }
   }
-  month_name(dt){
-    let mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-      return mlist[dt.getMonth()];
+  month_name(dt) {
+    let mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return mlist[dt.getMonth()];
   };
 }

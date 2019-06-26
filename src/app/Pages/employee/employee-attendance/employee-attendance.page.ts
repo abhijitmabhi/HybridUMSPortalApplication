@@ -1,4 +1,3 @@
-
 import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeAttendanceService } from 'src/app/Services/employee/employee-attendance.service';
@@ -62,7 +61,6 @@ export class EmployeeAttendancePage implements OnInit {
     this.onChangePayroll();
   }
 
-
   onChangePayroll() {
     this.attendanceList = null;
     this.isCurrentPayroll = this.nrSelect === this.currentPayroll ? true : false;
@@ -72,6 +70,7 @@ export class EmployeeAttendancePage implements OnInit {
       });
     }
   }
+
   month_name(dt) {
     let mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return mlist[dt.getMonth()];

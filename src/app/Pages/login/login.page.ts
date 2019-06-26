@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
 import { PushNotificationService } from 'src/app/Core/oneSignal/push-notification.service';
 import { AlertService } from 'src/app/Core/alert/alert.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage implements OnInit {
 
   @ViewChild('password', { read: ElementRef }) private password: ElementRef;
@@ -62,33 +62,26 @@ export class LoginPage implements OnInit {
         if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))) {
           await this.showAlert('Warning', 'Student version is coming soon!');
           return;
-
         }
-
       } else {
         await this.showAlert('Error', 'Invalid Username!');
         return;
       }
-      
     } else {
       await this.showAlert('Warning', 'Username is requried!');
       return;
     }
-
     if (this.User.password) {
       // await this.showAlert('Info', this.User.password);
     } else {
       await this.showAlert('Warning', 'Password is requried!');
       return;
     }
-
-
     if (this.User.isRemember) {
       // await this.showAlert('Info', 'Store User Info');
     } else {
       // await this.showAlert('Info', 'Clear User Info');
     }
-
 
     this.loadingService.loadingStart();
     this.loginProvider.login(this.User).subscribe(res => {
@@ -99,8 +92,6 @@ export class LoginPage implements OnInit {
       localStorage.setItem('userType', this.Cred.UserTypeID);
       //Save Token into local torage
       localStorage.setItem('token', this.Cred.access_token);
-
-
       //Save playerId and userId into database
       this.subscribeOneSignal();
     }, err => {
@@ -150,11 +141,6 @@ export class LoginPage implements OnInit {
       message: message,
       buttons: ['OK']
     });
-
     await alert.present();
   }
-
 }
-
-
-

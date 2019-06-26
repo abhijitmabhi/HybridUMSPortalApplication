@@ -11,6 +11,7 @@ import { LoginApiProvider } from 'src/app/Services/login/login-api.service';
   templateUrl: './employee-home.page.html',
   styleUrls: ['./employee-home.page.scss'],
 })
+
 export class EmployeeHomePage implements OnInit {
   public schedule: any;
   userInfo: any;
@@ -27,7 +28,7 @@ export class EmployeeHomePage implements OnInit {
     private loadingService: LoadingService,
     private employeeHomeService: EmployeeHomeService,
     private alertService: AlertService,
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.pushNotification.getPlayerID();
@@ -36,8 +37,8 @@ export class EmployeeHomePage implements OnInit {
   }
 
   private currentDateTime = new Date();
-  private fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
-  private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+5),'yyyy-MM-dd HH:mm:ss.SSS');
+  private fromDateTime = this.datePipe.transform(this.currentDateTime, 'yyyy-MM-dd HH:mm:ss.SSS');
+  private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate() + 5), 'yyyy-MM-dd HH:mm:ss.SSS');
 
   getSchedule() {
     this.loadingService.loadingStart();
@@ -50,13 +51,13 @@ export class EmployeeHomePage implements OnInit {
         }
       });
     },
-    err => {
-      this.loadingService.loadingDismiss();
-      this.alertService.alertError("Something went wrong");
-    });
+      err => {
+        this.loadingService.loadingDismiss();
+        this.alertService.alertError("Something went wrong!");
+      });
   }
-  
-  getCurrentUserInfo(){
+
+  getCurrentUserInfo() {
     this.loginProvider.currentUserInfo().subscribe(res => {
       this.userInfo = res.Data;
     })

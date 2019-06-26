@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
   <ion-toolbar color="aiubthemecolor">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+  <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="schedule"></mat-progress-bar>
   <div [hidden]="schedule" style="margin-top: 6%;">
     <ngx-content-loading [width]="222">
       <svg:g ngx-bullet-list-preset></svg:g>
@@ -32,16 +33,16 @@
   </div>
   <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="userInfo?.HasAttendanceWarning"></mat-progress-bar> -->
   <ion-card *ngIf="userInfo?.HasAttendanceWarning" color="danger">
-    <ion-card-header >
+    <ion-card-header>
       <ion-card-title>Warning</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-       You have missed some attendances!
+      You have missed some attendances!
     </ion-card-content>
   </ion-card>
 
   <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header style=" color:black; margin: 5px; border: 2px solid #004ea2" >
+    <mat-expansion-panel-header style=" color:black; margin: 5px; border: 2px solid #004ea2">
       <mat-panel-title style="color:black;">
         Class Schedule
       </mat-panel-title>

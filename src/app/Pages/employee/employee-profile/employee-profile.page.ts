@@ -14,11 +14,16 @@ export class EmployeeProfilePage implements OnInit {
   public errorMsg: any;
   public userImagePath: string = null;
 
+  //ProgressBar
+  color = 'warn';
+  mode = 'indeterminate';
+  value = 50;
+  
   constructor(
     private profileService: EmployeeProfileService,
     private loadingService: LoadingService,
     private alertService: AlertService,
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.getProfile();
@@ -33,15 +38,13 @@ export class EmployeeProfilePage implements OnInit {
     },
       error => {
         this.loadingService.loadingDismiss();
-      this.alertService.alertError("Something went wrong");
-    });
+        this.alertService.alertError("Something went wrong");
+      });
   }
 
-  getUserProfileImage(){
+  getUserProfileImage() {
     this.profileService.getImage().subscribe(res => {
-      this.userImagePath =  res;
+      this.userImagePath = res;
     })
   }
-
-
 }

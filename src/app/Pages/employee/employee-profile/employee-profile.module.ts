@@ -6,8 +6,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
 import { IonicModule } from '@ionic/angular';
-
 import { EmployeeProfilePage } from './employee-profile.page';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const routes: Routes = [
   {
@@ -23,6 +23,7 @@ const routes: Routes = [
     MatListModule,
     MatCardModule,
     NgxContentLoadingModule,
+    MatProgressBarModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],

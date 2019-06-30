@@ -75,6 +75,8 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  --aiub-logo-main-color: #004ea2;
+
 }
 
  /** aiub color **/
@@ -86,5 +88,10 @@
   --ion-color-shade: #5ca56c;
   --ion-color-tint: #78c288;
 }
+
+.appHeader{
+  --background: var(--aiub-logo-main-color);
+  --ion-text-color: var(--ion-color-primary-contrast);
+  }
 
 

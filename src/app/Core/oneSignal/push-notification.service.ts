@@ -7,8 +7,8 @@ import { HomeApiService } from 'src/app/Services/student/home-api.service';
   providedIn: 'root'
 })
 export class PushNotificationService {
-    signal_app_id: string = "a5a0688d-fba4-4bb5-8cf2-e50143e6b4f8";
-    firebase_id:string = "677592847633";
+    signal_app_id: string = "b945d1b3-030a-46ca-895b-ec97919f689a";
+    firebase_id:string = "860919846901";
     constructor(
         private oneSignal: OneSignal,
         private homeAPIService : HomeApiService

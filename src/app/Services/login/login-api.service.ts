@@ -41,7 +41,7 @@ export class LoginApiProvider {
   }
 
   currentUserInfo(): Observable<IResult>{
-    return this.http.get<IResult>(`Common/GetCurrentUserInfo`);
+    return this.http.get<IResult>(`Common/GetCurrentUserInfo2`);
   }
 
   checkStudentValidity(): Observable<IResult> {

@@ -15,11 +15,6 @@ export class HomeApiService {
 
   public savePLayerIDIntoDatabase(PlayerID){
     const dt = new HttpParams().set('playerId', PlayerID);
-    console.log(dt);
-    // return this.httpClient.post("http://172.16.22.101:1374/api/Notification/MapPlayerId", dt ).pipe(map(res =>{
-    //   console.log("adadad " + res);
-    //     return res;
-    // }));
     return this.httpClient.post(`Notification/MapPlayerId`, dt);
   }
 }

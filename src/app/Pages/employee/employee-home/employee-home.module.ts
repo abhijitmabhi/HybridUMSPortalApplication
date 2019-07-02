@@ -18,6 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MaterialModule } from 'src/app/Core/modules/material.module';
+
 
 const routes: Routes = [
   {
@@ -43,6 +45,7 @@ const routes: Routes = [
     MatSelectModule,
     MatChipsModule,
     MatProgressBarModule,
+    MaterialModule,
     RouterModule.forChild(routes)
   ],
   declarations: [EmployeeHomePage]

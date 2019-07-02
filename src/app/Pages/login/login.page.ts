@@ -59,10 +59,10 @@ export class LoginPage implements OnInit {
     if (this.User.username) {
       if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))
         || (/^[0-9]{4}-[0-9]{3,4}-[1-3]$/i.test(this.User.username))) {
-        if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))) {
-          await this.showAlert('Warning', 'Student version is coming soon!');
-          return;
-        }
+        // if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))) {
+        //   await this.showAlert('Warning', 'Student version is coming soon!');
+        //   return;
+        // }
       } else {
         await this.showAlert('Error', 'Invalid Username!');
         return;

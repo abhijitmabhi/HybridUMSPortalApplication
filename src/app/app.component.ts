@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
-import { Platform, AlertController, NavController } from '@ionic/angular';
+import { Platform, AlertController, NavController, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -82,19 +82,26 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
+    private menuCtrl: MenuController
   ) {
     this.initializeApp(); 
+    this.menuCtrl.enable(false);
   }
  
   initializeApp() {
     this.platform.ready().then(() => {
       if (localStorage.getItem('token')) {
-        this.isShowLoginPage = true;
-        this.router.navigateByUrl('employee-home');
+        let user_type = localStorage.getItem('userType');
+        if(user_type == "3" || user_type == "1") {
+          this.menuCtrl.enable(true, "employee");
+          this.router.navigateByUrl('employee-home');
+        }
+        if(user_type == "0" ) {
+          this.menuCtrl.enable(true, "student");
+          this.router.navigateByUrl('home');
+        }
       }
-      else {
-        this.isShowLoginPage = false;
-      }
+     
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });

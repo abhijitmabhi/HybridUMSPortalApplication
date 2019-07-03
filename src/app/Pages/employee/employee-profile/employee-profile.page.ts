@@ -45,7 +45,7 @@ export class EmployeeProfilePage implements OnInit {
   }
 
   GoToHome(){
-    this.router.navigate(['/employee/Tabs/Home']);
+    this.router.navigate(['/employee-home']);
   }
 
   viewChanged(segmentEvent) {

@@ -1,3 +1,5 @@
+import { StudentClassScheduleService } from './../../../Services/student/student-class-schedule.service';
+import { ProfileApiService } from 'src/app/Services/student/profile-api.service';
 import { AlertService } from 'src/app/Core/alert/alert.service';
 import { PushNotificationService } from './../../../Core/oneSignal/push-notification.service';
 import { DatePipe } from '@angular/common';
@@ -43,6 +45,11 @@ export class HomePage implements OnInit {
   nrSelect: any;
   invalidUserMessage: any;
 
+  private userImage: string = null;
+  private appUserInfo: any;
+  private notificationCount: number;
+  private classSchedules: any;
+
 
   constructor(
     private loginProvider: LoginApiProvider,
@@ -55,39 +62,18 @@ export class HomePage implements OnInit {
     iconRegistry: MatIconRegistry,
     private pushNotification: PushNotificationService,
     private alertService: AlertService,
-    sanitizer: DomSanitizer) {
+    sanitizer: DomSanitizer,
+    private studentProfileService: ProfileApiService,
+    private studentClassSceduleService: StudentClassScheduleService) {
   }
 
   ngOnInit() {
-
-      //Check Student Validity
-      // this.loginProvider.checkStudentValidity().subscribe(res => {
-      //   console.log(res.Data);
-      //   let validity = res.Data;
-      //   if(validity.IsValid == 'true'){
-      //     console.log("Valid User");
-      //     //Subscription Validity
-      //     if(validity.IsValidToSubscribe == 0){
-      //       this.pushNotification.getPlayerID();
-      //     }
-      //     else if(validity.IsValidToSubscribe == 1){
-      //       console.log("User Not Valid");
-      //     }
-      //     else if(validity.IsValidToSubscribe == 2){
-      //       this.alertService.alertForSubscribeToOneSignal("Warning!");
-      //     }
-          
-      //   }
-      //   else if(validity.IsValid == true) {
-      //     console.log("User Not Valid");
-      //     this.invalidUserMessage = "You don't have permission!"
-      //   }
-      // })
-
-
     this.pushNotification.getPlayerID();
     this.getSemesterList();
-    this.getSchedule();
+    // this.getSchedule();
+    this.getClassSchedule();
+    this.getCurrentUserInfo();
+    this.getUserProfileImage();
   }
 
   private currentDateTime = new Date();
@@ -137,6 +123,47 @@ export class HomePage implements OnInit {
       this.semesterData = res.Data;
     });
   }
+
+  getUserProfileImage() {
+    this.studentProfileService.getImage().subscribe(response => {
+      this.userImage = response;
+    })
+  }
+
+  getCurrentUserInfo() {
+    this.loginProvider.currentUserInfo().subscribe(res => {
+      let result = res;
+      if(result.HasError){
+        console.log(result.Messages);
+      }else{
+        this.appUserInfo = result.Data;
+        this.notificationCount = this.appUserInfo.UnReadNotificationCount;
+      }
+    })
+  }
+
+  getClassSchedule() {
+    let fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
+    let toDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+1),'yyyy-MM-dd HH:mm:ss.SSS');
+
+    this.loadingService.loadingStart();
+
+    this.studentClassSceduleService.getStudentClassSchedule(fromDateTime, toDateTime).subscribe(response => {
+      this.loadingService.loadingDismiss();
+      let result = response;
+      if(result.HasError){
+        console.log(result.Messages);
+      }else{
+        this.classSchedules = result.Data;
+      }
+    },
+      error => {
+        this.loadingService.loadingDismiss();
+        let errorResponse = error;
+        console.log(errorResponse.error.Message);
+    });
+  }
+
 
   
 }

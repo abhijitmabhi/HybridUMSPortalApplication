@@ -4,7 +4,6 @@ import { map, catchError } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { settings } from 'src/app/Core/settings/systemSettings';
-import { url } from 'inspector';
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
@@ -40,7 +39,6 @@ export class InterceptorService implements HttpInterceptor {
     request = request.clone({
       headers: request.headers.set('Accept', 'application/json')
     });
-    
 
     // console.log("State: 03" + request);
 

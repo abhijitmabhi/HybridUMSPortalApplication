@@ -27,17 +27,17 @@ export class LoginApiProvider {
       .set('username', user.username)
       .set('password', formattedPassword);
 
-    // return this.http.post('http://172.16.22.101:41368/Token', dt ).pipe(map(res =>{
-    //   return res;
-    //  }));
+    return this.http.post('http://172.16.22.101:41379/Token', dt ).pipe(map(res =>{
+      return res;
+     }));
 
     //  return this.http.post('http://172.16.22.101:2694/Token', dt ).pipe(map(res =>{
     //   return res;
     //  }));
 
-     return this.http.post('https://testapi.aiub.edu/ums-auth-api/Token', dt).pipe(map(res =>{
-      return res;
-     }));
+    //  return this.http.post('https://testapi.aiub.edu/ums-auth-api/Token', dt).pipe(map(res =>{
+    //   return res;
+    //  }));
   }
 
   currentUserInfo(): Observable<IResult>{

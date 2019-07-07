@@ -33,7 +33,7 @@
     "@ng-bootstrap/ng-bootstrap": "^4.1.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bootstrap": "^4.0.0",
-    "cordova-android": "^8.0.0",
+    "cordova-android": "8.0.0",
     "cordova-browser": "5.0.4",
     "cordova-ios": "5.0.0",
     "cordova-plugin-device": "^2.0.2",
@@ -76,7 +76,8 @@
     "protractor": "~5.4.0",
     "ts-node": "^8.0.3",
     "tslint": "^5.13.1",
-    "typescript": "3.1.6"
+    "typescript": "3.1.6",
+    "cordova-plugin-splashscreen": "5.0.2"
   },
   "description": "An Ionic project",
   "cordova": {
@@ -86,7 +87,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-ionic-keyboard": {},
       "onesignal-cordova-plugin": {},
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-splashscreen": {}
     },
     "platforms": [
       "ios",
